@@ -39,7 +39,7 @@
   --border-radius: 50%;
   --border-width: 0;
   --border-style: none;
-  --border-color: initial;
+  //--border-color: initial;
   --padding-top: 0;
   --padding-end: 0;
   --padding-bottom: 0;
@@ -58,4 +58,22 @@
 
 }
 
+.input-senha{
+  outline: none;
+}
+
+.logoLogin{
+  margin-top: 70px;
+  margin-left: 55px;
+  width: 200px;
+  height: 200px;
+}
+
+.esqueciMinhaSenha{
+  position: relative;
+  top: 15px;
+  color: white;
+  margin-left: 20px;
+  cursor: pointer;
+}
 

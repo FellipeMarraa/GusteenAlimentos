@@ -11,6 +11,7 @@ import {ClienteService} from "../service/cliente.service";
 export class LoginPage extends BaseComponent {
   tipo: boolean;
   usuario: Cliente = new Cliente();
+  LogoTransparente: any;
 
   constructor(private injector: Injector,
               private clienteService: ClienteService) {
