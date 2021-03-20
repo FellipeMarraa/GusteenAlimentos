@@ -1,0 +1,36 @@
+<ion-content class="login-content">
+  <div>
+    <form #registerForm="ngForm">
+      <ion-grid inset>
+        <ion-row>
+          <ion-col>
+            <div class="img-avatar ion-text-center">
+            </div>
+          </ion-col>
+        </ion-row>
+
+        <ion-item>
+          <ion-label position="floating">Usuário</ion-label>
+          <ion-input class="ion-text-lowercase" type="text" name="usuario"></ion-input>
+        </ion-item>
+
+        <ion-item>
+          <ion-label position="floating">Senha</ion-label>
+          <ion-input>
+            <ion-fab style="margin-left: 237px" vertical="end">
+              <ion-button fill="clear" type="button">
+                <ion-icon style="color:#ffffff"></ion-icon>
+              </ion-button>
+            </ion-fab>
+          </ion-input>
+        </ion-item>
+      </ion-grid>
+
+      <ion-fab vertical="end" horizontal="end">
+        <ion-button class="button-submit" color="success" type="submit">
+          <ion-icon name="arrow-forward"></ion-icon>
+        </ion-button>
+      </ion-fab>
+    </form>
+  </div>
+</ion-content>
