@@ -9,6 +9,7 @@ import {Cliente} from "../class/cliente";
 export class LoginPage implements OnInit {
   tipo: boolean;
   usuario: Cliente = new Cliente();
+  LogoTransparente: any;
 
   constructor() {
   }

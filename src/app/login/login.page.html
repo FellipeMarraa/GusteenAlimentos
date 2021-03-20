@@ -1,4 +1,7 @@
 <ion-content class="login-content" color="login-primary">
+
+  <ion-img class="logoLogin" src="assets/LogoTransparente/LogoServiceBank.png"></ion-img>
+
   <div class="ion-padding ion-div-classe">
     <form>
       <ion-grid>
@@ -16,7 +19,7 @@
 
         <ion-item>
           <ion-label position="floating">Senha</ion-label>
-          <ion-input [type]="tipo ? 'text' : 'password'" name="senha" [(ngModel)]="usuario.senha">
+          <ion-input class="input-senha" [type]="tipo ? 'text' : 'password'" name="senha" [(ngModel)]="usuario.senha">
             <ion-fab horizontal="end" vertical="end">
               <ion-button fill="clear" type="button" (click)="exibiOcultarSenha()">
                 <ion-icon style="color:#ffffff" [name]="tipo ? 'eye-off-outline' : 'eye-outline'"></ion-icon>
@@ -32,5 +35,9 @@
         </ion-button>
       </ion-fab>
     </form>
+    <a class="esqueciMinhaSenha">Esqueci minha senha</a>
+
+
+
   </div>
 </ion-content>
