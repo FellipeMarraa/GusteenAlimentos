@@ -6,7 +6,6 @@ import {IBaseComponent} from "./i.base.component";
 
 export abstract class BaseComponent implements IBaseComponent {
 
-  //Base Injections
   protected alertCtrl: AlertController;
   protected toastCtrl: ToastController;
   protected navCtrl: NavController;

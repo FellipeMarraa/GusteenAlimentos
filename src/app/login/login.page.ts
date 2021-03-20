@@ -45,6 +45,6 @@ export class LoginPage extends BaseComponent {
     // LoadingUtil.dismiss();
     // AlertUtil.showError(this.alertCtrl, "Não foi possível conectar-se ao servidor. Por favor, verifique sua conexão.");
 
-    this.navCtrl.navigateRoot("/home")
+    this.navCtrl.navigateRoot("/cadastro")
   }
 }
