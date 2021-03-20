@@ -11,7 +11,7 @@
 
         <ion-item>
           <ion-label position="floating">E-mail</ion-label>
-          <ion-input class="ion-text-lowercase" type="email" name="email"></ion-input>
+          <ion-input class="ion-text-lowercase" type="email" name="email" [(ngModel)]="usuario.email"></ion-input>
         </ion-item>
 
         <ion-item>
@@ -26,10 +26,10 @@
         </ion-item>
       </ion-grid>
 
-      <ion-fab vertical="end" horizontal="end">
-        <ion-button class="button-submit" fill="light" type="submit">
+      <ion-fab vertical="end" horizontal="end" >
+        <ion-fab-button class="button-submit" color="light" (click)="acessar()" type="submit">
           <ion-icon name="arrow-forward"></ion-icon>
-        </ion-button>
+        </ion-fab-button>
       </ion-fab>
     </form>
   </div>
