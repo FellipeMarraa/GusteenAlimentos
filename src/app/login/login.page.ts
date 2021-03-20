@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
+import {Cliente} from "../class/cliente";
 
 @Component({
   selector: 'app-login',
@@ -6,9 +7,16 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./login.page.scss'],
 })
 export class LoginPage implements OnInit {
+  tipo: boolean;
+  usuario: Cliente = new Cliente();
 
-  constructor() { }
+  constructor() {
+  }
 
   ngOnInit() {
+  }
+
+  exibiOcultarSenha() {
+    this.tipo = !this.tipo;
   }
 }

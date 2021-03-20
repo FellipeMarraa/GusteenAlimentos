@@ -1,7 +1,7 @@
-<ion-content class="login-content">
-  <div>
-    <form #registerForm="ngForm">
-      <ion-grid inset>
+<ion-content class="login-content" color="login-primary">
+  <div class="ion-padding ion-div-classe">
+    <form>
+      <ion-grid>
         <ion-row>
           <ion-col>
             <div class="img-avatar ion-text-center">
@@ -10,16 +10,16 @@
         </ion-row>
 
         <ion-item>
-          <ion-label position="floating">Usuário</ion-label>
-          <ion-input class="ion-text-lowercase" type="text" name="usuario"></ion-input>
+          <ion-label position="floating">E-mail</ion-label>
+          <ion-input class="ion-text-lowercase" type="email" name="email"></ion-input>
         </ion-item>
 
         <ion-item>
           <ion-label position="floating">Senha</ion-label>
-          <ion-input>
-            <ion-fab style="margin-left: 237px" vertical="end">
-              <ion-button fill="clear" type="button">
-                <ion-icon style="color:#ffffff"></ion-icon>
+          <ion-input [type]="tipo ? 'text' : 'password'" name="senha" [(ngModel)]="usuario.senha">
+            <ion-fab horizontal="end" vertical="end">
+              <ion-button fill="clear" type="button" (click)="exibiOcultarSenha()">
+                <ion-icon style="color:#ffffff" [name]="tipo ? 'eye-off-outline' : 'eye-outline'"></ion-icon>
               </ion-button>
             </ion-fab>
           </ion-input>
@@ -27,7 +27,7 @@
       </ion-grid>
 
       <ion-fab vertical="end" horizontal="end">
-        <ion-button class="button-submit" color="success" type="submit">
+        <ion-button class="button-submit" fill="light" type="submit">
           <ion-icon name="arrow-forward"></ion-icon>
         </ion-button>
       </ion-fab>
