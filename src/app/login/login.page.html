@@ -21,7 +21,7 @@
           <ion-label position="floating">Senha</ion-label>
           <ion-input class="input-senha" [type]="tipo ? 'text' : 'password'" name="senha" [(ngModel)]="usuario.senha">
             <ion-fab horizontal="end" vertical="end">
-              <ion-button fill="clear" type="button" (click)="exibiOcultarSenha()">
+              <ion-button class="ocultarSenha" fill="clear" type="button" (click)="exibiOcultarSenha()">
                 <ion-icon style="color:#ffffff" [name]="tipo ? 'eye-off-outline' : 'eye-outline'"></ion-icon>
               </ion-button>
             </ion-fab>
@@ -30,14 +30,14 @@
       </ion-grid>
 
       <ion-fab vertical="end" horizontal="end" >
-        <ion-fab-button class="button-submit" color="light" (click)="acessar()" type="submit">
+        <ion-fab-button class="button-submit" color="light" type="submit">
           <ion-icon name="arrow-forward"></ion-icon>
         </ion-fab-button>
       </ion-fab>
     </form>
     <a class="esqueciMinhaSenha">Esqueci minha senha</a>
-
-
-
   </div>
+
+  <a class="cadastrar" (click)="acessar()">Quero me cadastrar!</a>
+
 </ion-content>
