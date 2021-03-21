@@ -11,7 +11,6 @@ import {ClienteService} from "../service/cliente.service";
 export class LoginPage extends BaseComponent {
   tipo: boolean;
   usuario: Cliente = new Cliente();
-  LogoTransparente: any;
 
   constructor(private injector: Injector,
               private clienteService: ClienteService) {
@@ -45,7 +44,7 @@ export class LoginPage extends BaseComponent {
     // } else {
     // LoadingUtil.dismiss();
     // AlertUtil.showError(this.alertCtrl, "Não foi possível conectar-se ao servidor. Por favor, verifique sua conexão.");
-
+    console.log(this.usuario);
     this.navCtrl.navigateRoot("/cadastro")
   }
 }

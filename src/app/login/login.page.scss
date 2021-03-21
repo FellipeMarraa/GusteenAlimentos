@@ -11,6 +11,10 @@
     margin-top: 15px;
   }
 
+  .input-senha{
+    outline: none;
+  }
+
   ion-button {
     border-radius: 20px;
   }
@@ -58,9 +62,6 @@
 
 }
 
-.input-senha{
-  outline: none;
-}
 
 .logoLogin{
   margin-top: 70px;
