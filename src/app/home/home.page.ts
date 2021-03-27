@@ -8,6 +8,12 @@ import {BaseComponent} from "../class/commons-class/base.component";
 })
 export class HomePage extends BaseComponent {
 
+  expand: boolean = false;
+  fontSizeHead: number = 15;
+  fontSizeBody: number = 13;
+
+
+
   constructor(private injector: Injector) {
     super(injector);
   }
