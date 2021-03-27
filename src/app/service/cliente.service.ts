@@ -9,23 +9,23 @@ import {Observable} from 'rxjs';
 })
 export class ClienteService {
 
-    constructor(public http: HttpClient) {
+    constructor(public _http: HttpClient) {
     }
 
-    getByID() {
-
+    getByID(id: number) {
+        return this._http.get(`${API_CONFIG.baseUrl}/cliente/` + id);
     }
 
     list(): Observable<Cliente[]> {
-        return this.http.get<Cliente[]>(`${API_CONFIG.baseUrl}/cliente/1`);
+        return this._http.get<Cliente[]>(`${API_CONFIG.baseUrl}/cliente/list`);
     }
 
-    save() {
-
+    save(cliente: Cliente): Observable<Cliente> {
+        return this._http.post<Cliente>(`${API_CONFIG.baseUrl}/cliente/create`, {cliente: Cliente, responseType: this._http})
     }
 
-    update() {
-
+    update(cliente: Cliente): Observable<Cliente> {
+        return this._http.put<Cliente>(`${API_CONFIG.baseUrl}/cliente/create`, {cliente: Cliente, responseType: this._http})
     }
 
     logar(cliente: Cliente) {

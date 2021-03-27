@@ -32,6 +32,7 @@
     "cordova-plugin-device": "^2.0.3",
     "core-js": "^3.6.5",
     "ionic-native": "^2.9.0",
+    "rest-services": "^0.2.0",
     "rxjs": "^6.5.5",
     "tslib": "^1.11.1",
     "zone.js": "^0.10.3"
