@@ -2,17 +2,19 @@ import {NgModule} from '@angular/core';
 import {CommonModule} from '@angular/common';
 import {FormsModule} from '@angular/forms';
 import {IonicModule} from '@ionic/angular';
-import {CadastroPageRoutingModule} from './cadastro.routing.module';
-import {CadastroPage} from './cadastro.page';
+import {PerfilPage} from "./perfil.page";
+import {PerfilPageRoutingModule} from "./perfil.routing.module";
+
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    CadastroPageRoutingModule
+    PerfilPageRoutingModule
   ],
-  declarations: [CadastroPage]
+  declarations: [PerfilPage]
 })
-export class CadastroPageModule {
+
+export class PerfilPageModule {
 }

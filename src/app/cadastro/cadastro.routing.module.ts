@@ -5,7 +5,7 @@ import { CadastroPage } from './cadastro.page';
 
 const routes: Routes = [
   {
-    path: '',
+    path: 'cadastro',
     component: CadastroPage
   }
 ];
