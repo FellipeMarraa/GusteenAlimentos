@@ -59,8 +59,8 @@ export class CadastroPage extends BaseComponent {
     this.navCtrl.navigateRoot("/login");
   }
 
-  cadastrar(){
-    this.clienteService.list().subscribe(response => {
+  cadastrar(cliente){
+    this.clienteService.save(cliente).subscribe(response => {
           console.log(response);
         },
         error => {
