@@ -1,20 +1,19 @@
 <ion-header>
   <ion-toolbar color="primary">
-
+    <ion-title>Home</ion-title>
     <ion-buttons slot="start">
-      <ion-button fill="clear" size="large">
-        <ion-icon name="menu-outline"></ion-icon>
-      </ion-button>
+      <ion-menu-button menu="main-menu"></ion-menu-button>
     </ion-buttons>
 
     <ion-buttons slot="end">
-      <ion-button fill="clear" size="large" (click)="goPerfilPage()">
-        <ion-icon name="person-circle-outline"></ion-icon>
+      <ion-button fill="clear" size="large">
+        <ion-icon name="notifications-outline"></ion-icon>
       </ion-button>
     </ion-buttons>
 
   </ion-toolbar>
 </ion-header>
+
 
 <ion-content>
   <card-expandable-component cardTitle="Caixa Ecônomica Federal">
@@ -58,6 +57,6 @@
     </div>
   </card-expandable-component>
 
-  <button (click)="chamarCliente()"> Chamar Cliente </button>
+  <button (click)="chamarCliente()"> Chamar Cliente</button>
 
 </ion-content>

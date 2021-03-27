@@ -4,8 +4,10 @@ import {IonicModule} from "@ionic/angular";
 import {CommonModule} from "@angular/common";
 
 @NgModule({
-  declarations: [CardExpandableComponent],
-  imports: [IonicModule,
+  declarations: [
+    CardExpandableComponent],
+  imports: [
+    IonicModule,
     CommonModule],
   exports: [
     CardExpandableComponent,
