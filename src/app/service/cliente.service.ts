@@ -17,7 +17,7 @@ export class ClienteService {
     }
 
     list(): Observable<Cliente[]> {
-        return this._http.get<Cliente[]>(`${API_CONFIG.baseUrl}/list`);
+        return this._http.get<Cliente[]>(`${API_CONFIG.baseUrl}/cliente/list`);
     }
 
     save(cliente: Cliente): Observable<Cliente> {
@@ -25,7 +25,7 @@ export class ClienteService {
     }
 
     update(cliente: Cliente): Observable<Cliente> {
-        return this._http.put<Cliente>(`${API_CONFIG.baseUrl}/cliente/create`, {cliente: Cliente, responseType: this._http})
+        return this._http.put<Cliente>(`${API_CONFIG.baseUrl}/cliente/edit`, {cliente: Cliente, responseType: this._http})
     }
 
     logar(cliente: Cliente) {
