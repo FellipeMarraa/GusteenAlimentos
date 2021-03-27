@@ -1,5 +1,6 @@
 import {Component, Injector} from '@angular/core';
 import {BaseComponent} from "../class/commons-class/base.component";
+import {ClienteService} from '../service/cliente.service';
 
 @Component({
   selector: 'app-home',
@@ -14,7 +15,8 @@ export class HomePage extends BaseComponent {
 
 
 
-  constructor(private injector: Injector) {
+  constructor(private injector: Injector,
+              public clienteService: ClienteService) {
     super(injector);
   }
 
@@ -24,5 +26,14 @@ export class HomePage extends BaseComponent {
 
   goPerfilPage() {
     this.navCtrl.navigateRoot("/perfil")
+  }
+
+  chamarCliente(){
+    this.clienteService.list().subscribe(response => {
+      console.log(response);
+    },
+        error => {
+      console.log(error);
+        });
   }
 }

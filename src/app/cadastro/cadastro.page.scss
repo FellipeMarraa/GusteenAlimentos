@@ -11,16 +11,9 @@
     margin-top: 15px;
   }
 
-  .input-email{
+  .input-email {
     outline: none;
-    //margin-top: -20px;
   }
-
-  //.input-senha{
-  //  outline: none;
-  //  margin-top: -20px;
-  //
-  //}
 
   ion-button {
     border-radius: 20px;
@@ -28,6 +21,7 @@
 
   .content {
     background: transparent !important;
+    outline: none;
   }
 
   ion-item {
@@ -41,7 +35,6 @@
     color: white;
   }
 
-
 }
 
 .button-submit {
@@ -50,7 +43,6 @@
   --border-radius: 50%;
   --border-width: 0;
   --border-style: none;
-  //--border-color: initial;
   --padding-top: 0;
   --padding-end: 0;
   --padding-bottom: 0;
@@ -71,14 +63,14 @@
 }
 
 
-.logoLogin{
+.logoLogin {
   margin-top: 50px;
   margin-left: 80px;
   width: 150px;
   height: 150px;
 }
 
-.esqueciMinhaSenha{
+.esqueciMinhaSenha {
   position: relative;
   top: 15px;
   color: white;
@@ -87,7 +79,7 @@
   font-size: 12px;
 }
 
-.possui-cadastro{
+.possui-cadastro {
   position: relative;
   top: 150px;
   color: white;
@@ -96,7 +88,7 @@
   font-size: 12px;
 }
 
-.ocultarSenha{
+.ocultarSenha {
   position: relative;
   left: 20px;
 }

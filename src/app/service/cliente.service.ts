@@ -1,26 +1,36 @@
 import {Injectable} from "@angular/core";
 import {Cliente} from "../class/cliente";
+import {HttpClient} from '@angular/common/http';
+import {API_CONFIG} from '../config/api.config';
+import {Observable} from 'rxjs';
 
 @Injectable({
-  providedIn: 'root'
+    providedIn: 'root'
 })
 export class ClienteService {
 
-  getByID(){
+    constructor(public http: HttpClient) {
+    }
 
-  }
-  list(){
+    getByID() {
 
-  }
-  save(){
+    }
 
-  }
-  update(){
+    list(): Observable<Cliente[]> {
+        return this.http.get<Cliente[]>(`${API_CONFIG.baseUrl}/cliente/1`);
+    }
 
-  }
-  logar(cliente: Cliente) {
-    //estudar como fazer uma requisição para o backend passando esses dados do cliente
-  }
+    save() {
+
+    }
+
+    update() {
+
+    }
+
+    logar(cliente: Cliente) {
+        //estudar como fazer uma requisição para o backend passando esses dados do cliente
+    }
 
 
 }

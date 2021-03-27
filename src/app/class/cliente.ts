@@ -1,9 +1,10 @@
 export class Cliente {
-  id: number;
 
-  cpf: string;
+    id: string;
 
-  email: string;
+    cpf: string;
 
-  senha: string;
+    email: string;
+
+    senha: string;
 }
