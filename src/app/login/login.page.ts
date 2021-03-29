@@ -6,13 +6,13 @@ import {PositionToast, ToastUtil} from '../class/commons-class/toast.util';
 import {ToastType} from '../class/commons-class/toast.type';
 import { ToastController } from '@ionic/angular';
 @Component({
-    selector: 'app-login',
-    templateUrl: './login.page.html',
-    styleUrls: ['./login.page.scss'],
+  selector: 'app-login',
+  templateUrl: './login.page.html',
+  styleUrls: ['./login.page.scss'],
 })
 export class LoginPage extends BaseComponent {
-    tipo: boolean;
-    usuario: Cliente = new Cliente();
+  tipo: boolean;
+  usuario: Cliente = new Cliente();
 
     constructor(private injector: Injector,
                 private clienteService: ClienteService,
@@ -20,13 +20,13 @@ export class LoginPage extends BaseComponent {
         super(injector);
     }
 
-    ngOnInit() {
+  ngOnInit() {
 
-    }
+  }
 
-    exibiOcultarSenha() {
-        this.tipo = !this.tipo;
-    }
+  exibiOcultarSenha() {
+    this.tipo = !this.tipo;
+  }
 
     acessar() {
         this.clienteService.logar(this.usuario).subscribe(item => {
@@ -38,7 +38,7 @@ export class LoginPage extends BaseComponent {
             console.log(item);
         })
 
-    }
+  }
 
     cadastrar() {
         this.navCtrl.navigateRoot('/cadastro')

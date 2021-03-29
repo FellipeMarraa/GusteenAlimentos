@@ -37,9 +37,9 @@ export class CadastroPage extends BaseComponent {
         this.tipo = !this.tipo;
     }
 
-    exibirConfirmaSenha() {
-        this.tipoConfirmaSenha = !this.tipoConfirmaSenha;
-    }
+  exibirConfirmaSenha() {
+    this.tipoConfirmaSenha = !this.tipoConfirmaSenha;
+  }
 
     fazerLogin() {
         //TODO ir no cliente.service.ts metodo logar(this.usuario) que vai me retorna um usuario
