@@ -22,7 +22,10 @@ export class ClienteService {
   }
 
   list(): Observable<Cliente[]> {
-    return this._http.get<Cliente[]>(`${API_CONFIG.baseUrl}/cliente/list`);
+    return this._http.get<Cliente[]>(`${API_CONFIG.baseUrl}/cliente/list`)
+        .pipe(
+            retry(2),
+            catchError(this.handleError))
   }
 
   save(cliente: Cliente): Observable<Cliente> {
