@@ -2,6 +2,8 @@ import {Component, Injector} from '@angular/core';
 import {Cliente} from "../class/cliente";
 import {BaseComponent} from "../class/commons-class/base.component";
 import {ClienteService} from '../service/cliente.service';
+import {PositionToast, ToastUtil} from "../class/commons-class/toast.util";
+import {ToastType} from "../class/commons-class/toast.type";
 
 @Component({
   selector: 'app-login',
@@ -26,9 +28,13 @@ export class LoginPage extends BaseComponent {
   }
 
   acessar() {
-    this.clienteService.logar(this.usuario).subscribe(item => {
-      console.log(item);
-    })
+    ToastUtil.presentToast(this.toastCtrl, "Usuario não permitido. ", PositionToast.BOTTOM, ToastType.INFO);
+
+
+    // this.clienteService.logar(this.usuario).subscribe(item => {
+    //   console.log(item);
+    // })
+
   }
 
   cadastrar() {
