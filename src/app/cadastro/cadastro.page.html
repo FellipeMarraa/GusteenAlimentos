@@ -1,64 +1,61 @@
 <ion-content class="cadastro-content" color="login-primary">
 
-    <ion-img class="logoLogin" src="assets/LogoTransparente/LogoServiceBank.png"></ion-img>
+  <ion-img class="logoLogin" src="assets/LogoTransparente/LogoServiceBank.png"></ion-img>
 
-    <div class="ion-padding ion-div-classe">
-        <form>
-            <ion-grid>
-                <ion-row>
-                    <ion-col>
-                        <div class="img-avatar ion-text-center">
-                        </div>
-                    </ion-col>
-                </ion-row>
+  <div class="ion-padding ion-div-classe">
+    <form>
+      <ion-grid>
+        <ion-row>
+          <ion-col>
+            <div class="img-avatar ion-text-center">
+            </div>
+          </ion-col>
+        </ion-row>
 
-                <ion-item class="input-cpf">
-                    <ion-label position="floating">CPF</ion-label>
-                    <ion-input class="ion-text-lowercase" type="email" name="email" [(ngModel)]="usuario.cpf"
-                               placeholder="999.999.999-99"></ion-input>
-                </ion-item>
+        <ion-item class="input-cpf">
+          <ion-label position="floating">CPF</ion-label>
+          <ion-input class="ion-text-lowercase" type="email" name="email" [(ngModel)]="usuario.cpf"></ion-input>
+        </ion-item>
 
-                <ion-item class="input-email">
-                    <ion-label position="floating">E-mail</ion-label>
-                    <ion-input class="ion-text-lowercase" type="email" name="email" [(ngModel)]="usuario.email"
-                               placeholder="example@example.com"></ion-input>
-                </ion-item>
+        <ion-item class="input-email">
+          <ion-label position="floating">E-mail</ion-label>
+          <ion-input class="ion-text-lowercase" type="email" name="email" [(ngModel)]="usuario.email"
+          ></ion-input>
+        </ion-item>
 
-                <ion-item class="input-senha">
-                    <ion-label position="floating">Senha</ion-label>
-                    <ion-input [type]="tipo ? 'text' : 'password'" name="senha" [(ngModel)]="usuario.senha"
-                               placeholder="password">
-                        <ion-fab horizontal="end" vertical="end">
-                            <ion-button class="ocultarSenha" fill="clear" type="button" (click)="exibiOcultarSenha()">
-                                <ion-icon style="color:#ffffff"
-                                          [name]="tipo ? 'eye-off-outline' : 'eye-outline'"></ion-icon>
-                            </ion-button>
-                        </ion-fab>
-                    </ion-input>
-                </ion-item>
-
-                <ion-item class="input-confirma-senha">
-                    <ion-label position="floating">Confirmar senha</ion-label>
-                    <ion-input [type]="tipoConfirmaSenha ? 'text' : 'password'" name="confirmaSenha"
-                               placeholder="Confirma password">
-                        <ion-fab horizontal="end" vertical="end">
-                            <ion-button class="ocultarSenha" fill="clear" type="button" (click)="exibirConfirmaSenha()">
-                                <ion-icon style="color:#ffffff"
-                                          [name]="tipoConfirmaSenha ? 'eye-off-outline' : 'eye-outline'"></ion-icon>
-                            </ion-button>
-                        </ion-fab>
-                    </ion-input>
-                </ion-item>
-            </ion-grid>
-
-            <ion-fab vertical="end" horizontal="end">
-                <ion-fab-button class="button-submit" color="light" type="submit">
-                    <ion-icon name="arrow-forward"></ion-icon>
-                </ion-fab-button>
+        <ion-item class="input-senha">
+          <ion-label position="floating">Senha</ion-label>
+          <ion-input [type]="tipo ? 'text' : 'password'" name="senha" [(ngModel)]="usuario.senha">
+            <ion-fab horizontal="end" vertical="end">
+              <ion-button class="ocultarSenha" fill="clear" type="button" (click)="exibiOcultarSenha()">
+                <ion-icon style="color:#ffffff"
+                          [name]="tipo ? 'eye-off-outline' : 'eye-outline'"></ion-icon>
+              </ion-button>
             </ion-fab>
-        </form>
-    </div>
+          </ion-input>
+        </ion-item>
 
-    <a class="possui-cadastro" (click)="fazerLogin()">Já possuo cadastro!</a>
+        <ion-item class="input-confirma-senha">
+          <ion-label position="floating">Confirmar senha</ion-label>
+          <ion-input [type]="tipoConfirmaSenha ? 'text' : 'password'" name="confirmaSenha">
+            <ion-fab horizontal="end" vertical="end">
+              <ion-button class="ocultarSenha" fill="clear" type="button" (click)="exibirConfirmaSenha()">
+                <ion-icon style="color:#ffffff"
+                          [name]="tipoConfirmaSenha ? 'eye-off-outline' : 'eye-outline'"></ion-icon>
+              </ion-button>
+            </ion-fab>
+          </ion-input>
+        </ion-item>
+      </ion-grid>
+
+      <ion-fab vertical="end" horizontal="end">
+        <ion-fab-button class="button-submit" color="light" type="submit">
+          <ion-icon name="arrow-forward"></ion-icon>
+        </ion-fab-button>
+      </ion-fab>
+    </form>
+  </div>
+
+  <a class="possui-cadastro" (click)="fazerLogin()">Já possuo cadastro!</a>
 
 </ion-content>
