@@ -4,7 +4,7 @@ import {BaseComponent} from '../class/commons-class/base.component';
 import {ClienteService} from '../service/cliente.service';
 import {PositionToast, ToastUtil} from '../class/commons-class/toast.util';
 import {ToastType} from '../class/commons-class/toast.type';
-
+import { ToastController } from '@ionic/angular';
 @Component({
     selector: 'app-login',
     templateUrl: './login.page.html',
@@ -15,7 +15,8 @@ export class LoginPage extends BaseComponent {
     usuario: Cliente = new Cliente();
 
     constructor(private injector: Injector,
-                private clienteService: ClienteService) {
+                private clienteService: ClienteService,
+                public toastController: ToastController) {
         super(injector);
     }
 
@@ -29,17 +30,26 @@ export class LoginPage extends BaseComponent {
 
     acessar() {
         this.clienteService.logar(this.usuario).subscribe(item => {
-            if (item){
+            if (item) {
                 this.navCtrl.navigateRoot('/home');
             } else {
-                ToastUtil.presentToast(this.toastCtrl, "Usuario não encontrado", PositionToast.BOTTOM, ToastType.INFO);
+                this.presentToast();
             }
-          console.log(item);
+            console.log(item);
         })
 
     }
 
     cadastrar() {
         this.navCtrl.navigateRoot('/cadastro')
+    }
+
+    async presentToast() {
+        const toast = await this.toastController.create({
+            message: 'Usuário não encontrado!',
+            duration: 2000,
+            color: 'danger',
+        });
+        toast.present();
     }
 }

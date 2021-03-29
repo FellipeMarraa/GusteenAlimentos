@@ -82,7 +82,7 @@
 
 .cadastrar {
   position: relative;
-  top: 180px;
+  top: 150px;
   color: white;
   margin-left: 110px;
   cursor: pointer;
@@ -92,5 +92,9 @@
 .ocultarSenha {
   position: relative;
   left: 20px;
+}
+
+.toastUser{
+  text-align: center;
 }
 
