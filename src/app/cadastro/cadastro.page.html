@@ -14,7 +14,7 @@
 
         <ion-item class="input-cpf">
           <ion-label position="floating">CPF</ion-label>
-          <ion-input class="ion-text-lowercase" type="email" name="email" [(ngModel)]="usuario.cpf"></ion-input>
+          <ion-input class="ion-text-lowercase" type="email" name="cpf" [(ngModel)]="usuario.cpf"></ion-input>
         </ion-item>
 
         <ion-item class="input-email">
@@ -49,7 +49,7 @@
       </ion-grid>
 
       <ion-fab vertical="end" horizontal="end">
-        <ion-fab-button class="button-submit" color="light" type="submit">
+        <ion-fab-button class="button-submit" color="light" type="submit" (click)="cadastrar()">
           <ion-icon name="arrow-forward"></ion-icon>
         </ion-fab-button>
       </ion-fab>

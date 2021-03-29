@@ -1,6 +1,7 @@
 import {Component, Injector} from '@angular/core';
 import {Cliente} from "../class/cliente";
 import {BaseComponent} from "../class/commons-class/base.component";
+import {ClienteService} from '../service/cliente.service';
 
 @Component({
   selector: 'app-login',
@@ -11,7 +12,8 @@ export class LoginPage extends BaseComponent {
   tipo: boolean;
   usuario: Cliente = new Cliente();
 
-  constructor(private injector: Injector) {
+  constructor(private injector: Injector,
+              private clienteService: ClienteService) {
     super(injector);
   }
 
@@ -24,7 +26,9 @@ export class LoginPage extends BaseComponent {
   }
 
   acessar() {
-    this.navCtrl.navigateRoot("/home")
+    this.clienteService.logar(this.usuario).subscribe(item => {
+      console.log(item);
+    })
   }
 
   cadastrar() {
