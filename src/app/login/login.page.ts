@@ -1,43 +1,45 @@
 import {Component, Injector} from '@angular/core';
-import {Cliente} from "../class/cliente";
-import {BaseComponent} from "../class/commons-class/base.component";
+import {Cliente} from '../class/cliente';
+import {BaseComponent} from '../class/commons-class/base.component';
 import {ClienteService} from '../service/cliente.service';
-import {PositionToast, ToastUtil} from "../class/commons-class/toast.util";
-import {ToastType} from "../class/commons-class/toast.type";
+import {PositionToast, ToastUtil} from '../class/commons-class/toast.util';
+import {ToastType} from '../class/commons-class/toast.type';
 
 @Component({
-  selector: 'app-login',
-  templateUrl: './login.page.html',
-  styleUrls: ['./login.page.scss'],
+    selector: 'app-login',
+    templateUrl: './login.page.html',
+    styleUrls: ['./login.page.scss'],
 })
 export class LoginPage extends BaseComponent {
-  tipo: boolean;
-  usuario: Cliente = new Cliente();
+    tipo: boolean;
+    usuario: Cliente = new Cliente();
 
-  constructor(private injector: Injector,
-              private clienteService: ClienteService) {
-    super(injector);
-  }
+    constructor(private injector: Injector,
+                private clienteService: ClienteService) {
+        super(injector);
+    }
 
-  ngOnInit() {
+    ngOnInit() {
 
-  }
+    }
 
-  exibiOcultarSenha() {
-    this.tipo = !this.tipo;
-  }
+    exibiOcultarSenha() {
+        this.tipo = !this.tipo;
+    }
 
-  acessar() {
-    ToastUtil.presentToast(this.toastCtrl, "Usuario não permitido. ", PositionToast.BOTTOM, ToastType.INFO);
+    acessar() {
+        this.clienteService.logar(this.usuario).subscribe(item => {
+            if (item){
+                this.navCtrl.navigateRoot('/home');
+            } else {
+                ToastUtil.presentToast(this.toastCtrl, "Usuario não encontrado", PositionToast.BOTTOM, ToastType.INFO);
+            }
+          console.log(item);
+        })
 
+    }
 
-    // this.clienteService.logar(this.usuario).subscribe(item => {
-    //   console.log(item);
-    // })
-
-  }
-
-  cadastrar() {
-    this.navCtrl.navigateRoot("/cadastro")
-  }
+    cadastrar() {
+        this.navCtrl.navigateRoot('/cadastro')
+    }
 }
