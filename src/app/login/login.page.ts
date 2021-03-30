@@ -4,7 +4,8 @@ import {BaseComponent} from '../class/commons-class/base.component';
 import {ClienteService} from '../service/cliente.service';
 import {PositionToast, ToastUtil} from '../class/commons-class/toast.util';
 import {ToastType} from '../class/commons-class/toast.type';
-import { ToastController } from '@ionic/angular';
+import {ToastController} from '@ionic/angular';
+
 @Component({
   selector: 'app-login',
   templateUrl: './login.page.html',
@@ -13,12 +14,13 @@ import { ToastController } from '@ionic/angular';
 export class LoginPage extends BaseComponent {
   tipo: boolean;
   usuario: Cliente = new Cliente();
+  isloading: boolean = false;
 
-    constructor(private injector: Injector,
-                private clienteService: ClienteService,
-                public toastController: ToastController) {
-        super(injector);
-    }
+  constructor(private injector: Injector,
+              private clienteService: ClienteService,
+              public toastController: ToastController) {
+    super(injector);
+  }
 
   ngOnInit() {
 
@@ -28,28 +30,27 @@ export class LoginPage extends BaseComponent {
     this.tipo = !this.tipo;
   }
 
-    acessar() {
-        this.clienteService.logar(this.usuario).subscribe(item => {
-            if (item) {
-                this.navCtrl.navigateRoot('/home');
-            } else {
-                this.presentToast();
-            }
-            console.log(item);
-        })
+  cadastrarSe() {
+    this.navCtrl.navigateRoot('/cadastro')
+  }
+
+
+  acessar() {
+    this.isloading = true;
+    this.clienteService.logar(this.usuario).subscribe(item => {
+      if (item) {
+        this.navCtrl.navigateRoot('/home');
+        this.isloading = false;
+      } else {
+        this.isloading = false;
+        ToastUtil.presentToast(this.toastCtrl, "Usuário não encontrado!", PositionToast.BOTTOM, ToastType.ERROR);
+      }
+      console.log(item);
+    }, error => {
+      ToastUtil.presentToast(this.toastCtrl, "Erro nos servidor", PositionToast.BOTTOM, ToastType.ERROR);
+    })
 
   }
 
-    cadastrar() {
-        this.navCtrl.navigateRoot('/cadastro')
-    }
 
-    async presentToast() {
-        const toast = await this.toastController.create({
-            message: 'Usuário não encontrado!',
-            duration: 2000,
-            color: 'danger',
-        });
-        toast.present();
-    }
 }

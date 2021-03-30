@@ -31,13 +31,14 @@
 
       <ion-fab vertical="end" horizontal="end" >
         <ion-fab-button class="button-submit" color="light" type="submit" (click)="acessar()">
-          <ion-icon name="arrow-forward"></ion-icon>
+          <ion-spinner name="crescent" *ngIf="isloading"></ion-spinner>
+          <ion-icon name="arrow-forward" *ngIf="!isloading"></ion-icon>
         </ion-fab-button>
       </ion-fab>
     </form>
     <a class="esqueciMinhaSenha">Esqueci minha senha</a>
   </div>
 
-  <a class="cadastrar" (click)="cadastrar()">Quero me cadastrar!</a>
+  <a class="cadastrar" (click)="cadastrarSe()">Quero me cadastrar!</a>
 
 </ion-content>
