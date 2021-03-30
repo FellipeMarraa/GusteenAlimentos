@@ -41,7 +41,7 @@ export class ToastUtil {
           message: message,
           position:  EnumUtils.valueOf(PositionToast, position),
           duration: duration == null ? 4000 : duration,
-          cssClass: toastType == null ? ToastType.INFO.toString() : toastType.toString()
+          color: toastType == null ? ToastType.INFO.toString() : toastType.toString()
         });
         return this.toast.present();
     }
@@ -64,7 +64,7 @@ export class ToastUtil {
         this.toast = await toastCtrl.create({
           message: message,
           position:  EnumUtils.valueOf(PositionToast, position),
-          cssClass: toastType == null ? ToastType.INFO.toString() : toastType.toString()
+          color: toastType == null ? ToastType.INFO.toString() : toastType.toString()
         });
       } else {
         this.toast = await toastCtrl.create({
@@ -79,7 +79,7 @@ export class ToastUtil {
               }
             }
           ],
-          cssClass: toastType == null ? ToastType.INFO.toString() : toastType.toString()
+          color: toastType == null ? ToastType.INFO.toString() : toastType.toString()
         });
       }
         return this.toast.present();
