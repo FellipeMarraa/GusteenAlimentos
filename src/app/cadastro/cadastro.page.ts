@@ -68,13 +68,13 @@ export class CadastroPage extends BaseComponent {
             this.clienteService.save(this.usuario).subscribe(item => {
                 console.log(item);
             })
-            this.presentToastClean();
+          ToastUtil.presentToast(this.toastCtrl, "Usuário cadastrado", PositionToast.BOTTOM, ToastType.SUCCESS);
             this.navCtrl.navigateRoot('/login');
         } else {
 
             this.presentToastDanger();
 
-            // ToastUtil.presentToast(this.toastCtrl, "Todos os campos devem ser preenchidos ", PositionToast.BOTTOM, ToastType.INFO);
+            ToastUtil.presentToast(this.toastCtrl, "Necessário preencher todos os dados", PositionToast.BOTTOM, ToastType.INFO);
         }
     }
 

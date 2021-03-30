@@ -1,8 +1,8 @@
 export enum ToastType {
 
-    ERROR = <any>'toast-error',
-    WARNING = <any>'toast-warning',
-    SUCCESS = <any>'toast-success',
-    INFO = <any>'toast-info'
+  ERROR = <any>'error',
+  WARNING = <any>'warning',
+  SUCCESS = <any>'success',
+  INFO = <any>'info'
 
 }
