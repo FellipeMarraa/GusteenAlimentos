@@ -19,7 +19,7 @@
 
         <ion-item class="input-email">
           <ion-label position="floating">E-mail</ion-label>
-          <ion-input class="ion-text-lowercase" type="email" name="email" [(ngModel)]="usuario.email"
+          <ion-input class="ion-text-lowercase" type="email" name="email" [ngModel]="usuario.email"
           ></ion-input>
         </ion-item>
 
@@ -37,7 +37,7 @@
 
         <ion-item class="input-confirma-senha">
           <ion-label position="floating">Confirmar senha</ion-label>
-          <ion-input [type]="tipoConfirmaSenha ? 'text' : 'password'" name="confirmaSenha">
+          <ion-input [type]="tipoConfirmaSenha ? 'text' : 'password'" name="confirmaSenha" [(ngModel)]="confirmaSenha">
             <ion-fab horizontal="end" vertical="end">
               <ion-button class="ocultarSenha" fill="clear" type="button" (click)="exibirConfirmaSenha()">
                 <ion-icon style="color:#ffffff"
@@ -46,8 +46,9 @@
             </ion-fab>
           </ion-input>
         </ion-item>
-      </ion-grid>
 
+
+      </ion-grid>
       <ion-fab vertical="end" horizontal="end">
         <ion-fab-button class="button-submit" color="light" type="submit" (click)="cadastrar()">
           <ion-icon name="arrow-forward"></ion-icon>
