@@ -7,94 +7,64 @@ import {ToastType} from '../class/commons-class/toast.type';
 import {ToastController} from '@ionic/angular';
 
 @Component({
-    selector: 'app-cadastro',
-    templateUrl: './cadastro.page.html',
-    styleUrls: ['./cadastro.page.scss'],
+  selector: 'app-cadastro',
+  templateUrl: './cadastro.page.html',
+  styleUrls: ['./cadastro.page.scss'],
 })
 export class CadastroPage extends BaseComponent {
 
-    tipo: boolean;
-    tipoConfirmaSenha: boolean;
-    usuario: Cliente = new Cliente();
+  tipo: boolean;
+  tipoConfirmaSenha: boolean;
+  usuario: Cliente = new Cliente();
 
-    constructor(private injector: Injector,
-                private clienteService: ClienteService,
-                public toastController: ToastController) {
-        super(injector);
-    }
+  constructor(private injector: Injector,
+              private clienteService: ClienteService,
+              public toastController: ToastController) {
+    super(injector);
+  }
 
-    ngOnInit() {
-
-
-    }
+  ngOnInit() {
 
 
-    dismiss() {
-        this.navCtrl.navigateRoot('/login')
-    }
+  }
 
-    exibiOcultarSenha() {
-        this.tipo = !this.tipo;
-    }
+
+  dismiss() {
+    this.navCtrl.navigateRoot('/login')
+  }
+
+  exibiOcultarSenha() {
+    this.tipo = !this.tipo;
+  }
 
   exibirConfirmaSenha() {
     this.tipoConfirmaSenha = !this.tipoConfirmaSenha;
   }
 
-    fazerLogin() {
-        //TODO ir no cliente.service.ts metodo logar(this.usuario) que vai me retorna um usuario
-        //Caso o usuario seja retornado deixa seqguir para a tela /home , se nao retornar exibir erro na tela
+  cadastrar() {
+    if (this.validate(this.usuario)) {
+      this.clienteService.save(this.usuario).subscribe(item => {
 
-        //   this.authService.login(this.usuarioAuth).then((usuario) => {
-        //       if (usuario != null) {
-        //         this.appService.setCurrentUser(usuario);
-        //         this.lastUserAuth(usuario);
-        //         this.navCtrl.navigateRoot("/home")
-        //       }
-        //       LoadingUtil.dismiss();
-        //     },
-        //     error => {
-        //       LoadingUtil.dismiss();
-        //       AlertUtil.showError(this.alertCtrl, error.message);
-        //     });
-        // } else {
-        // LoadingUtil.dismiss();
-        // AlertUtil.showError(this.alertCtrl, "Não foi possível conectar-se ao servidor. Por favor, verifique sua conexão.");
-        this.navCtrl.navigateRoot('/login');
+        //Se retorna o item é por que salvou se nao deu erro em algum canto
+
+        console.log(item);
+      })
+      ToastUtil.presentToast(this.toastCtrl, "Usuário cadastrado", PositionToast.BOTTOM, ToastType.SUCCESS);
+      this.navCtrl.navigateRoot('/login');
+    } else {
+      ToastUtil.presentToast(this.toastCtrl, "Necessário preencher todos os dados", PositionToast.BOTTOM, ToastType.INFO);
+    }
+  }
+
+  validate(usuario: Cliente) {
+    let valido: boolean = true
+
+    if (usuario.cpf != null && usuario.email != null && usuario.senha != null) {
+      valido = false
     }
 
-    cadastrar() {
-        if (this.usuario.cpf != null && this.usuario.email != null && this.usuario.senha != null) {
-            this.clienteService.save(this.usuario).subscribe(item => {
-                console.log(item);
-            })
-          ToastUtil.presentToast(this.toastCtrl, "Usuário cadastrado", PositionToast.BOTTOM, ToastType.SUCCESS);
-            this.navCtrl.navigateRoot('/login');
-        } else {
+    return valido;
+  }
 
-            this.presentToastDanger();
-
-            ToastUtil.presentToast(this.toastCtrl, "Necessário preencher todos os dados", PositionToast.BOTTOM, ToastType.INFO);
-        }
-    }
-
-    async presentToastDanger() {
-        const toast = await this.toastController.create({
-            message: 'Necessário preencher todos os dados!',
-            duration: 2000,
-            color: 'danger',
-        });
-        toast.present();
-    }
-
-    async presentToastClean() {
-        const toast = await this.toastController.create({
-            message: 'Usuário cadastrado',
-            duration: 2000,
-            color: 'light',
-            position: 'top',
-        });
-        toast.present();
-    }
 
 }
