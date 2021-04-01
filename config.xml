@@ -24,24 +24,24 @@
         </edit-config>
         <resource-file src="resources/android/xml/network_security_config.xml" target="app/src/main/res/xml/network_security_config.xml" />
         <allow-intent href="market:*" />
-        <icon density="ldpi" src="src/assets/LogoTransparente/LogoServiceBank.png" />
-        <icon density="mdpi" src="src/assets/LogoTransparente/LogoServiceBank.png" />
-        <icon density="hdpi" src="src/assets/LogoTransparente/LogoServiceBank.png" />
-        <icon density="xhdpi" src="src/assets/LogoTransparente/LogoServiceBank.png" />
-        <icon density="xxhdpi" src="src/assets/LogoTransparente/LogoServiceBank.png" />
-        <icon density="xxxhdpi" src="src/assets/LogoTransparente/LogoServiceBank.png" />
-        <splash density="land-ldpi" src="src/assets/LogoTransparente/LogoServiceBank.png" />
-        <splash density="land-mdpi" src="src/assets/LogoTransparente/LogoServiceBank.png" />
-        <splash density="land-hdpi" src="src/assets/LogoTransparente/LogoServiceBank.png" />
-        <splash density="land-xhdpi" src="src/assets/LogoTransparente/LogoServiceBank.png" />
-        <splash density="land-xxhdpi" src="src/assets/LogoTransparente/LogoServiceBank.png" />
-        <splash density="land-xxxhdpi" src="src/assets/LogoTransparente/LogoServiceBank.png" />
-        <splash density="port-ldpi" src="src/assets/LogoTransparente/LogoServiceBank.png" />
-        <splash density="port-mdpi" src="src/assets/LogoTransparente/LogoServiceBank.png" />
-        <splash density="port-hdpi" src="src/assets/LogoTransparente/LogoServiceBank.png" />
-        <splash density="port-xhdpi" src="src/assets/LogoTransparente/LogoServiceBank.png" />
-        <splash density="port-xxhdpi" src="src/assets/LogoTransparente/LogoServiceBank.png" />
-        <splash density="port-xxxhdpi" src="src/assets/LogoTransparente/LogoServiceBank.png" />
+        <icon density="ldpi" src="src/assets/IconeAzul/IconeServiceBankAzul.png" />
+        <icon density="mdpi" src="src/assets/IconeAzul/IconeServiceBankAzul.png" />
+        <icon density="hdpi" src="src/assets/IconeAzul/IconeServiceBankAzul.png" />
+        <icon density="xhdpi" src="src/assets/IconeAzul/IconeServiceBankAzul.png" />
+        <icon density="xxhdpi" src="src/assets/IconeAzul/IconeServiceBankAzul.png" />
+        <icon density="xxxhdpi" src="src/assets/IconeAzul/IconeServiceBankAzul.png" />
+        <splash density="land-ldpi" src="src/assets/IconeAzul/IconeServiceBankAzul.png" />
+        <splash density="land-mdpi" src="src/assets/IconeAzul/IconeServiceBankAzul.png" />
+        <splash density="land-hdpi" src="src/assets/IconeAzul/IconeServiceBankAzul.png" />
+        <splash density="land-xhdpi" src="src/assets/IconeAzul/IconeServiceBankAzul.png" />
+        <splash density="land-xxhdpi" src="src/assets/IconeAzul/IconeServiceBankAzul.png" />
+        <splash density="land-xxxhdpi" src="src/assets/IconeAzul/IconeServiceBankAzul.png" />
+        <splash density="port-ldpi" src="src/assets/IconeAzul/IconeServiceBankAzul.png" />
+        <splash density="port-mdpi" src="src/assets/IconeAzul/IconeServiceBankAzul.png" />
+        <splash density="port-hdpi" src="src/assets/IconeAzul/IconeServiceBankAzul.png" />
+        <splash density="port-xhdpi" src="src/assets/IconeAzul/IconeServiceBankAzul.png" />
+        <splash density="port-xxhdpi" src="src/assets/IconeAzul/IconeServiceBankAzul.png" />
+        <splash density="port-xxxhdpi" src="src/assets/IconeAzul/IconeServiceBankAzul.png" />
     </platform>
     <platform name="ios">
         <allow-intent href="itms:*" />
