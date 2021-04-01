@@ -29,10 +29,10 @@
         </ion-item>
       </ion-grid>
 
-      <ion-fab vertical="end" horizontal="end" >
+      <ion-fab vertical="end" horizontal="end">
         <ion-fab-button class="button-submit" color="light" type="submit" (click)="acessar()">
-          <ion-spinner name="crescent" *ngIf="isloading"></ion-spinner>
-          <ion-icon name="arrow-forward" *ngIf="!isloading"></ion-icon>
+          <ion-spinner color="primary" name="crescent" *ngIf="isloading"></ion-spinner>
+          <ion-icon color="primary" name="arrow-forward" *ngIf="!isloading"></ion-icon>
         </ion-fab-button>
       </ion-fab>
     </form>
