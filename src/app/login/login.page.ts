@@ -4,7 +4,6 @@ import {BaseComponent} from '../class/commons-class/base.component';
 import {ClienteService} from '../service/cliente.service';
 import {PositionToast, ToastUtil} from '../class/commons-class/toast.util';
 import {ToastType} from '../class/commons-class/toast.type';
-import {ToastController} from '@ionic/angular';
 
 @Component({
   selector: 'app-login',
@@ -17,8 +16,7 @@ export class LoginPage extends BaseComponent {
   isloading: boolean = false;
 
   constructor(private injector: Injector,
-              private clienteService: ClienteService,
-              public toastController: ToastController) {
+              private clienteService: ClienteService) {
     super(injector);
   }
 
@@ -47,6 +45,7 @@ export class LoginPage extends BaseComponent {
       }
       console.log(item);
     }, error => {
+      this.isloading = false;
       ToastUtil.presentToast(this.toastCtrl, "Erro no servidor", PositionToast.BOTTOM, ToastType.ERROR);
     })
 
