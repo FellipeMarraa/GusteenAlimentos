@@ -1,5 +1,5 @@
 import {Component, Injector} from '@angular/core';
-import {BaseComponent} from "../class/commons-class/base.component";
+import {BaseComponent} from '../class/commons-class/base.component';
 import {ClienteService} from '../service/cliente.service';
 
 @Component({
@@ -30,10 +30,10 @@ export class HomePage extends BaseComponent {
 
   chamarCliente(){
     this.clienteService.list().subscribe(response => {
-      console.log(response);
-    },
-        error => {
-      console.log(error);
-        });
+        console.log(response);
+      },
+      error => {
+        console.log(error);
+      });
   }
 }

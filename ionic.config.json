@@ -1,7 +1,6 @@
 {
-  "name": "Photo Gallery NG Capacitor",
+  "name": "ServiceBank",
   "integrations": {
-    "capacitor": {},
     "cordova": {}
   },
   "type": "angular"
