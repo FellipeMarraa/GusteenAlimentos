@@ -1,6 +1,8 @@
 import {Component, Injector} from '@angular/core';
 import {BaseComponent} from '../class/commons-class/base.component';
 import {ClienteService} from '../service/cliente.service';
+import {BancoService} from '../service/banco.service';
+import {Banco} from '../class/banco';
 
 @Component({
   selector: 'app-home',
@@ -12,15 +14,23 @@ export class HomePage extends BaseComponent {
   expand: boolean = false;
   fontSizeHead: number = 15;
   fontSizeBody: number = 13;
+  items: Banco[];
 
 
 
   constructor(private injector: Injector,
-              public clienteService: ClienteService) {
+              public clienteService: ClienteService,
+              public bancoService: BancoService) {
     super(injector);
   }
 
   ngOnInit() {
+    this.bancoService.list().subscribe(response => {
+        this.items = response;
+      },
+      error => {
+        console.log(error);
+      });
 
   }
 

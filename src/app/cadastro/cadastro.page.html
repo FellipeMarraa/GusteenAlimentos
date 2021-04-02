@@ -7,11 +7,11 @@
       <ion-grid>
 
         <ion-radio-group value="cpf" (ionChange)="onRadioGroupChange($event)">
-          <div class="radioGroup">
-            <ion-label>CPF</ion-label>
+          <div class="radioGroup" style="padding-bottom: 15px">
+            <ion-label style="padding: 10px">CPF</ion-label>
             <ion-radio color="light" value="cpf" style="margin-right: 30px"></ion-radio>
-            <ion-label>CNPJ</ion-label>
-            <ion-radio color="light" value="cnpj"></ion-radio>
+            <ion-label style="padding: 10px">CNPJ</ion-label>
+            <ion-radio color="light" value="cnpj" style="margin-right: 30px"></ion-radio>
           </div>
         </ion-radio-group>
 
@@ -31,12 +31,12 @@
           <p class="form-error" *ngIf="cnpjErroVisible">* Cnpj Invalido.</p>
         </div>
 
-        <ion-item class="input-email">
-          <ion-label position="floating">E-mail</ion-label>
-          <ion-input class="ion-text-lowercase" type="email" name="email" [(ngModel)]="usuario.email"
+        <ion-item class="input-nome">
+          <ion-label position="floating">Nome Completo</ion-label>
+          <ion-input class="ion-text-lowercase" type="text" name="nome" [(ngModel)]="usuario.nome"
           ></ion-input>
         </ion-item>
-        <p class="form-error" *ngIf="emailErroVisible">* Email invalido.</p>
+<!--        <p class="form-error" *ngIf="emailErroVisible">* Email invalido.</p>-->
 
         <ion-item class="input-senha">
           <ion-label position="floating">Senha</ion-label>

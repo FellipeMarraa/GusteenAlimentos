@@ -59,7 +59,7 @@ export class CadastroPage extends BaseComponent {
         }
       }, error => {
         ToastUtil.presentToast(this.toastCtrl, "Erro no servidor", PositionToast.BOTTOM, ToastType.ERROR);
-      })
+      });
     } else {
       ToastUtil.presentToast(this.toastCtrl, "Necessário preencher todos os dados", PositionToast.BOTTOM, ToastType.ERROR);
     }
@@ -68,7 +68,7 @@ export class CadastroPage extends BaseComponent {
   validate(usuario: Cliente) {
     let valido: boolean = true
 
-    if (usuario.cpf == null || usuario.email == null || usuario.senha == null) {
+    if (usuario.cpf == null || usuario.nome == null || usuario.senha == null) {
       valido = false
     }
 
@@ -83,19 +83,19 @@ export class CadastroPage extends BaseComponent {
   }
 
 
-  /**
-   *Esse metodo é chamado quando o focus é tirado do input do email
-   */
-  focusoutEmail(event: FocusEvent) {
-    this.validaEmail(this.usuario.email)
-  }
-
-  validaEmail(email: any) {
-    const re = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-    if (!re.test(email)) {
-      this.emailErroVisible = true;
-    }
-  }
+  // /**
+  //  *Esse metodo é chamado quando o focus é tirado do input do email
+  //  */
+  // focusoutEmail(event: FocusEvent) {
+  //   this.validaEmail(this.usuario.nome)
+  // }
+  //
+  // validaEmail(email: any) {
+  //   const re = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+  //   if (!re.test(email)) {
+  //     this.emailErroVisible = true;
+  //   }
+  // }
 
   /**
    *Esse metodo é chamado quando o focus é tirado do input do cpf
