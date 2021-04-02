@@ -4,6 +4,8 @@ export class Cliente {
 
     cpf: string;
 
+    cnpj: string;
+
     email: string;
 
     senha: string;

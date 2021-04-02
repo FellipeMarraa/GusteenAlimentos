@@ -1,17 +1,26 @@
-<ion-header>
-  <ion-toolbar color="primary">
+  <ion-toolbar class="toolbar-perfil">
     <ion-buttons slot="start">
-      <ion-button fill="clear" size="large" (click)="goHomePage()">
-        <ion-icon name="arrow-back-outline"></ion-icon>
+      <ion-menu-button style="color: white" menu="main-menu"></ion-menu-button>
+    </ion-buttons>
+    <ion-buttons slot="end">
+      <ion-button fill="clear" size="large">
+        <ion-icon style="color: white" name="create-outline"></ion-icon>
       </ion-button>
     </ion-buttons>
 
-    <ion-title>
-      Perfil Page
-    </ion-title>
   </ion-toolbar>
-</ion-header>
+  <header class="header-perfil">
+    <ion-icon class="person-icon" name="person-circle-outline"></ion-icon>
+    <h3 class="ion-text-header-nome" style="font-size: 20px; width: 100%; text-align: center">Alexsandro de Jesus Pereira</h3>
+    <h4 class="ion-text-header-email" [ngStyle]="{'font-size': fontSizeHead + 'px'}">aleke.jesus@gmail.com</h4>
+  </header>
 
-<ion-content>
+  <ion-content color="light">
+  <div class="dados-user">
+    <h2 style="font-size: 19px; padding: 10px 0px">Dados Pessoais</h2>
+    <p class="ion-text-perfil" [ngStyle]="{'font-size': fontSizeHead + 'px'}">Nome</p>
+    <p class="ion-text-perfil" [ngStyle]="{'font-size': fontSizeHead + 'px'}">Email</p>
+    <p class="ion-text-perfil" [ngStyle]="{'font-size': fontSizeHead + 'px'}">CPF</p>
 
+  </div>
 </ion-content>
