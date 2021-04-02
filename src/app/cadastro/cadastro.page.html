@@ -5,23 +5,38 @@
   <div class="ion-padding ion-div-classe">
     <form>
       <ion-grid>
-        <ion-row>
-          <ion-col>
-            <div class="img-avatar ion-text-center">
-            </div>
-          </ion-col>
-        </ion-row>
 
-        <ion-item class="input-cpf">
-          <ion-label position="floating">CPF</ion-label>
-          <ion-input class="ion-text-lowercase" type="email" name="cpf" [(ngModel)]="usuario.cpf"></ion-input>
-        </ion-item>
+        <ion-radio-group value="cpf" (ionChange)="onRadioGroupChange($event)">
+          <div class="radioGroup">
+            <ion-label>CPF</ion-label>
+            <ion-radio color="light" value="cpf" style="margin-right: 30px"></ion-radio>
+            <ion-label>CNPJ</ion-label>
+            <ion-radio color="light" value="cnpj"></ion-radio>
+          </div>
+        </ion-radio-group>
+
+        <div *ngIf="!cnpjVisible">
+          <ion-item class="input-cpf">
+            <ion-label position="floating">CPF</ion-label>
+            <ion-input class="ion-text-lowercase" type="text" name="cpf" [(ngModel)]="usuario.cpf" (ionFocus)="validaCpf($event)"></ion-input>
+          </ion-item>
+          <p class="form-error" *ngIf="cpfErroVisible">* CPF invalido.</p>
+        </div>
+
+        <div *ngIf="cnpjVisible">
+          <ion-item class="input-cpf">
+            <ion-label position="floating">CNPJ</ion-label>
+            <ion-input class="ion-text-lowercase" type="text" name="CNPJ" [(ngModel)]="usuario.cnpj" (ionFocus)="validaCnpj($event)"></ion-input>
+          </ion-item>
+          <p class="form-error" *ngIf="cnpjErroVisible">* Cnpj Invalido.</p>
+        </div>
 
         <ion-item class="input-email">
           <ion-label position="floating">E-mail</ion-label>
-          <ion-input class="ion-text-lowercase" type="email" name="email" [ngModel]="usuario.email"
+          <ion-input class="ion-text-lowercase" type="text" name="email" [(ngModel)]="usuario.email" (focusout)="focusoutEmail($event)"
           ></ion-input>
         </ion-item>
+        <p class="form-error" *ngIf="emailErroVisible">* Email invalido.</p>
 
         <ion-item class="input-senha">
           <ion-label position="floating">Senha</ion-label>
@@ -37,16 +52,15 @@
 
         <ion-item class="input-confirma-senha">
           <ion-label position="floating">Confirmar senha</ion-label>
-          <ion-input [type]="tipoConfirmaSenha ? 'text' : 'password'" name="confirmaSenha" [(ngModel)]="confirmaSenha">
+          <ion-input [type]="tipoConfirmaSenha ? 'text' : 'password'" name="confirmaSenha" [(ngModel)]="confirmaSenha" (focusout)="focusout($event)">
             <ion-fab horizontal="end" vertical="end">
               <ion-button class="ocultarSenha" fill="clear" type="button" (click)="exibirConfirmaSenha()">
-                <ion-icon style="color:#ffffff"
-                          [name]="tipoConfirmaSenha ? 'eye-off-outline' : 'eye-outline'"></ion-icon>
+                <ion-icon style="color:#ffffff" [name]="tipoConfirmaSenha ? 'eye-off-outline' : 'eye-outline'"></ion-icon>
               </ion-button>
             </ion-fab>
           </ion-input>
         </ion-item>
-
+        <p class="form-error" *ngIf="senhaIguaiserrovisible">* Senhas diferentes.</p>
 
       </ion-grid>
       <ion-fab vertical="end" horizontal="end">

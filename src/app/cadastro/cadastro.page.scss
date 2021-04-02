@@ -31,11 +31,16 @@
     border-bottom: 1px solid white !important;
   }
 
-  .label {
-    color: white;
-  }
-
 }
+
+.form-error {
+  margin: 13px 15px 0 0 !important;
+  color: red;
+  font-size: 0.7rem;
+  text-align: right !important;
+}
+
+
 
 .button-submit {
   --transition: background-color, opacity 100ms linear;
@@ -65,9 +70,13 @@
 
 .logoLogin {
   margin-top: 50px;
-  margin-left: 80px;
+  margin-left: 90px;
   width: 150px;
   height: 150px;
+}
+
+.radioGroup {
+  margin-left: 60px;
 }
 
 .esqueciMinhaSenha {
