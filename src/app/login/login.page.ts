@@ -34,21 +34,22 @@ export class LoginPage extends BaseComponent {
 
 
   acessar() {
-    this.isloading = true;
-    this.clienteService.logar(this.usuario).subscribe(item => {
-      if (item) {
-        this.navCtrl.navigateRoot('/home');
-        this.isloading = false;
-      } else {
-        this.isloading = false;
-        ToastUtil.presentToast(this.toastCtrl, "Usuário não encontrado!", PositionToast.BOTTOM, ToastType.ERROR);
-      }
-      console.log(item);
-    }, error => {
-      this.isloading = false;
-      ToastUtil.presentToast(this.toastCtrl, "Erro no servidor", PositionToast.BOTTOM, ToastType.ERROR);
-    });
-
+  //   this.isloading = true;
+  //   this.clienteService.logar(this.usuario).subscribe(item => {
+  //     if (item) {
+  //       this.navCtrl.navigateRoot('/home');
+  //       this.isloading = false;
+  //     } else {
+  //       this.isloading = false;
+  //       ToastUtil.presentToast(this.toastCtrl, "Usuário não encontrado!", PositionToast.BOTTOM, ToastType.ERROR);
+  //     }
+  //     console.log(item);
+  //   }, error => {
+  //     this.isloading = false;
+  //     ToastUtil.presentToast(this.toastCtrl, "Erro no servidor", PositionToast.BOTTOM, ToastType.ERROR);
+  //   });
+  //
+    this.navCtrl.navigateRoot('/home');
   }
 
 

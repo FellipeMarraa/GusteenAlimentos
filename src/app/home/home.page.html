@@ -1,21 +1,21 @@
-<ion-header>
-  <ion-toolbar color="primary">
+<ion-header style="color: white">
+  <ion-toolbar class="toolbar-home">
     <ion-buttons slot="start">
-      <ion-menu-button menu="main-menu"></ion-menu-button>
+      <ion-menu-button style="color: white" menu="main-menu"></ion-menu-button>
     </ion-buttons>
-
     <ion-buttons slot="end">
       <ion-button fill="clear" size="large">
-        <ion-icon name="notifications-outline"></ion-icon>
+        <ion-icon style="color: white" name="notifications-outline"></ion-icon>
       </ion-button>
     </ion-buttons>
-
   </ion-toolbar>
 </ion-header>
 
 
 <ion-content>
-  <card-expandable-component cardTitle="Caixa Ecônomica Federal">
+  <ion-list>
+    <ion-item>
+  <card-expandable-component  cardTitle="Caixa Ecônomica Federal">
     <!--      AKI É O QUE ELE MOSTRA SEM EXPANDIR-->
     <div header>
       <div class="font-custom" [ngStyle]="{'font-size': fontSizeBody + 'px'}">
@@ -28,7 +28,7 @@
       </div>
     </div>
 
-    <div content>
+    <div content style="padding-top: 9px;">
       <div class="font-custom" [ngStyle]="{'font-size': fontSizeBody + 'px'}">
         <p class="ion-text-wrap" [ngStyle]="{'font-size': fontSizeHead + 'px'}"><b>Número de registro:</b> 99999</p>
       </div>
@@ -54,8 +54,54 @@
       </div>
 
     </div>
-  </card-expandable-component>
 
-  <button (click)="chamarCliente()"> Chamar Cliente</button>
+  </card-expandable-component>
+    </ion-item>
+
+    <ion-item>
+      <card-expandable-component  cardTitle="Nu Pagamentos S.A" style="padding-top: 10px">
+        <!--      AKI É O QUE ELE MOSTRA SEM EXPANDIR-->
+        <div header>
+          <div class="font-custom" [ngStyle]="{'font-size': fontSizeBody + 'px'}">
+            <p class="ion-text-wrap" [ngStyle]="{'font-size': fontSizeHead + 'px'}"><b>Valor Parcela:</b> R$1.354,00</p>
+          </div>
+
+          <div class="font-custom" [ngStyle]="{'font-size': fontSizeBody + 'px'}">
+            <p class="ion-text-wrap" [ngStyle]="{'font-size': fontSizeHead + 'px'}">Data Próximo Vencimento:</p>
+            <p class="ion-text-wrap" [ngStyle]="{'font-size': fontSizeHead + 'px'}"> 10/04/2021</p>
+          </div>
+        </div>
+
+        <div content style="padding-top: 9px;">
+          <div class="font-custom" [ngStyle]="{'font-size': fontSizeBody + 'px'}">
+            <p class="ion-text-wrap" [ngStyle]="{'font-size': fontSizeHead + 'px'}"><b>Número de registro:</b> 88888</p>
+          </div>
+
+          <div class="font-custom" [ngStyle]="{'font-size': fontSizeBody + 'px'}">
+            <p class="ion-text-wrap" [ngStyle]="{'font-size': fontSizeHead + 'px'}"><b>Parcelas:</b> 48x</p>
+          </div>
+
+          <div class="font-custom" [ngStyle]="{'font-size': fontSizeBody + 'px'}">
+            <p class="ion-text-wrap" [ngStyle]="{'font-size': fontSizeHead + 'px'}"><b>Valor emprestado:</b> R$40.000,00</p>
+          </div>
+
+          <div class="font-custom" [ngStyle]="{'font-size': fontSizeBody + 'px'}">
+            <p class="ion-text-wrap" [ngStyle]="{'font-size': fontSizeHead + 'px'}"><b>Valor total:</b> R$65.000,00</p>
+          </div>
+
+          <div class="font-custom" [ngStyle]="{'font-size': fontSizeBody + 'px'}">
+            <p class="ion-text-wrap" [ngStyle]="{'font-size': fontSizeHead + 'px'}"><b>Início do desconto:</b> 25/03/2021</p>
+          </div>
+
+          <div class="font-custom" [ngStyle]="{'font-size': fontSizeBody + 'px'}">
+            <p class="ion-text-wrap" [ngStyle]="{'font-size': fontSizeHead + 'px'}"><b>Fim do desconto : </b> 25/03/2025</p>
+          </div>
+
+        </div>
+
+      </card-expandable-component>
+    </ion-item>
+</ion-list>
+
 
 </ion-content>

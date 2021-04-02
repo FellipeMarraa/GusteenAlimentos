@@ -1,5 +1,5 @@
-import {Injectable} from "@angular/core";
-import {Cliente} from "../class/cliente";
+import {Injectable} from '@angular/core';
+import {Cliente} from '../class/cliente';
 import {HttpClient, HttpErrorResponse, HttpHeaders} from '@angular/common/http';
 import {API_CONFIG} from '../config/api.config';
 import {Observable, throwError} from 'rxjs';
@@ -25,7 +25,7 @@ export class ClienteService {
     return this._http.get<Cliente[]>(`${API_CONFIG.baseUrl}/cliente/list`)
         .pipe(
             retry(2),
-            catchError(this.handleError))
+            catchError(this.handleError));
   }
 
   save(cliente: Cliente): Observable<Cliente> {
@@ -33,7 +33,7 @@ export class ClienteService {
       .pipe(
         retry(2),
         catchError(this.handleError)
-      )
+      );
   }
 
   update(cliente: Cliente): Observable<Cliente> {
@@ -41,7 +41,7 @@ export class ClienteService {
       .pipe(
         retry(2),
         catchError(this.handleError)
-      )
+      );
   }
 
   logar(cliente: Cliente): Observable<Cliente> {
@@ -49,7 +49,7 @@ export class ClienteService {
       .pipe(
         retry(2),
         catchError(this.handleError)
-      )
+      );
   }
 
   handleError(error: HttpErrorResponse) {
@@ -63,7 +63,7 @@ export class ClienteService {
     }
     console.log(errorMessage);
     return throwError(errorMessage);
-  };
+  }
 
 
 }
