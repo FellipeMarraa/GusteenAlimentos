@@ -31,7 +31,7 @@ export class LoginPage extends BaseComponent {
   }
 
   cadastrarSe() {
-    this.navCtrl.navigateRoot('/cadastro')
+    this.navCtrl.navigateRoot('/cadastro');
   }
 
 
@@ -48,7 +48,7 @@ export class LoginPage extends BaseComponent {
       console.log(item);
     }, error => {
       ToastUtil.presentToast(this.toastCtrl, "Erro no servidor", PositionToast.BOTTOM, ToastType.ERROR);
-    })
+    });
 
   }
 
