@@ -17,8 +17,6 @@ export class ClienteService {
   constructor(public _http: HttpClient) {
   }
 
-
-
   httpOptions = {
     headers: new HttpHeaders({'Content-Type': 'application/json',
     })
