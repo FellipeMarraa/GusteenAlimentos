@@ -5,6 +5,7 @@ import {ClienteService} from '../service/cliente.service';
 import {PositionToast, ToastUtil} from '../class/commons-class/toast.util';
 import {ToastType} from '../class/commons-class/toast.type';
 import {AuthService} from '../service/auth.service';
+import {CredenciaisDTO} from '../class/dto/credenciais.dto';
 
 @Component({
   selector: 'app-login',
@@ -13,7 +14,13 @@ import {AuthService} from '../service/auth.service';
 })
 export class LoginPage extends BaseComponent {
   tipo: boolean;
-  usuario: Cliente = new Cliente();
+
+  usuario: CredenciaisDTO = {
+    cpf:"",
+    cnpj: "",
+    senha:""
+  };
+
   isloading: boolean = false;
 
   constructor(private injector: Injector,
@@ -40,7 +47,7 @@ export class LoginPage extends BaseComponent {
   acessar() {
     this.authService.authenticate(this.usuario)
       .subscribe(response => {
-        console.log(response.headers.get('Authorization'));
+        this.authService.succefullLogin(response.headers.get('Authorization'));
         this.navCtrl.navigateRoot('/home');
       },
         error => {});

@@ -3,6 +3,7 @@ import {BaseComponent} from '../class/commons-class/base.component';
 import {ClienteService} from '../service/cliente.service';
 import {BancoService} from '../service/banco.service';
 import {Banco} from '../class/banco';
+import {CredenciaisDTO} from '../class/dto/credenciais.dto';
 
 @Component({
   selector: 'app-home',
