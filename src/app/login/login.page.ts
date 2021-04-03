@@ -6,6 +6,7 @@ import {PositionToast, ToastUtil} from '../class/commons-class/toast.util';
 import {ToastType} from '../class/commons-class/toast.type';
 import {AuthService} from '../service/auth.service';
 import {CredenciaisDTO} from '../class/dto/credenciais.dto';
+import {HttpHeaderResponse, HttpHeaders} from '@angular/common/http';
 
 @Component({
   selector: 'app-login',
@@ -17,7 +18,6 @@ export class LoginPage extends BaseComponent {
 
   usuario: CredenciaisDTO = {
     cpf:"",
-    cnpj: "",
     senha:""
   };
 
@@ -47,7 +47,7 @@ export class LoginPage extends BaseComponent {
   acessar() {
     this.authService.authenticate(this.usuario)
       .subscribe(response => {
-        this.authService.succefullLogin(response.headers.get('Authorization'));
+        console.log(response.headers.get('Authorization'));
         this.navCtrl.navigateRoot('/home');
       },
         error => {});

@@ -3,28 +3,24 @@ import {LocalUser} from '../class/local.user';
 import {STORAGE_KEYS} from '../config/storage.keys.config';
 
 @Injectable()
-export class StorageService{
+export class StorageService {
 
-  getLocalUser(): LocalUser{
-
-    let  user = localStorage.getItem(STORAGE_KEYS.localUser);
-
-    if (user == null){
+  getLocalUser(): LocalUser {
+    const usr = localStorage.getItem(STORAGE_KEYS.localUser);
+    if (usr == null) {
       return null;
-    }else {
-      return JSON.parse(user);
     }
-
+    else {
+      return JSON.parse(usr);
+    }
   }
 
-  setLocalUser(obj : LocalUser){
-
-    if (obj == null){
+  setLocalUser(obj: LocalUser) {
+    if (obj == null) {
       localStorage.removeItem(STORAGE_KEYS.localUser);
-    } else{
+    }
+    else {
       localStorage.setItem(STORAGE_KEYS.localUser, JSON.stringify(obj));
     }
-
   }
-
 }

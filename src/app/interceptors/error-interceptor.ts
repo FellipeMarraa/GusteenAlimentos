@@ -8,7 +8,7 @@ export class ErrorInterceptor implements HttpInterceptor {
 
 
   intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
-    console.log("passou no interceptor");
+    console.log('passou no interceptor');
     return next.handle(req).pipe(catchError((error, caught) => {
 
       let errorObj = error;
@@ -20,7 +20,7 @@ export class ErrorInterceptor implements HttpInterceptor {
         errorObj = JSON.parse(errorObj);
       }
 
-      console.log("Erro detectado pelo Interceptor");
+      console.log('Erro detectado pelo Interceptor');
       console.log(errorObj);
 
 

@@ -1,23 +1,30 @@
 import {Injectable} from '@angular/core';
 import {Cliente} from '../class/cliente';
-import {HttpClient, HttpErrorResponse, HttpHeaders} from '@angular/common/http';
+import {HttpClient, HttpErrorResponse, HttpHeaders, HttpParams} from '@angular/common/http';
 import {API_CONFIG} from '../config/api.config';
 import {Observable, throwError} from 'rxjs';
 import {catchError, retry} from 'rxjs/operators';
 import {LocalUser} from '../class/local.user';
-import {StorageService} from './storage.service';
+
 
 @Injectable({
   providedIn: 'root'
 })
 export class ClienteService {
 
+
+
   constructor(public _http: HttpClient) {
   }
 
+
+
   httpOptions = {
-    headers: new HttpHeaders({'Content-Type': 'application/json'})
-  }
+    headers: new HttpHeaders({'Content-Type': 'application/json',
+    })
+  };
+
+
 
   getByID(id: number) {
     return this._http.get(`${API_CONFIG.baseUrl}/cliente/` + id);

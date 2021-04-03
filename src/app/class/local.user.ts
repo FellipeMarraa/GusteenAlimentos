@@ -1,3 +1,3 @@
-export interface LocalUser{
+export interface LocalUser {
   token: string;
 }

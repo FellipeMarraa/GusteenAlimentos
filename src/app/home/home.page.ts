@@ -4,6 +4,7 @@ import {ClienteService} from '../service/cliente.service';
 import {BancoService} from '../service/banco.service';
 import {Banco} from '../class/banco';
 import {CredenciaisDTO} from '../class/dto/credenciais.dto';
+import {AuthService} from '../service/auth.service';
 
 @Component({
   selector: 'app-home',
@@ -12,16 +13,17 @@ import {CredenciaisDTO} from '../class/dto/credenciais.dto';
 })
 export class HomePage extends BaseComponent {
 
-  expand: boolean = false;
-  fontSizeHead: number = 15;
-  fontSizeBody: number = 13;
+  expand = false;
+  fontSizeHead = 15;
+  fontSizeBody = 13;
   items: Banco[];
 
 
 
   constructor(private injector: Injector,
               public clienteService: ClienteService,
-              public bancoService: BancoService) {
+              public bancoService: BancoService,
+              public authService: AuthService) {
     super(injector);
   }
 
@@ -35,7 +37,7 @@ export class HomePage extends BaseComponent {
   }
 
   goPerfilPage() {
-    this.navCtrl.navigateRoot("/perfil")
+    this.navCtrl.navigateRoot('/perfil');
   }
 
   chamarCliente(){
