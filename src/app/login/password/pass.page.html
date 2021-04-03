@@ -14,31 +14,14 @@
         </ion-row>
   <h1 style="text-align: center; font-size: 20px; color: white">Recuperação de Senha</h1>
         <ion-item>
-          <ion-label position="floating">Senha</ion-label>
-          <ion-input class="input-senha" [type]="tipo ? 'text' : 'password'" name="senha" [(ngModel)]="usuario.senha">
-            <ion-fab horizontal="end" vertical="end">
-              <ion-button class="ocultarSenha" fill="clear" type="button" (click)="exibiOcultarSenha()">
-                <ion-icon style="color:#ffffff" [name]="tipo ? 'eye-off-outline' : 'eye-outline'"></ion-icon>
-              </ion-button>
-            </ion-fab>
-          </ion-input>
-        </ion-item>
-
-        <ion-item>
-          <ion-label position="floating">Confirmar senha</ion-label>
-          <ion-input class="input-senha" [type]="tipo ? 'text' : 'password'" name="senha" [(ngModel)]="usuario.senha">
-            <ion-fab horizontal="end" vertical="end">
-              <ion-button class="ocultarSenha" fill="clear" type="button" (click)="exibiOcultarSenha()">
-                <ion-icon style="color:#ffffff" [name]="tipo ? 'eye-off-outline' : 'eye-outline'"></ion-icon>
-              </ion-button>
-            </ion-fab>
-          </ion-input>
+          <ion-label position="floating">CPF</ion-label>
+          <ion-input class="ion-text-lowercase" type="text" name="cpf" [(ngModel)]="usuario.cpf"></ion-input>
         </ion-item>
 
       </ion-grid>
 
       <ion-fab vertical="end" horizontal="end">
-        <ion-fab-button class="button-submit" color="light" type="submit" (click)="acessar()">
+        <ion-fab-button class="button-submit" color="light" type="submit" (click)="validar()">
           <ion-spinner color="primary" name="crescent" *ngIf="isloading"></ion-spinner>
           <ion-icon color="primary" name="arrow-forward" *ngIf="!isloading"></ion-icon>
         </ion-fab-button>

@@ -14,7 +14,7 @@ export class AuthService{
   }
 
   authenticate(cliente : Cliente){
-    return this.http.post(`${API_CONFIG.baseUrl}/cliente/login`, cliente,
+    return this.http.post(`${API_CONFIG.baseUrl}/login`, cliente,
       {
         observe: 'response',
         responseType: 'text'

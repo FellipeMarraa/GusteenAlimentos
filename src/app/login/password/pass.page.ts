@@ -4,6 +4,7 @@ import {BaseComponent} from '../../class/commons-class/base.component';
 import {ClienteService} from '../../service/cliente.service';
 import {PositionToast, ToastUtil} from '../../class/commons-class/toast.util';
 import {ToastType} from '../../class/commons-class/toast.type';
+import {AuthService} from '../../service/auth.service';
 
 @Component({
   selector: 'app-login',
@@ -16,7 +17,8 @@ export class PassPage extends BaseComponent {
   isloading: boolean = false;
 
   constructor(private injector: Injector,
-              private clienteService: ClienteService) {
+              private clienteService: ClienteService,
+              private authService: AuthService) {
     super(injector);
   }
 
@@ -28,6 +30,29 @@ export class PassPage extends BaseComponent {
   dismiss() {
     this.navCtrl.navigateRoot('/login');
   }
+  validar() {
+    // this.authService.authenticate(this.usuario)
+    //   .subscribe(response => {
+    //       console.log(response.headers.get('Authorization'));
+    //       this.navCtrl.navigateRoot('/home');
+    //     },
+    //     error => {});
+    this.isloading = true;
+    this.clienteService.recuperarSenha(this.usuario).subscribe(item => {
+      if (item) {
+        this.navCtrl.navigateRoot('/home');
+        this.isloading = false;
+      } else {
+        this.isloading = false;
+        ToastUtil.presentToast(this.toastCtrl, "Usuário não encontrado!", PositionToast.BOTTOM, ToastType.ERROR);
+      }
+      console.log(item);
+    }, error => {
+      this.isloading = false;
+      ToastUtil.presentToast(this.toastCtrl, "Erro no servidor", PositionToast.BOTTOM, ToastType.ERROR);
+    });
 
+    //   this.navCtrl.navigateRoot('/home');
+  }
 
 }
