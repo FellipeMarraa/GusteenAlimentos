@@ -4,6 +4,8 @@ import {HttpClient, HttpErrorResponse, HttpHeaders} from '@angular/common/http';
 import {API_CONFIG} from '../config/api.config';
 import {Observable, throwError} from 'rxjs';
 import {catchError, retry} from 'rxjs/operators';
+import {LocalUser} from '../class/local.user';
+import {StorageService} from './storage.service';
 
 @Injectable({
   providedIn: 'root'
@@ -38,14 +40,6 @@ export class ClienteService {
 
   update(cliente: Cliente): Observable<Cliente> {
     return this._http.post<Cliente>(`${API_CONFIG.baseUrl}/cliente/edit`, JSON.stringify(cliente), this.httpOptions)
-      .pipe(
-        retry(2),
-        catchError(this.handleError)
-      );
-  }
-
-  logar(cliente: Cliente): Observable<Cliente> {
-    return this._http.post<Cliente>(`${API_CONFIG.baseUrl}/cliente/login`, JSON.stringify(cliente), this.httpOptions)
       .pipe(
         retry(2),
         catchError(this.handleError)

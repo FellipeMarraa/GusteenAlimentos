@@ -28,9 +28,8 @@ export class HomePage extends BaseComponent {
     this.bancoService.list().subscribe(response => {
         this.items = response;
       },
-      error => {
-        console.log(error);
-      });
+      error => {}
+      );
 
   }
 
