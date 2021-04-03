@@ -4,6 +4,7 @@ import {HttpClient} from '@angular/common/http';
 import {API_CONFIG} from '../config/api.config';
 import {LocalUser} from '../class/local.user';
 import {StorageService} from './storage.service';
+import {CredenciaisDTO} from '../class/dto/credenciais.dto';
 
 @Injectable()
 export class AuthService{
