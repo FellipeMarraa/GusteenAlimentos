@@ -31,7 +31,9 @@ export class LoginPage extends BaseComponent {
   cadastrarSe() {
     this.navCtrl.navigateRoot('/cadastro');
   }
-
+  passwordRe() {
+    this.navCtrl.navigateRoot('/password');
+  }
 
   acessar() {
   //   this.isloading = true;

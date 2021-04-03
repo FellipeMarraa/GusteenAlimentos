@@ -1,5 +1,5 @@
-.cadastro-content {
-
+//corpo//
+.login-content {
   ion-label {
     color: white;
   }
@@ -12,7 +12,7 @@
     margin-top: 15px;
   }
 
-  .input-email {
+  .input-senha {
     outline: none;
   }
 
@@ -22,8 +22,6 @@
 
   .content {
     background: transparent !important;
-    outline: none;
-
   }
 
   ion-item {
@@ -33,23 +31,18 @@
     border-bottom: 1px solid white !important;
   }
 
+  .label {
+    color: white;
+  }
 }
-
-.form-error {
-  margin: 13px 15px 0 0 !important;
-  color: red;
-  font-size: 0.7rem;
-  text-align: right !important;
-}
-
-
-
+//botão//
 .button-submit {
   --transition: background-color, opacity 100ms linear;
   --ripple-color: currentColor;
   --border-radius: 50%;
   --border-width: 0;
   --border-style: none;
+  //--border-color: initial;
   --padding-top: 0;
   --padding-end: 0;
   --padding-bottom: 0;
@@ -66,35 +59,22 @@
   white-space: nowrap;
   -webkit-font-kerning: none;
   font-kerning: none;
-
 }
 
-
+//form//
 .logoLogin {
-  margin-top: 50px;
-  margin-left: 90px;
-  width: 150px;
-  height: 150px;
+  margin-top: 70px;
+  margin-left: 55px;
+  width: 200px;
+  height: 200px;
 }
 
-.radioGroup {
-  margin-left: 60px;
-}
-
-.esqueciMinhaSenha {
-  position: relative;
-  top: 15px;
+.voltarLogin {
+  position: absolute;
+  left: 50%;
+  top: 93%;
+  transform: translate(-50%,-50%);
   color: white;
-  margin-left: 20px;
-  cursor: pointer;
-  font-size: 12px;
-}
-
-.possui-cadastro {
-  position: relative;
-  top: 80px;
-  color: white;
-  margin-left: 110px;
   cursor: pointer;
   font-size: 12px;
 }
@@ -102,5 +82,9 @@
 .ocultarSenha {
   position: relative;
   left: 20px;
+}
+
+.toastUser{
+  text-align: center;
 }
 
