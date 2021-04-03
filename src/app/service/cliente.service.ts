@@ -46,10 +46,18 @@ export class ClienteService {
       );
   }
 
+  recuperarSenha(cliente: Cliente): Observable<Cliente> {
+    return this._http.post<Cliente>(`${API_CONFIG.baseUrl}/auth/forgot`, JSON.stringify(cliente), this.httpOptions)
+      .pipe(
+        retry(2),
+        catchError(this.handleError)
+      );
+  }
+
   handleError(error: HttpErrorResponse) {
     let errorMessage = '';
     if (error.error instanceof ErrorEvent) {
-      // Erro ocorreu no lado do client
+      // Erro ocorreu no lado do cliente
       errorMessage = error.error.message;
     } else {
       // Erro ocorreu no lado do servidor

@@ -33,9 +33,16 @@
 
         <ion-item class="input-nome">
           <ion-label position="floating">Nome Completo</ion-label>
-          <ion-input class="ion-text-lowercase" type="text" name="nome" [(ngModel)]="usuario.nome"
+          <ion-input class="ion-text" type="text" name="nome" [(ngModel)]="usuario.nome"
           ></ion-input>
         </ion-item>
+
+        <ion-item class="input-nome">
+          <ion-label position="floating">Email</ion-label>
+          <ion-input class="ion-text-lowercase" type="email" name="email" [(ngModel)]="usuario.email"
+          ></ion-input>
+        </ion-item>
+
 <!--        <p class="form-error" *ngIf="emailErroVisible">* Email invalido.</p>-->
 
         <ion-item class="input-senha">
