@@ -1,9 +1,9 @@
-.header-home{
+.toolbar-menu{
   height: 230px;
-  //--background: url(../assets/fundo-app/background-app.png) no-repeat center center / cover !important;
+  --background: url(../assets/fundo-app/background-app.png) no-repeat center center / cover !important;
   opacity: 90%;
   padding-top: 20px;
-
+  z-index: 9;
 }
 .logo-menu{
   width: 150px;
@@ -13,8 +13,5 @@
   top: 18%;
   transform: translate(-50%,-50%);
   color: white;
-
-}
-.div-menu{
-  height: 100%;
+  z-index: 10;
 }
