@@ -16,8 +16,8 @@
   <ion-list>
     <!--    LISTA DE EMPRESTIMOS EM ANDAMENTO PARA O USUARIO-->
 
-    <ion-item *ngFor="let item of items">
-      <card-expandable-component [cardTitle]="item.nome">
+<!--    <ion-item *ngFor="let item of items">-->
+      <card-expandable-component cardTitle="Banco do Brasil">
         <!--      AKI É O QUE ELE MOSTRA SEM EXPANDIR-->
         <div header>
           <div class="font-custom" [ngStyle]="{'font-size': fontSizeBody + 'px'}">
@@ -58,7 +58,7 @@
         </div>
 
       </card-expandable-component>
-    </ion-item>
+<!--    </ion-item>-->
   </ion-list>
 
 
