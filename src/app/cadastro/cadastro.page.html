@@ -1,10 +1,14 @@
 <ion-content class="cadastro-content" color="login-primary">
+  <ion-grid>
 
-  <ion-img class="logoLogin" src="assets/LogoTransparente/LogoServiceBank.png"></ion-img>
+<!--  <ion-img class="logoLogin" src="assets/LogoTransparente/LogoServiceBank.png"></ion-img>-->
 
   <div class="ion-padding ion-div-classe">
     <form>
-      <ion-grid>
+
+      <ion-img class="img-wrapper" [style.background-image]="'url(assets/LogoTransparente/LogoServiceBank.png)'"></ion-img>
+
+
 
         <ion-radio-group value="cpf" (ionChange)="onRadioGroupChange($event)">
           <div class="radioGroup" style="padding-bottom: 15px">
@@ -68,7 +72,6 @@
         </ion-item>
         <p class="form-error" *ngIf="senhaIguaiserrovisible">* Senhas diferentes.</p>
 
-      </ion-grid>
       <ion-fab vertical="end" horizontal="end">
         <ion-fab-button class="button-submit" color="light" type="submit" (click)="cadastrar()">
           <ion-icon name="arrow-forward"></ion-icon>
@@ -77,8 +80,9 @@
     </form>
   </div>
 
-  <ion-footer style="bottom:5%;position: absolute" class="ion-">
-    <a class="possui-cadastro" (click)="dismiss()">Já possuo cadastro!</a>
+  <ion-footer style="bottom:5%">
+    <h1 class="possuo-cadastro" style="text-align: center; font-size: 15px; color: white" (click)="dismiss()" >Já possuo cadastro!</h1>
   </ion-footer>
+  </ion-grid>
 
 </ion-content>

@@ -48,9 +48,9 @@ export class PerfilPage extends BaseComponent {
     //AKI FAZ O EVENTO DE UPDATE DOS DADOS DO USUARIO
     this.clienteService.update(this.usuario).subscribe(usuarioAtualizado => {
       if (usuarioAtualizado) {
-        console.log("usuario atualizado com sucesso")
+        console.log('usuario atualizado com sucesso');
       } else {
-        console.log("ERRO")
+        console.log('ERRO')
       }
     })
   }
