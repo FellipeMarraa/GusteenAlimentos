@@ -5,7 +5,6 @@ import {NgModule} from '@angular/core';
 import {ComponentsModule} from '../commons-module/components.commons.module';
 
 
-
 @NgModule({
   imports: [
     ComponentsModule,

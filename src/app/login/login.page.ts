@@ -1,12 +1,8 @@
 import {Component, Injector} from '@angular/core';
-import {Cliente} from '../class/cliente';
 import {BaseComponent} from '../class/commons-class/base.component';
 import {ClienteService} from '../service/cliente.service';
-import {PositionToast, ToastUtil} from '../class/commons-class/toast.util';
-import {ToastType} from '../class/commons-class/toast.type';
 import {AuthService} from '../service/auth.service';
 import {CredenciaisDTO} from '../class/dto/credenciais.dto';
-import {HttpHeaderResponse, HttpHeaders} from '@angular/common/http';
 
 @Component({
   selector: 'app-login',
@@ -17,8 +13,8 @@ export class LoginPage extends BaseComponent {
   tipo: boolean;
 
   usuario: CredenciaisDTO = {
-    cpf:"",
-    senha:""
+    cpf: "",
+    senha: ""
   };
 
   isloading: boolean = false;
@@ -40,17 +36,21 @@ export class LoginPage extends BaseComponent {
   cadastrarSe() {
     this.navCtrl.navigateRoot('/cadastro');
   }
+
   passwordRe() {
     this.navCtrl.navigateRoot('/password');
   }
 
   acessar() {
-    this.authService.authenticate(this.usuario)
-      .subscribe(response => {
-        console.log(response.headers.get('Authorization'));
-        this.navCtrl.navigateRoot('/home');
-      },
-        error => {});
+    this.navCtrl.navigateRoot('/home');
+
+    // this.authService.authenticate(this.usuario)
+    //   .subscribe(response => {
+    //       console.log(response.headers.get('Authorization'));
+    //       this.navCtrl.navigateRoot('/home');
+    //     },
+    //     error => {
+    //     });
     // this.isloading = true;
     // this.clienteService.logar(this.usuario).subscribe(item => {
     //   if (item) {
@@ -67,7 +67,7 @@ export class LoginPage extends BaseComponent {
     //   ToastUtil.presentToast(this.toastCtrl, "Erro no servidor", PositionToast.BOTTOM, ToastType.ERROR);
     // });
 
-  //   this.navCtrl.navigateRoot('/home');
+    //   this.navCtrl.navigateRoot('/home');
   }
 
 

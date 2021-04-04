@@ -34,10 +34,6 @@ export class AuthService{
     const tok = authorizationValue.substring(7);
     const user: LocalUser = {
       token : tok,
-      email: "",
-      senha: "",
-      cpf: "",
-      nome:""
     };
     this.storage.setLocalUser(user);
   }

@@ -1,26 +1,61 @@
-  <ion-toolbar class="toolbar-perfil">
-    <ion-buttons slot="start">
-      <ion-menu-button style="color: white" menu="main-menu"></ion-menu-button>
-    </ion-buttons>
-    <ion-buttons slot="end">
-      <ion-button fill="clear" size="large">
-        <ion-icon style="color: white" name="create-outline"></ion-icon>
-      </ion-button>
-    </ion-buttons>
-  </ion-toolbar>
-  <header class="header-perfil">
-    <ion-icon class="person-icon" name="person-circle-outline"></ion-icon>
-    <h3 class="ion-text-header-nome" style="font-size: 20px; width: 100%; text-align: center">{{nome}}</h3>
-    <h4 class="ion-text-header-email" [ngStyle]="{'font-size': fontSizeHead + 'px'}">{{email}}</h4>
-  </header>
+<ion-toolbar class="toolbar-perfil">
+  <ion-buttons slot="start">
+    <ion-menu-button style="color: white" menu="main-menu"></ion-menu-button>
+  </ion-buttons>
 
-  <ion-content color="light">
-  <div class="dados-user">
-    <h2 style="font-size: 19px; padding: 10px 0px">Dados Pessoais</h2>
-    <p class="ion-text-perfil" [ngStyle]="{'font-size': fontSizeHead + 'px'}">Nome</p> {{nome}}
-    <p class="ion-text-perfil" [ngStyle]="{'font-size': fontSizeHead + 'px'}">CPF</p> {{cpf}}
-    <p class="ion-text-perfil" [ngStyle]="{'font-size': fontSizeHead + 'px'}">Email</p> {{email}}
-    <p class="ion-text-perfil" [ngStyle]="{'font-size': fontSizeHead + 'px'}">Senha</p> {{senha}}
+  <ion-buttons slot="end" *ngIf="!visibleCheckButton">
+    <ion-button fill="clear" size="large" (click)="upadeteStart($event)">
+      <ion-icon style="color: white" name="create-outline"></ion-icon>
+    </ion-button>
+  </ion-buttons>
 
+
+  <ion-buttons slot="end" *ngIf="visibleCheckButton">
+    <ion-button fill="clear" size="large" (click)="saveUpdate($event)">
+      <ion-icon style="color: white" name="checkmark-outline"></ion-icon>
+    </ion-button>
+  </ion-buttons>
+
+</ion-toolbar>
+
+<header class="header-perfil">
+  <ion-icon class="person-icon" name="person-circle-outline"></ion-icon>
+  <h3 class="ion-text-header-nome" style="font-size: 20px; width: 100%; text-align: center">{{usuario.nome}}</h3>
+  <h4 class="ion-text-header-email" [ngStyle]="{'font-size': fontSizeHead + 'px'}">{{usuario.email}}</h4>
+</header>
+
+<ion-content color="light">
+  <div>
+    <form>
+      <ion-grid>
+
+        <ion-item>
+          <ion-label position="floating">Nome Completo</ion-label>
+          <ion-input class="ion-text-lowercase" type="text" name="nome" [(ngModel)]="usuario.nome" [readonly]="dadosReadOnly"></ion-input>
+        </ion-item>
+
+        <ion-item>
+          <ion-label position="floating">CPF</ion-label>
+          <ion-input class="ion-text-lowercase" type="text" name="cpf" [(ngModel)]="usuario.cpf" [readonly]="dadosReadOnly"></ion-input>
+        </ion-item>
+
+        <ion-item>
+          <ion-label position="floating">Email</ion-label>
+          <ion-input class="ion-text-lowercase" type="email" name="email" [(ngModel)]="usuario.email" [readonly]="dadosReadOnly"></ion-input>
+        </ion-item>
+
+        <ion-item>
+          <ion-label position="floating">Senha</ion-label>
+          <ion-input class="input-senha" name="senha" type="password" [(ngModel)]="usuario.senha" [readonly]="dadosReadOnly">
+            <ion-fab horizontal="end" vertical="end">
+              <ion-button class="ocultarSenha" fill="clear" type="button">
+                <ion-icon style="color:#050A30"></ion-icon>
+              </ion-button>
+            </ion-fab>
+          </ion-input>
+        </ion-item>
+
+      </ion-grid>
+    </form>
   </div>
 </ion-content>

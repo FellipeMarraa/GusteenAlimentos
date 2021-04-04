@@ -83,19 +83,19 @@ export class CadastroPage extends BaseComponent {
   }
 
 
-  // /**
-  //  *Esse metodo é chamado quando o focus é tirado do input do email
-  //  */
-  // focusoutEmail(event: FocusEvent) {
-  //   this.validaEmail(this.usuario.nome)
-  // }
-  //
-  // validaEmail(email: any) {
-  //   const re = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-  //   if (!re.test(email)) {
-  //     this.emailErroVisible = true;
-  //   }
-  // }
+  /**
+   *Esse metodo é chamado quando o focus é tirado do input do email
+   */
+  focusoutEmail(event: FocusEvent) {
+    this.validaEmail(this.usuario.nome)
+  }
+
+  validaEmail(email: any) {
+    const re = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+    if (!re.test(email)) {
+      this.emailErroVisible = true;
+    }
+  }
 
   /**
    *Esse metodo é chamado quando o focus é tirado do input do cpf
