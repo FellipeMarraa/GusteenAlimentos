@@ -6,19 +6,13 @@
 
     <form>
       <ion-grid>
-        <ion-row>
-          <ion-col>
-            <div class="img-avatar ion-text-center">
-            </div>
-          </ion-col>
-        </ion-row>
-  <h1 style="text-align: center; font-size: 20px; color: white">Recuperação de Senha</h1>
+        <h1 style="text-align: center; font-size: 20px; color: white">Recuperação de Senha</h1>
         <ion-item>
           <ion-label position="floating">CPF</ion-label>
           <ion-input class="ion-text-lowercase" type="text" name="cpf" [(ngModel)]="usuario.cpf"></ion-input>
         </ion-item>
 
-      </ion-grid>
+
 
       <ion-fab vertical="end" horizontal="end">
         <ion-fab-button class="button-submit" color="light" type="submit" (click)="validar()">
@@ -26,6 +20,7 @@
           <ion-icon color="primary" name="arrow-forward" *ngIf="!isloading"></ion-icon>
         </ion-fab-button>
       </ion-fab>
+      </ion-grid>
 
     </form>
 
