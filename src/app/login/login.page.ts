@@ -25,7 +25,7 @@ export class LoginPage extends BaseComponent {
 
   constructor(private injector: Injector,
               private clienteService: ClienteService,
-              public authService: AuthService) {
+              public authService: AuthService ) {
     super(injector);
   }
 

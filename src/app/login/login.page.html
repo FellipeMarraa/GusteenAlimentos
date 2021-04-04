@@ -1,10 +1,15 @@
 <ion-content class="login-content" color="login-primary">
+  <ion-grid>
 
-  <ion-img class="logoLogin" src="assets/LogoTransparente/LogoServiceBank.png"></ion-img>
+    <ion-row>
+      <ion-col style="left: 50%">
+        <div class="img-wrapper" [style.background-image]="'url(assets/LogoTransparente/LogoServiceBank.png)'"></div>
+      </ion-col>
+    </ion-row>
 
   <div class="ion-padding ion-div-classe">
     <form>
-      <ion-grid>
+
         <ion-row>
           <ion-col>
             <div class="img-avatar ion-text-center">
@@ -27,7 +32,7 @@
             </ion-fab>
           </ion-input>
         </ion-item>
-      </ion-grid>
+
 
       <ion-fab vertical="end" horizontal="end">
         <ion-fab-button class="button-submit" color="light" type="submit" (click)="acessar()">
@@ -40,5 +45,5 @@
   </div>
 
   <a class="cadastrar" (click)="cadastrarSe()">Quero me cadastrar!</a>
-
+  </ion-grid>
 </ion-content>
