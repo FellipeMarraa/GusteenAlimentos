@@ -6,6 +6,7 @@
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
+    "teset": "ionic serve",
     "serve": "ionic serve --lab",
     "apk": "ionic cordova run android --no-native-run",
     "build": "ng build",

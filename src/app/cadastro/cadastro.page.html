@@ -18,7 +18,7 @@
         <div *ngIf="!cnpjVisible">
           <ion-item class="input-cpf">
             <ion-label position="floating">CPF</ion-label>
-            <ion-input class="ion-text-lowercase" type="text" name="cpf" [(ngModel)]="usuario.cpf" (ionFocus)="validaCpf($event)"></ion-input>
+            <ion-input class="ion-text-lowercase" type="text" name="cpf" [(ngModel)]="usuario.cpf" (focusout)="validaCpf($event)"></ion-input>
           </ion-item>
           <p class="form-error" *ngIf="cpfErroVisible">* CPF invalido.</p>
         </div>
@@ -26,7 +26,7 @@
         <div *ngIf="cnpjVisible">
           <ion-item class="input-cpf">
             <ion-label position="floating">CNPJ</ion-label>
-            <ion-input class="ion-text-lowercase" type="text" name="CNPJ" [(ngModel)]="usuario.cnpj" (ionFocus)="validaCnpj($event)"></ion-input>
+            <ion-input class="ion-text-lowercase" type="text" name="CNPJ" [(ngModel)]="usuario.cnpj" (focusout)="validaCnpj($event)"></ion-input>
           </ion-item>
           <p class="form-error" *ngIf="cnpjErroVisible">* Cnpj Invalido.</p>
         </div>
@@ -37,15 +37,14 @@
           ></ion-input>
         </ion-item>
 
-        <ion-item class="input-nome">
+        <ion-item>
           <ion-label position="floating">Email</ion-label>
-          <ion-input class="ion-text-lowercase" type="email" name="email" [(ngModel)]="usuario.email"
+          <ion-input class="ion-text-lowercase" type="email" name="email" [(ngModel)]="usuario.email" (focusout)="focusoutEmail($event)"
           ></ion-input>
         </ion-item>
+        <p class="form-error" *ngIf="emailErroVisible">* Email Invalido.</p>
 
-<!--        <p class="form-error" *ngIf="emailErroVisible">* Email invalido.</p>-->
-
-        <ion-item class="input-senha">
+        <ion-item>
           <ion-label position="floating">Senha</ion-label>
           <ion-input [type]="tipo ? 'text' : 'password'" name="senha" [(ngModel)]="usuario.senha">
             <ion-fab horizontal="end" vertical="end">
@@ -57,7 +56,7 @@
           </ion-input>
         </ion-item>
 
-        <ion-item class="input-confirma-senha">
+        <ion-item>
           <ion-label position="floating">Confirmar senha</ion-label>
           <ion-input [type]="tipoConfirmaSenha ? 'text' : 'password'" name="confirmaSenha" [(ngModel)]="confirmaSenha" (focusout)="focusout($event)">
             <ion-fab horizontal="end" vertical="end">
@@ -78,6 +77,8 @@
     </form>
   </div>
 
-  <a class="possui-cadastro" (click)="dismiss()">Já possuo cadastro!</a>
+  <ion-footer style="bottom:5%;position: absolute" class="ion-">
+    <a class="possui-cadastro" (click)="dismiss()">Já possuo cadastro!</a>
+  </ion-footer>
 
 </ion-content>

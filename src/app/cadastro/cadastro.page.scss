@@ -4,16 +4,12 @@
     color: white;
   }
 
-  .div-email {
-
-  }
-
   .div-senha {
     margin-top: 15px;
   }
 
-  .input-email {
-    outline: none;
+  .radioGroup {
+    margin-left: 40px;
   }
 
   ion-button {
@@ -23,7 +19,6 @@
   .content {
     background: transparent !important;
     outline: none;
-
   }
 
   ion-item {
@@ -33,6 +28,10 @@
     border-bottom: 1px solid white !important;
   }
 
+  .ocultarSenha {
+    position: relative;
+    left: 20px;
+  }
 }
 
 .form-error {
@@ -41,7 +40,6 @@
   font-size: 0.7rem;
   text-align: right !important;
 }
-
 
 
 .button-submit {
@@ -77,30 +75,14 @@
   height: 150px;
 }
 
-.radioGroup {
-  margin-left: 40px;
-}
-
-.esqueciMinhaSenha {
-  position: relative;
-  top: 15px;
-  color: white;
-  margin-left: 20px;
-  cursor: pointer;
-  font-size: 12px;
-}
-
 .possui-cadastro {
   position: relative;
-  top: 80px;
   color: white;
-  margin-left: 110px;
   cursor: pointer;
   font-size: 12px;
+  left: 33%;
+  transform: translate(-50%, -50%);
 }
 
-.ocultarSenha {
-  position: relative;
-  left: 20px;
-}
+
 

@@ -40,7 +40,7 @@ export class ToastUtil {
         this.toast = await toastCtrl.create({
           message: message,
           position:  EnumUtils.valueOf(PositionToast, position),
-          duration: duration == null ? 4000 : duration,
+          duration: duration == null ? 1500 : duration,
           color: toastType == null ? ToastType.INFO.toString() : toastType.toString()
         });
         return this.toast.present();
