@@ -94,6 +94,33 @@
   text-align: center;
 }
 
+@media screen and (max-width: 768px){
+  .possuo-cadastro{
+    text-align: center;
+    font-size: 15px;
+    color: white;
+    cursor: pointer;
+    margin-top: 8%;
+  }
+  .form-style{
+    margin-top: 40%;
+  }
+  .logoCadastro{
+    position: absolute;
+    left: 50%;
+    top: 15%;
+    transform: translate(-50%,-50%);
+    height: 130px;
+    width: auto;
+    z-index: 9;
+    padding: 5px 5px;
+  }
+  ion-item {
+    font-size: 15px;
+    margin: -5px;
+  }
+}
+
 @media screen and (max-width: 500px){
   .possuo-cadastro{
     text-align: center;
@@ -108,9 +135,9 @@
   .logoCadastro{
     position: absolute;
     left: 50%;
-    top: 12%;
+    top: 15%;
     transform: translate(-50%,-50%);
-    height: 140px;
+    height: 130px;
     width: auto;
     z-index: 9;
     padding: 5px 5px;
