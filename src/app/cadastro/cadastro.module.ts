@@ -12,5 +12,6 @@ import {ComponentsModule} from "../commons-module/components.commons.module";
   ],
   declarations: [CadastroPage]
 })
+
 export class CadastroPageModule {
 }

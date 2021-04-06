@@ -10,6 +10,7 @@ import {ToastType} from '../class/commons-class/toast.type';
   templateUrl: './cadastro.page.html',
   styleUrls: ['./cadastro.page.scss'],
 })
+
 export class CadastroPage extends BaseComponent {
   usuario: Cliente = new Cliente();
 
@@ -75,13 +76,11 @@ export class CadastroPage extends BaseComponent {
     return valido;
   }
 
-
   focusout(event: FocusEvent) {
     if (!(this.usuario.senha == this.confirmaSenha)) {
       this.senhaIguaiserrovisible = true
     }
   }
-
 
   /**
    *Esse metodo é chamado quando o focus é tirado do input do email
