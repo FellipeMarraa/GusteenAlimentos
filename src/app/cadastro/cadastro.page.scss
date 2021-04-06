@@ -1,3 +1,4 @@
+//body-page//
 .cadastro-content {
 
   ion-label {
@@ -27,13 +28,21 @@
     color: white;
     border-bottom: 1px solid white !important;
   }
-
-  .ocultarSenha {
-    position: relative;
-    left: 20px;
-  }
 }
 
+//logo//
+.logoCadastro{
+  position: absolute;
+  left: 50%;
+  top: 16%;
+  transform: translate(-50%,-50%);
+  height: 300px;
+  width: auto;
+  z-index: 10;
+  padding: 10px 10px;
+}
+
+//error
 .form-error {
   margin: 13px 15px 0 0 !important;
   color: red;
@@ -41,7 +50,7 @@
   text-align: right !important;
 }
 
-
+//estética-botões//
 .button-submit {
   --transition: background-color, opacity 100ms linear;
   --ripple-color: currentColor;
@@ -53,8 +62,8 @@
   --padding-bottom: 0;
   --padding-start: 0;
   display: block;
-  width: 50px;
-  height: 50px;
+  width: 45px;
+  height: 45px;
   position: relative;
   left: -10px;
   top: 10px;
@@ -67,31 +76,13 @@
 
 }
 
-
-.img-wrapper {
-  img{
-    align-items: center;
-  }
-  //position: relative;
-  //min-height: 300px;
-  //max-width: 100%;
-  height: 200px;
-  width: auto;
-  background-size: contain;
-  background-repeat: no-repeat;
-  align-items: center;
-  text-align: center;
-}
-
 .possuo-cadastro {
   position: relative;
   color: white;
   cursor: pointer;
-  font-size: 12px;
-  //left: 50%;
-  //transform: translate(-50%, -50%);
-  align-items: center;
 }
 
-
-
+.ocultarSenha {
+  position: relative;
+  left: 20px;
+}

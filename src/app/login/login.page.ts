@@ -9,6 +9,7 @@ import {CredenciaisDTO} from '../class/dto/credenciais.dto';
   templateUrl: './login.page.html',
   styleUrls: ['./login.page.scss'],
 })
+
 export class LoginPage extends BaseComponent {
   tipo: boolean;
 
@@ -26,7 +27,6 @@ export class LoginPage extends BaseComponent {
   }
 
   ngOnInit() {
-
   }
 
   exibiOcultarSenha() {
@@ -69,6 +69,5 @@ export class LoginPage extends BaseComponent {
 
     //   this.navCtrl.navigateRoot('/home');
   }
-
 
 }

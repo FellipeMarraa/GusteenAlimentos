@@ -1,17 +1,14 @@
 <ion-content class="cadastro-content" color="login-primary">
   <ion-grid>
 
-<!--  <ion-img class="logoLogin" src="assets/LogoTransparente/LogoServiceBank.png"></ion-img>-->
-
   <div class="ion-padding ion-div-classe">
-    <form>
 
-      <ion-img class="img-wrapper" [style.background-image]="'url(assets/LogoTransparente/LogoServiceBank.png)'"></ion-img>
+    <ion-img class="logoCadastro" src="assets/LogoTransparente/LogoServiceBank.png"></ion-img>
 
-
+      <form style="margin-top: 60%">
 
         <ion-radio-group value="cpf" (ionChange)="onRadioGroupChange($event)">
-          <div class="radioGroup" style="padding-bottom: 15px">
+          <div class="radioGroup" style="text-align: center">
             <ion-label style="padding: 10px">CPF</ion-label>
             <ion-radio color="light" value="cpf" style="margin-right: 30px"></ion-radio>
             <ion-label style="padding: 10px">CNPJ</ion-label>
@@ -46,6 +43,7 @@
           <ion-input class="ion-text-lowercase" type="email" name="email" [(ngModel)]="usuario.email" (focusout)="focusoutEmail($event)"
           ></ion-input>
         </ion-item>
+
         <p class="form-error" *ngIf="emailErroVisible">* Email Invalido.</p>
 
         <ion-item>
@@ -53,8 +51,7 @@
           <ion-input [type]="tipo ? 'text' : 'password'" name="senha" [(ngModel)]="usuario.senha">
             <ion-fab horizontal="end" vertical="end">
               <ion-button class="ocultarSenha" fill="clear" type="button" (click)="exibiOcultarSenha()">
-                <ion-icon style="color:#ffffff"
-                          [name]="tipo ? 'eye-off-outline' : 'eye-outline'"></ion-icon>
+                <ion-icon style="color:#ffffff" [name]="tipo ? 'eye-off-outline' : 'eye-outline'"></ion-icon>
               </ion-button>
             </ion-fab>
           </ion-input>
@@ -70,19 +67,22 @@
             </ion-fab>
           </ion-input>
         </ion-item>
+
         <p class="form-error" *ngIf="senhaIguaiserrovisible">* Senhas diferentes.</p>
 
       <ion-fab vertical="end" horizontal="end">
         <ion-fab-button class="button-submit" color="light" type="submit" (click)="cadastrar()">
-          <ion-icon name="arrow-forward"></ion-icon>
+          <ion-icon color="primary" name="arrow-forward"></ion-icon>
         </ion-fab-button>
       </ion-fab>
+
     </form>
+
   </div>
 
-  <ion-footer style="bottom:5%">
-    <h1 class="possuo-cadastro" style="text-align: center; font-size: 15px; color: white" (click)="dismiss()" >Já possuo cadastro!</h1>
+  <ion-footer>
+    <h1 class="possuo-cadastro" style="text-align: center; font-size: 15px" (click)="dismiss()" >Já possuo cadastro!</h1>
   </ion-footer>
-  </ion-grid>
 
+  </ion-grid>
 </ion-content>

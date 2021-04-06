@@ -12,5 +12,6 @@ import {ComponentsModule} from "../commons-module/components.commons.module";
   ],
   declarations: [LoginPage]
 })
+
 export class LoginPageModule {
 }

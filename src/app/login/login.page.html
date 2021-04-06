@@ -1,10 +1,11 @@
 <ion-content class="login-content" color="login-primary">
   <ion-grid>
 
-
   <div class="ion-padding ion-div-classe">
-    <form>
-          <ion-img class="img-wrapper" [style.background-image]="'url(assets/LogoTransparente/LogoServiceBank.png)'"></ion-img>
+
+    <ion-img class="logoLogin" src="assets/LogoTransparente/LogoServiceBank.png"></ion-img>
+
+    <form style="margin-top: 80%">
 
         <ion-item>
           <ion-label position="floating">CPF ou CNPJ</ion-label>
@@ -29,12 +30,15 @@
           <ion-icon color="primary" name="arrow-forward" *ngIf="!isloading"></ion-icon>
         </ion-fab-button>
       </ion-fab>
+
     </form>
+
     <a class="esqueciMinhaSenha" (click)="passwordRe()">Esqueci minha senha</a>
+
   </div>
 
     <ion-footer style="bottom:5%;position: absolute">
-        <h1 class="quero-cadastar" style="text-align: center; font-size: 15px; color: white" (click)="cadastrarSe()" >Quero me cadastrar</h1>
+        <h1 style="text-align: center; font-size: 15px; color: white;cursor: pointer" (click)="cadastrarSe()" >Quero me cadastrar</h1>
     </ion-footer>
 
   </ion-grid>
