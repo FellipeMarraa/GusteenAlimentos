@@ -5,9 +5,9 @@
 
     <ion-img class="logoCadastro" src="assets/LogoTransparente/LogoServiceBank.png"></ion-img>
 
-      <form style="margin-top: 60%">
+      <form class="form-style">
 
-        <ion-radio-group value="cpf" (ionChange)="onRadioGroupChange($event)">
+        <ion-radio-group style="padding-bottom: 20px" value="cpf" (ionChange)="onRadioGroupChange($event)">
           <div class="radioGroup" style="text-align: center">
             <ion-label style="padding: 10px">CPF</ion-label>
             <ion-radio color="light" value="cpf" style="margin-right: 30px"></ion-radio>
@@ -78,11 +78,11 @@
 
     </form>
 
-  </div>
+    <ion-footer>
+      <p class="possuo-cadastro" (click)="dismiss()" >Já possuo cadastro!</p>
+    </ion-footer>
 
-  <ion-footer style="bottom:5%;position: absolute">
-    <h1 class="possuo-cadastro" style="text-align: center; font-size: 15px; color: white; cursor: pointer" (click)="dismiss()" >Já possuo cadastro!</h1>
-  </ion-footer>
+  </div>
 
   </ion-grid>
 </ion-content>

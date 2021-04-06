@@ -38,7 +38,7 @@
   left: 50%;
   top: 16%;
   transform: translate(-50%,-50%);
-  height: 160px;
+  height: 170px;
   width: auto;
   z-index: 9;
   padding: 10px 10px;
@@ -80,4 +80,32 @@
 .ocultarSenha {
   position: relative;
   left: 20px;
+}
+
+.possuo-cadastro{
+  text-align: center;
+  font-size: 15px;
+  color: white;
+  cursor: pointer;
+}
+
+.form-style{
+  margin-top: 70%;
+  text-align: center;
+}
+
+@media screen and (max-width: 768px){
+  .form-style{
+    margin-top: 60%;
+  }
+}
+
+@media screen and (max-width: 500px){
+  .possuo-cadastro{
+    text-align: center;
+    font-size: 15px;
+    color: white;
+    cursor: pointer;
+    margin-top: 25%;
+  }
 }
