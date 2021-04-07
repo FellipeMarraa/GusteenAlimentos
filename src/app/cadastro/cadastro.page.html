@@ -1,11 +1,10 @@
 <ion-content class="cadastro-content" color="login-primary">
+
+  <ion-img class="logoCadastro" src="assets/LogoTransparente/LogoServiceBank.png"></ion-img>
+
   <ion-grid>
 
-  <div class="ion-padding ion-div-classe">
-
-    <ion-img class="logoCadastro" style="height: 300px" src="assets/LogoTransparente/LogoServiceBank.png"></ion-img>
-
-      <form class="form-style" style="margin-top: 70%">
+      <form class="form-style-cadastro">
 
         <ion-radio-group style="padding-bottom: 20px" value="cpf" (ionChange)="onRadioGroupChange($event)">
           <div class="radioGroup" style="text-align: center">
@@ -15,6 +14,7 @@
             <ion-radio color="light" value="cnpj" style="margin-right: 30px"></ion-radio>
           </div>
         </ion-radio-group>
+        <div class="clear"></div>
 
         <div *ngIf="!cnpjVisible">
           <ion-item class="input-cpf">
@@ -23,6 +23,7 @@
           </ion-item>
           <p class="form-error" *ngIf="cpfErroVisible">* CPF invalido.</p>
         </div>
+        <div class="clear"></div>
 
         <div *ngIf="cnpjVisible">
           <ion-item class="input-cpf">
@@ -31,18 +32,21 @@
           </ion-item>
           <p class="form-error" *ngIf="cnpjErroVisible">* Cnpj Invalido.</p>
         </div>
+        <div class="clear"></div>
 
         <ion-item class="input-nome">
           <ion-label position="floating">Nome Completo</ion-label>
           <ion-input class="ion-text" type="text" name="nome" [(ngModel)]="usuario.nome"
           ></ion-input>
         </ion-item>
+        <div class="clear"></div>
 
         <ion-item>
           <ion-label position="floating">Email</ion-label>
           <ion-input class="ion-text-lowercase" type="email" name="email" [(ngModel)]="usuario.email" (focusout)="focusoutEmail($event)"
           ></ion-input>
         </ion-item>
+        <div class="clear"></div>
 
         <p class="form-error" *ngIf="emailErroVisible">* Email Invalido.</p>
 
@@ -56,6 +60,7 @@
             </ion-fab>
           </ion-input>
         </ion-item>
+        <div class="clear"></div>
 
         <ion-item>
           <ion-label position="floating">Confirmar senha</ion-label>
@@ -67,6 +72,7 @@
             </ion-fab>
           </ion-input>
         </ion-item>
+        <div class="clear"></div>
 
         <p class="form-error" *ngIf="senhaIguaiserrovisible">* Senhas diferentes.</p>
 
@@ -75,14 +81,13 @@
           <ion-icon color="primary" name="arrow-forward"></ion-icon>
         </ion-fab-button>
       </ion-fab>
+        <div class="clear"></div>
 
     </form>
 
     <ion-footer>
       <p class="possuo-cadastro" (click)="dismiss()" >Já possuo cadastro!</p>
     </ion-footer>
-
-  </div>
 
   </ion-grid>
 </ion-content>

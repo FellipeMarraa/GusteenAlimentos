@@ -1,16 +1,17 @@
 <ion-content class="login-content" color="login-primary">
+
+  <ion-img class="logoLogin" src="assets/LogoTransparente/LogoServiceBank.png"></ion-img>
+
   <ion-grid>
 
-  <div class="ion-padding ion-div-classe">
-
-    <ion-img class="logoLogin" src="assets/LogoTransparente/LogoServiceBank.png"></ion-img>
-
-    <form style="margin-top: 80%">
+    <form class="form-style-login">
 
         <ion-item>
           <ion-label position="floating">CPF ou CNPJ</ion-label>
           <ion-input class="ion-text-lowercase" type="text" name="cpf" [(ngModel)]="usuario.cpf"></ion-input>
         </ion-item>
+
+      <div class="clear"></div>
 
         <ion-item>
           <ion-label position="floating">Senha</ion-label>
@@ -22,7 +23,7 @@
             </ion-fab>
           </ion-input>
         </ion-item>
-
+      <div class="clear"></div>
 
       <ion-fab vertical="end" horizontal="end">
         <ion-fab-button class="button-submit" color="light" type="submit" (click)="acessar()">
@@ -30,12 +31,11 @@
           <ion-icon color="primary" name="arrow-forward" *ngIf="!isloading"></ion-icon>
         </ion-fab-button>
       </ion-fab>
+      <div class="clear"></div>
+
+      <a class="esqueciMinhaSenha" (click)="passwordRe()">Esqueci minha senha</a>
 
     </form>
-
-    <a class="esqueciMinhaSenha" (click)="passwordRe()">Esqueci minha senha</a>
-
-  </div>
 
     <ion-footer style="bottom:5%;position: absolute">
         <h1 style="text-align: center; font-size: 15px; color: white; cursor: pointer" (click)="cadastrarSe()" >Quero me cadastrar</h1>
