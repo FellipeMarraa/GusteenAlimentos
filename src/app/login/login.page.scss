@@ -99,14 +99,33 @@
 
 @media screen and (max-width: 1024px){
   .form-style-login{
-    position: absolute;
-    left: 50%;
-    top: 50%;
-    transform: translate(-50%,-50%);
+    position: relative;
+    padding-top: 380px !important;
+    padding-bottom: 250px;
     width: 100%;
     padding-left: 20px;
     padding-right: 20px;
-    text-align: center;
+  }
+  .esqueciMinhaSenha{
+    position: relative;
+    color: white;
+    cursor: pointer;
+    font-size: 20px;
+    float: left;
+  }
+  .cadastrarse{
+    font-size: 20px !important;
+  }
+}
+
+@media screen and (max-height: 768px){
+  .form-style-login{
+    position: relative;
+    padding-top: 230px !important;
+    padding-bottom: 100px;
+    width: 100%;
+    padding-left: 20px;
+    padding-right: 20px;
   }
   .esqueciMinhaSenha{
     position: relative;
@@ -115,10 +134,9 @@
     font-size: 12px;
     float: left;
   }
-}
-
-@media screen and (max-height: 768px){
-
+  .cadastrarse{
+    font-size: 15px !important;
+  }
 }
 
 @media screen and (max-height: 500px){
