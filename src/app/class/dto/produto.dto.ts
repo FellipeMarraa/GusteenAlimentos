@@ -7,4 +7,6 @@ export class ProdutoDTO {
   preco: number;
 
   imageUrl?: string;
+
+  quantidade: number;
 }

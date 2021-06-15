@@ -20,18 +20,55 @@ export class CarrinhoModal extends BaseComponent {
   init() {
     this.activatedRoute.queryParams.subscribe((params) => {
       let returnedObject = this.router.getCurrentNavigation().extras.state;
-      if(returnedObject){
+      if (returnedObject) {
         this.listaProdutosCarrinho = returnedObject.listaProdutosCarrinho;
       }
     });
   }
 
+  removerItem(produto: ProdutoDTO) {
+    this.listaProdutosCarrinho.splice(this.listaProdutosCarrinho.indexOf(produto), 1)
+  }
 
   backToHome() {
     this.navCtrl.navigateForward(`/home`);
   }
 
+
+  getTotal() {
+    return this.listaProdutosCarrinho.reduce((i, j) => i + j.preco * j.quantidade, 0)
+  }
+
   limparCarrinho() {
     this.listaProdutosCarrinho = [];
+  }
+
+  adicionaItem(produto: ProdutoDTO) {
+    let adicionado = false;
+    for (let p of this.listaProdutosCarrinho) {
+      if (p.id === produto.id) {
+        p.quantidade += 1;
+        adicionado = true;
+        break;
+      }
+    }
+    if (!adicionado) {
+      this.listaProdutosCarrinho.push(produto)
+    }
+  }
+
+  diminuirItem(produto) {
+    for (let p of this.listaProdutosCarrinho) {
+      if (p.id === produto.id) {
+        p.quantidade -= 1;
+        if (p.quantidade == 0) {
+          this.listaProdutosCarrinho.splice(this.listaProdutosCarrinho.indexOf(produto), 1)
+        }
+      }
+    }
+  }
+
+  finaliza() {
+
   }
 }
