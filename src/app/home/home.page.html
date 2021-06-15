@@ -1,11 +1,12 @@
-<ion-header style="color: white">
-  <ion-toolbar class="toolbar-home">
+<ion-header>
+  <ion-toolbar color="primary">
     <ion-buttons slot="start">
       <ion-menu-button style="color: white" menu="main-menu"></ion-menu-button>
     </ion-buttons>
     <ion-buttons slot="end">
-      <ion-button fill="clear" size="large">
-        <ion-icon style="color: white" name="notifications-outline"></ion-icon>
+      <ion-button fill="clear" size="large" (click)="openCar()">
+        <ion-icon style="color: white" name="cart-outline"></ion-icon>
+        <div>{{listaProdutosCarrinho.length}}</div>
       </ion-button>
     </ion-buttons>
   </ion-toolbar>
@@ -13,17 +14,21 @@
 
 
 <ion-content>
-  <ion-card *ngFor="let item of lisataProdutos">
-    <ion-row style="margin-left: 10px">
-      <ion-col>
-        <ion-row class="ion-text-wrap">
-          <b> Nome: </b>{{ " " + item.nome}}
-        </ion-row>
-        <ion-row class="ion-text-nowrap">
-          <b> Data: </b>{{ " " + item.preco}}
-        </ion-row>
-      </ion-col>
-    </ion-row>
+  <ion-card *ngFor="let produto of lisataProdutos">
+    <ion-card-header>
+      <ion-card-title>
+        {{ " " + produto.nome}} - {{ "R$" + " " + produto.preco + ",00"}}
+      </ion-card-title>
+
+      <ion-card-content>
+        imagem
+        <ion-button (click)="addToCart(produto)" style="margin-left: 200px">
+          <ion-icon name="add-circle-outline"></ion-icon>
+        </ion-button>
+      </ion-card-content>
+
+    </ion-card-header>
+
   </ion-card>
 
 </ion-content>
