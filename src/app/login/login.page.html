@@ -2,6 +2,7 @@
   <ion-grid>
 
     <img [src]="bucketUrl + '/logo.png'||'assets/imgs/logo.png'" style="padding-top: 20px"/>
+
     <form>
       <ion-item>
         <ion-label position="floating">CPF ou CNPJ</ion-label>
@@ -30,11 +31,11 @@
       </ion-fab>
       <div class="clear"></div>
 
-      <button ion-button block outline class="esqueciMinhaSenha" (click)="recoveryPassword()">Esqueci minha senha</button>
+      <button class="esqueciMinhaSenha" (click)="recoveryPassword()">Esqueci minha senha</button>
     </form>
 
     <ion-footer style="bottom:5%;position: absolute;text-align: center">
-      <button ion-button block outline class="cadastrarse" (click)="cadastrarSe()" >Quero me cadastrar</button>
+      <button class="cadastrarse" (click)="cadastrarSe()">Quero me cadastrar</button>
     </ion-footer>
 
   </ion-grid>

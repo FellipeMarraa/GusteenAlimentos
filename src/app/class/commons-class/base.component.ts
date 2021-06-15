@@ -6,63 +6,64 @@ import {IBaseComponent} from './i.base.component';
 
 export abstract class BaseComponent implements IBaseComponent {
 
-    protected alertCtrl: AlertController;
-    protected toastCtrl: ToastController;
-    protected navCtrl: NavController;
-    protected modalCtrl: ModalController;
-    protected router: Router;
-    protected loadingCtrl: LoadingController;
-    protected activatedRoute: ActivatedRoute;
+  protected alertCtrl: AlertController;
+  protected toastCtrl: ToastController;
+  protected navCtrl: NavController;
+  protected modalCtrl: ModalController;
+  protected router: Router;
+  protected loadingCtrl: LoadingController;
+  protected activatedRoute: ActivatedRoute;
 
 
-    @Input()
-    errorMessages: string[] = [];
-    private userSubscription: Subscription;
+  @Input()
+  errorMessages: string[] = [];
+  private userSubscription: Subscription;
 
 
-    constructor(injector: Injector) {
-        this.alertCtrl = injector.get(AlertController);
-        this.toastCtrl = injector.get(ToastController);
-        this.navCtrl = injector.get(NavController);
-        this.modalCtrl = injector.get(ModalController);
-        this.loadingCtrl = injector.get(LoadingController);
-        this.activatedRoute = injector.get(ActivatedRoute);
+  constructor(injector: Injector) {
+    this.alertCtrl = injector.get(AlertController);
+    this.toastCtrl = injector.get(ToastController);
+    this.navCtrl = injector.get(NavController);
+    this.router = injector.get(Router);
+    this.modalCtrl = injector.get(ModalController);
+    this.loadingCtrl = injector.get(LoadingController);
+    this.activatedRoute = injector.get(ActivatedRoute);
+  }
+
+  init() {
+  }
+
+  destroy() {
+  }
+
+  ngAfterContentChecked(): void {
+  }
+
+  ngAfterContentInit(): void {
+  }
+
+  ngAfterViewChecked(): void {
+  }
+
+  ngAfterViewInit(): void {
+  }
+
+  ngDoCheck(): void {
+  }
+
+  ngOnChanges(changes: SimpleChanges): void {
+  }
+
+  ngOnDestroy(): void {
+    console.log('this.currentUserSubscription.unsubscribe();');
+    if (this.userSubscription) {
+      this.userSubscription.unsubscribe();
     }
+    this.destroy();
+  }
 
-    init() {
-    }
-
-    destroy() {
-    }
-
-    ngAfterContentChecked(): void {
-    }
-
-    ngAfterContentInit(): void {
-    }
-
-    ngAfterViewChecked(): void {
-    }
-
-    ngAfterViewInit(): void {
-    }
-
-    ngDoCheck(): void {
-    }
-
-    ngOnChanges(changes: SimpleChanges): void {
-    }
-
-    ngOnDestroy(): void {
-        console.log('this.currentUserSubscription.unsubscribe();');
-        if (this.userSubscription) {
-            this.userSubscription.unsubscribe();
-        }
-        this.destroy();
-    }
-
-    ngOnInit(): void {
-        this.init();
-    }
+  ngOnInit(): void {
+    this.init();
+  }
 
 }

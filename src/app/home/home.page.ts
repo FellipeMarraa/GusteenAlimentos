@@ -4,7 +4,8 @@ import {ClienteService} from '../service/cliente.service';
 import {BancoService} from '../service/banco.service';
 import {AuthService} from '../service/auth.service';
 import {ProdutoDTO} from "../class/dto/produto.dto";
-import {CartModal} from "./modal/cart-modal/cart.modal";
+import {CategoriaDTO} from "../class/dto/categoria.dto";
+import {NavigationExtras} from "@angular/router";
 
 @Component({
   selector: 'app-home',
@@ -12,7 +13,7 @@ import {CartModal} from "./modal/cart-modal/cart.modal";
   styleUrls: ['./home.page.scss'],
 })
 export class HomePage extends BaseComponent {
-
+  listaCategorias: CategoriaDTO[] = [];
 
   lisataProdutos: ProdutoDTO[] = [];
   listaProdutosCarrinho: ProdutoDTO[] = [];
@@ -25,35 +26,53 @@ export class HomePage extends BaseComponent {
   }
 
   ngOnInit() {
+    this.carregaListaProdutos();
+    this.carregaListaCategorias();
+  }
+
+  carregaListaCategorias() {
+    this.listaCategorias = [];
+    let produto1: CategoriaDTO = new CategoriaDTO()
+    produto1.nome = "graaos";
+
+    let produto2: CategoriaDTO = new CategoriaDTO()
+    produto2.nome = "Promoções";
+
+    this.listaCategorias.push(produto1, produto2)
+  }
+
+  carregaListaProdutos() {
     this.listaProdutosCarrinho = [];
     let produto1: ProdutoDTO = new ProdutoDTO()
     produto1.nome = "Arroz";
     produto1.preco = 40;
+    produto1.imageUrl = "https://img.cybercook.com.br/receitas/842/como-fazer-arroz-branco-1-840x480.jpeg?q=75";
 
     let produto2: ProdutoDTO = new ProdutoDTO()
     produto2.nome = "Feijão";
     produto2.preco = 50;
+    produto1.imageUrl = "https://img.cybercook.com.br/receitas/972/feijao-3-840x480.jpeg?q=75";
 
     let produto3: ProdutoDTO = new ProdutoDTO()
     produto3.nome = "cenoura";
     produto3.preco = 60;
+    produto1.imageUrl = "https://saborizatti.com.br/wp-content/uploads/2020/12/Cenoura-saborizatti.png";
 
     let produto4: ProdutoDTO = new ProdutoDTO()
     produto4.nome = "beterraba";
     produto4.preco = 70;
+    produto1.imageUrl = "https://img.cybercook.com.br/receitas/842/como-fazer-arroz-branco-1-840x480.jpeg?q=75";
 
     this.lisataProdutos.push(produto1, produto2, produto3, produto4)
   }
 
 
   async openCar() {
-    let modal = await this.modalCtrl.create({
-      component: CartModal,
-    })
-    modal.present()
-    //open modal carrinho;
-
-
+    console.log(this.listaProdutosCarrinho);
+    const navigationExtra: NavigationExtras = {
+      state: {listaProdutosCarrinho: this.listaProdutosCarrinho}
+    };
+    this.navCtrl.navigateForward(`/carrinho`, navigationExtra);
   }
 
   addToCart(produto: ProdutoDTO) {

@@ -1,19 +1,20 @@
-<ion-header padding id="header">
-  <ion-toolbar>
-    <ion-button ion-button menuToggle>
-      <ion-icon name="menu"></ion-icon>
-    </ion-button>
-    <ion-title style="float: right; margin-top: 10px">profile</ion-title>
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-menu-button style="color: white" menu="main-menu"></ion-menu-button>
+    </ion-buttons>
+
+    <ion-title>Perfil</ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content padding>
+<ion-content class="ion-padding">
   <ion-avatar style="margin-left: 33%; margin-top: 20px; width: 100px; height: 100px">
     <img class="circle" [src]="profileImage">
   </ion-avatar>
   <ion-icon id="iconEdit" (click)="editarImagem()" style="float: right; margin-right: 30%" name="create"></ion-icon>
-  <h2 text-center>{{cliente?.nome}}</h2>
-  <p text-center>{{cliente?.email}}</p>
+  <h2 class="ion-text-center">{{cliente?.nome}}</h2>
+  <p class="ion-text-center">{{cliente?.email}}</p>
 
   <ion-card *ngIf="editImage">
     <ion-card-header>
@@ -23,16 +24,16 @@
       <img [src]="picture">
     </ion-item>
     <ion-item>
-      <ion-button ion-button block (click)="getCameraPicture()" [disabled]="cameraOn">Camera</ion-button>
-      <ion-button ion-button block (click)="getGalleryPicture()" [disabled]="cameraOn">Galeria</ion-button>
-      <ion-button *ngIf="picture" ion-button outline block (click)="sendPicture()">Enviar imagem</ion-button>
-      <ion-button *ngIf="picture" ion-button outline block (click)="cancel()">Descartar imagem</ion-button>
+      <ion-button (click)="getCameraPicture()" [disabled]="cameraOn">Camera</ion-button>
+      <ion-button (click)="getGalleryPicture()" [disabled]="cameraOn">Galeria</ion-button>
+      <ion-button *ngIf="picture" (click)="sendPicture()">Enviar imagem</ion-button>
+      <ion-button *ngIf="picture" (click)="cancel()">Descartar imagem</ion-button>
     </ion-item>
   </ion-card>
 
   <div class="clear"></div>
 
-  <div style="text-align: left; padding-left: 6%" >
+  <div style="text-align: left; padding-left: 6%">
     <p>Meus Produtos</p>
     <p>Meus pedidos</p>
   </div>

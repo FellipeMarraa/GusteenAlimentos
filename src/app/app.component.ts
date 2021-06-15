@@ -1,5 +1,6 @@
 import {Component} from '@angular/core';
 import {Plugins} from '@capacitor/core';
+import {API_CONFIG} from "./config/api.config";
 
 const {SplashScreen} = Plugins;
 
@@ -9,6 +10,8 @@ const {SplashScreen} = Plugins;
   styleUrls: ['app.component.scss']
 })
 export class AppComponent {
+  bucketUrl: string = API_CONFIG.bucketBaseUrl;
+
   constructor() {
     this.initializeApp();
   }

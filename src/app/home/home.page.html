@@ -3,6 +3,15 @@
     <ion-buttons slot="start">
       <ion-menu-button style="color: white" menu="main-menu"></ion-menu-button>
     </ion-buttons>
+
+    <ion-title>
+      <ion-item style="height: 40px;width: 100%;border-radius: 10px">
+        <ion-icon style="margin-right:10px " color="primary" name="search-outline"></ion-icon>
+        <ion-input type="text" placeholder="buscar"></ion-input>
+      </ion-item>
+    </ion-title>
+
+
     <ion-buttons slot="end">
       <ion-button fill="clear" size="large" (click)="openCar()">
         <ion-icon style="color: white" name="cart-outline"></ion-icon>
@@ -14,20 +23,30 @@
 
 
 <ion-content>
+  <!--  lista de categorias-->
+  <ion-button>
+    <ion-icon style="color: white" name="pricetag-outline"></ion-icon>
+  </ion-button>
+
+  <ion-button>
+    <ion-icon style="color: white" name="cart-outline"></ion-icon>
+  </ion-button>
+
+
   <ion-card *ngFor="let produto of lisataProdutos">
     <ion-card-header>
       <ion-card-title>
         {{ " " + produto.nome}} - {{ "R$" + " " + produto.preco + ",00"}}
       </ion-card-title>
-
-      <ion-card-content>
-        imagem
-        <ion-button (click)="addToCart(produto)" style="margin-left: 200px">
-          <ion-icon name="add-circle-outline"></ion-icon>
-        </ion-button>
-      </ion-card-content>
-
     </ion-card-header>
+
+    <ion-card-content>
+      <img [src]="produto.imageUrl">
+      <ion-button (click)="addToCart(produto)" style="margin-left: 200px">
+        <ion-icon name="add-circle-outline"></ion-icon>
+      </ion-button>
+    </ion-card-content>
+
 
   </ion-card>
 

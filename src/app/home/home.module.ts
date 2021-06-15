@@ -3,7 +3,7 @@ import {HomePageRoutingModule} from './home-routing.module';
 import {HomePage} from './home.page';
 import {NgModule} from '@angular/core';
 import {ComponentsModule} from '../commons-module/components.commons.module';
-import {CartModalModule} from "./modal/cart-modal/cart.modal.module";
+import {CarrinhoModule} from "../carrinho/carrinho.module";
 
 
 @NgModule({
@@ -11,7 +11,7 @@ import {CartModalModule} from "./modal/cart-modal/cart.modal.module";
     ComponentsModule,
     FormsModule,
     HomePageRoutingModule,
-    CartModalModule,
+    CarrinhoModule,
   ],
   declarations: [HomePage]
 })

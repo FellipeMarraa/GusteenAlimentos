@@ -29,6 +29,10 @@ const routes: Routes = [
   {
     path: 'emprestimos',
     loadChildren: () => import('./emprestimos/emprestimo.module').then(m => m.EmprestimoPageModule)
+  },
+  {
+    path: 'carrinho',
+    loadChildren: () => import('./carrinho/carrinho.module').then(m => m.CarrinhoModule)
   }
 ];
 
