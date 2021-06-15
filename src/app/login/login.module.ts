@@ -2,12 +2,14 @@ import {NgModule} from '@angular/core';
 import {FormsModule} from '@angular/forms';
 import {LoginPageRoutingModule} from './login.routing.module';
 import {LoginPage} from './login.page';
-import {ComponentsModule} from "../commons-module/components.commons.module";
+import {IonicModule} from "@ionic/angular";
+import {CommonModule} from "@angular/common";
 
 @NgModule({
   imports: [
-    ComponentsModule,
+    CommonModule,
     FormsModule,
+    IonicModule,
     LoginPageRoutingModule
   ],
   declarations: [LoginPage]

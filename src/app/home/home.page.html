@@ -13,53 +13,17 @@
 
 
 <ion-content>
-  <ion-list>
-    <!--    LISTA DE EMPRESTIMOS EM ANDAMENTO PARA O USUARIO-->
-
-<!--    <ion-item *ngFor="let item of items">-->
-      <card-expandable-component cardTitle="Banco do Brasil">
-        <!--      AKI É O QUE ELE MOSTRA SEM EXPANDIR-->
-        <div header>
-          <div class="font-custom" [ngStyle]="{'font-size': fontSizeBody + 'px'}">
-            <p class="ion-text-wrap" [ngStyle]="{'font-size': fontSizeHead + 'px'}"><b>Valor Parcela:</b> R$750,00</p>
-          </div>
-
-          <div class="font-custom" [ngStyle]="{'font-size': fontSizeBody + 'px'}">
-            <p class="ion-text-wrap" [ngStyle]="{'font-size': fontSizeHead + 'px'}">Data Próximo Vencimento:</p>
-            <p class="ion-text-wrap" [ngStyle]="{'font-size': fontSizeHead + 'px'}"> 06/04/2021</p>
-          </div>
-        </div>
-
-        <div content style="padding-top: 9px;">
-          <div class="font-custom" [ngStyle]="{'font-size': fontSizeBody + 'px'}">
-            <p class="ion-text-wrap" [ngStyle]="{'font-size': fontSizeHead + 'px'}"><b>Número de registro:</b> 99999</p>
-          </div>
-
-          <div class="font-custom" [ngStyle]="{'font-size': fontSizeBody + 'px'}">
-            <p class="ion-text-wrap" [ngStyle]="{'font-size': fontSizeHead + 'px'}"><b>Parcelas:</b> 48x</p>
-          </div>
-
-          <div class="font-custom" [ngStyle]="{'font-size': fontSizeBody + 'px'}">
-            <p class="ion-text-wrap" [ngStyle]="{'font-size': fontSizeHead + 'px'}"><b>Valor emprestado:</b> R$24.000,00</p>
-          </div>
-
-          <div class="font-custom" [ngStyle]="{'font-size': fontSizeBody + 'px'}">
-            <p class="ion-text-wrap" [ngStyle]="{'font-size': fontSizeHead + 'px'}"><b>Valor total:</b> R$36.000,00</p>
-          </div>
-
-          <div class="font-custom" [ngStyle]="{'font-size': fontSizeBody + 'px'}">
-            <p class="ion-text-wrap" [ngStyle]="{'font-size': fontSizeHead + 'px'}"><b>Início do desconto:</b> 19/03/2021</p>
-          </div>
-
-          <div class="font-custom" [ngStyle]="{'font-size': fontSizeBody + 'px'}">
-            <p class="ion-text-wrap" [ngStyle]="{'font-size': fontSizeHead + 'px'}"><b>Fim do desconto : </b> 19/03/2025</p>
-          </div>
-
-        </div>
-
-      </card-expandable-component>
-<!--    </ion-item>-->
-  </ion-list>
-
+  <ion-card *ngFor="let item of lisataProdutos">
+    <ion-row style="margin-left: 10px">
+      <ion-col>
+        <ion-row class="ion-text-wrap">
+          <b> Nome: </b>{{ " " + item.nome}}
+        </ion-row>
+        <ion-row class="ion-text-nowrap">
+          <b> Data: </b>{{ " " + item.preco}}
+        </ion-row>
+      </ion-col>
+    </ion-row>
+  </ion-card>
 
 </ion-content>

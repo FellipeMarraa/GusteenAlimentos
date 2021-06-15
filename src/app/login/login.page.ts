@@ -1,32 +1,39 @@
-import {Component, Injector} from '@angular/core';
-import {BaseComponent} from '../class/commons-class/base.component';
-import {ClienteService} from '../service/cliente.service';
-import {AuthService} from '../service/auth.service';
-import {CredenciaisDTO} from '../class/dto/credenciais.dto';
+import {BaseComponent} from "../class/commons-class/base.component";
+import {Component, Injector} from "@angular/core";
+import {AuthService} from "../service/auth.service";
+import {API_CONFIG} from "../config/api.config";
+import {CredenciaisDTO} from "../class/dto/credenciais.dto";
 
 @Component({
   selector: 'app-login',
   templateUrl: './login.page.html',
   styleUrls: ['./login.page.scss'],
 })
-
 export class LoginPage extends BaseComponent {
   tipo: boolean;
-
-  usuario: CredenciaisDTO = {
-    cpf: "",
-    senha: ""
+  creds: CredenciaisDTO = {
+    "cpfOuCnpj": "",
+    "senha": ""
   };
+  bucketUrl: string = API_CONFIG.bucketBaseUrl;
 
   isloading: boolean = false;
 
   constructor(private injector: Injector,
-              private clienteService: ClienteService,
-              public authService: AuthService ) {
+              public auth: AuthService
+  ) {
     super(injector);
   }
 
   ngOnInit() {
+
+    this.auth.refreshToken()
+      .subscribe(response => {
+          this.auth.successfulLogin(response.headers.get('Authorization'));
+          this.navCtrl.navigateRoot('/home');
+        },
+        error => {
+        });
   }
 
   exibiOcultarSenha() {
@@ -37,37 +44,18 @@ export class LoginPage extends BaseComponent {
     this.navCtrl.navigateRoot('/cadastro');
   }
 
-  passwordRe() {
-    this.navCtrl.navigateRoot('/password');
-  }
-
   acessar() {
     this.navCtrl.navigateRoot('/home');
-
-    // this.authService.authenticate(this.usuario)
+    // this.auth.authenticate(this.creds)
     //   .subscribe(response => {
-    //       console.log(response.headers.get('Authorization'));
+    //       this.auth.successfulLogin(response.headers.get('Authorization'));
     //       this.navCtrl.navigateRoot('/home');
     //     },
-    //     error => {
-    //     });
-    // this.isloading = true;
-    // this.clienteService.logar(this.usuario).subscribe(item => {
-    //   if (item) {
-    //     this.clienteService.succefullLogin(item);
-    //     this.navCtrl.navigateRoot('/home');
-    //     this.isloading = false;
-    //   } else {
-    //     this.isloading = false;
-    //     ToastUtil.presentToast(this.toastCtrl, "Usuário não encontrado!", PositionToast.BOTTOM, ToastType.ERROR);
-    //   }
-    //   console.log(item);
-    // }, error => {
-    //   this.isloading = false;
-    //   ToastUtil.presentToast(this.toastCtrl, "Erro no servidor", PositionToast.BOTTOM, ToastType.ERROR);
-    // });
+    //     error => {});
+  }
 
-    //   this.navCtrl.navigateRoot('/home');
+  recoveryPassword() {
+    this.navCtrl.navigateRoot('/recovery-password');
   }
 
 }

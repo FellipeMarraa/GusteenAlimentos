@@ -1,61 +1,40 @@
-<ion-toolbar class="toolbar-perfil">
-  <ion-buttons slot="start">
-    <ion-menu-button style="color: white" menu="main-menu"></ion-menu-button>
-  </ion-buttons>
-
-  <ion-buttons slot="end" *ngIf="!visibleCheckButton">
-    <ion-button fill="clear" size="large" (click)="upadeteStart($event)">
-      <ion-icon style="color: white" name="create-outline"></ion-icon>
+<ion-header padding id="header">
+  <ion-toolbar>
+    <ion-button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
     </ion-button>
-  </ion-buttons>
+    <ion-title style="float: right; margin-top: 10px">profile</ion-title>
+  </ion-toolbar>
+</ion-header>
 
+<ion-content padding>
+  <ion-avatar style="margin-left: 33%; margin-top: 20px; width: 100px; height: 100px">
+    <img class="circle" [src]="profileImage">
+  </ion-avatar>
+  <ion-icon id="iconEdit" (click)="editarImagem()" style="float: right; margin-right: 30%" name="create"></ion-icon>
+  <h2 text-center>{{cliente?.nome}}</h2>
+  <p text-center>{{cliente?.email}}</p>
 
-  <ion-buttons slot="end" *ngIf="visibleCheckButton">
-    <ion-button fill="clear" size="large" (click)="saveUpdate($event)">
-      <ion-icon style="color: white" name="checkmark-outline"></ion-icon>
-    </ion-button>
-  </ion-buttons>
+  <ion-card *ngIf="editImage">
+    <ion-card-header>
+      Enviar imagem de perfil
+    </ion-card-header>
+    <ion-item *ngIf="picture">
+      <img [src]="picture">
+    </ion-item>
+    <ion-item>
+      <ion-button ion-button block (click)="getCameraPicture()" [disabled]="cameraOn">Camera</ion-button>
+      <ion-button ion-button block (click)="getGalleryPicture()" [disabled]="cameraOn">Galeria</ion-button>
+      <ion-button *ngIf="picture" ion-button outline block (click)="sendPicture()">Enviar imagem</ion-button>
+      <ion-button *ngIf="picture" ion-button outline block (click)="cancel()">Descartar imagem</ion-button>
+    </ion-item>
+  </ion-card>
 
-</ion-toolbar>
+  <div class="clear"></div>
 
-<header class="header-perfil">
-  <ion-icon class="person-icon" name="person-circle-outline"></ion-icon>
-  <h3 class="ion-text-header-nome" style="font-size: 20px; width: 100%; text-align: center">{{usuario.nome}}</h3>
-  <h4 class="ion-text-header-email" [ngStyle]="{'font-size': fontSizeHead + 'px'}">{{usuario.email}}</h4>
-</header>
-
-<ion-content color="light">
-  <div>
-    <form>
-      <ion-grid>
-
-        <ion-item>
-          <ion-label position="floating">Nome Completo</ion-label>
-          <ion-input class="ion-text-lowercase" type="text" name="nome" [(ngModel)]="usuario.nome" [readonly]="dadosReadOnly"></ion-input>
-        </ion-item>
-
-        <ion-item>
-          <ion-label position="floating">CPF</ion-label>
-          <ion-input class="ion-text-lowercase" type="text" name="cpf" [(ngModel)]="usuario.cpf" [readonly]="dadosReadOnly"></ion-input>
-        </ion-item>
-
-        <ion-item>
-          <ion-label position="floating">Email</ion-label>
-          <ion-input class="ion-text-lowercase" type="email" name="email" [(ngModel)]="usuario.email" [readonly]="dadosReadOnly"></ion-input>
-        </ion-item>
-
-        <ion-item>
-          <ion-label position="floating">Senha</ion-label>
-          <ion-input class="input-senha" name="senha" type="password" [(ngModel)]="usuario.senha" [readonly]="dadosReadOnly">
-            <ion-fab horizontal="end" vertical="end">
-              <ion-button class="ocultarSenha" fill="clear" type="button">
-                <ion-icon style="color:#050A30"></ion-icon>
-              </ion-button>
-            </ion-fab>
-          </ion-input>
-        </ion-item>
-
-      </ion-grid>
-    </form>
+  <div style="text-align: left; padding-left: 6%" >
+    <p>Meus Produtos</p>
+    <p>Meus pedidos</p>
   </div>
+
 </ion-content>

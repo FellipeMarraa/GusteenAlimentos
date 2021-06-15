@@ -2,9 +2,8 @@ import {Component, Injector} from '@angular/core';
 import {BaseComponent} from '../class/commons-class/base.component';
 import {ClienteService} from '../service/cliente.service';
 import {BancoService} from '../service/banco.service';
-import {Banco} from '../class/banco';
-import {CredenciaisDTO} from '../class/dto/credenciais.dto';
 import {AuthService} from '../service/auth.service';
+import {ProdutoDTO} from "../class/dto/produto.dto";
 
 @Component({
   selector: 'app-home',
@@ -13,11 +12,8 @@ import {AuthService} from '../service/auth.service';
 })
 export class HomePage extends BaseComponent {
 
-  expand = false;
-  fontSizeHead = 15;
-  fontSizeBody = 13;
-  items: Banco[];
 
+  lisataProdutos: ProdutoDTO[] = [];
 
 
   constructor(private injector: Injector,
@@ -28,24 +24,22 @@ export class HomePage extends BaseComponent {
   }
 
   ngOnInit() {
-    this.bancoService.list().subscribe(response => {
-        this.items = response;
-      },
-      error => {}
-      );
+    let produto1: ProdutoDTO = new ProdutoDTO()
+    produto1.nome = "aa";
+    produto1.preco = 40;
 
+    let produto2: ProdutoDTO = new ProdutoDTO()
+    produto2.nome = "bb";
+    produto2.preco = 50;
+    let produto3: ProdutoDTO = new ProdutoDTO()
+    produto3.nome = "cc";
+    produto3.preco = 60;
+    let produto4: ProdutoDTO = new ProdutoDTO()
+    produto4.nome = "dd";
+    produto4.preco = 70;
+
+    this.lisataProdutos.push(produto1, produto2, produto3, produto4)
   }
 
-  goPerfilPage() {
-    this.navCtrl.navigateRoot('/perfil');
-  }
 
-  chamarCliente(){
-    this.clienteService.list().subscribe(response => {
-        console.log(response);
-      },
-      error => {
-        console.log(error);
-      });
-  }
 }

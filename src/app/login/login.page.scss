@@ -1,4 +1,3 @@
-//body page//
 .login-content {
 
   ion-label {
@@ -41,18 +40,6 @@
 
 }
 
-//logo//
-.logoLogin{
-  position: absolute;
-  left: 50%;
-  top: 20%;
-  transform: translate(-50%,-50%);
-  height: 250px;
-  width: auto;
-  z-index: 10;
-  padding: 10px 10px;
-}
-
 //estética-botões//
 .button-submit {
   --transition: background-color, opacity 100ms linear;
@@ -91,7 +78,9 @@
 .esqueciMinhaSenha {
   position: relative;
   top: 23px;
-  color: white;
+  color: black;
+  outline: none;
+  background-color: white;
   margin-left: 20px;
   cursor: pointer;
   font-size: 12px;
@@ -108,13 +97,17 @@
   }
   .esqueciMinhaSenha{
     position: relative;
-    color: white;
+    color: black;
+    outline: none;
+    background-color: white;
     cursor: pointer;
     font-size: 20px;
     float: left;
   }
   .cadastrarse{
     font-size: 20px !important;
+    outline: none;
+    background-color: white;
   }
 }
 
@@ -129,13 +122,17 @@
   }
   .esqueciMinhaSenha{
     position: relative;
-    color: white;
+    color: black;
     cursor: pointer;
+    outline: none;
+    background-color: white;
     font-size: 12px;
     float: left;
   }
   .cadastrarse{
     font-size: 15px !important;
+    outline: none;
+    background-color: white;
   }
 }
 

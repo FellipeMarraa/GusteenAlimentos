@@ -1,44 +1,40 @@
-<ion-content class="login-content" color="login-primary">
-
-  <ion-img class="logoLogin" src="assets/LogoTransparente/LogoServiceBank.png"></ion-img>
-
+<ion-content class="ion-padding">
   <ion-grid>
 
-    <form class="form-style-login">
-
-        <ion-item>
-          <ion-label position="floating">CPF ou CNPJ</ion-label>
-          <ion-input class="ion-text-lowercase" type="text" name="cpf" [(ngModel)]="usuario.cpf"></ion-input>
-        </ion-item>
+    <img [src]="bucketUrl + '/logo.png'||'assets/imgs/logo.png'" style="padding-top: 20px"/>
+    <form>
+      <ion-item>
+        <ion-label position="floating">CPF ou CNPJ</ion-label>
+        <ion-input class="ion-text-lowercase" type="text" name="cpf" [(ngModel)]="creds.cpfOuCnpj"></ion-input>
+      </ion-item>
 
       <div class="clear"></div>
 
-        <ion-item>
-          <ion-label position="floating">Senha</ion-label>
-          <ion-input class="input-senha" [type]="tipo ? 'text' : 'password'" name="senha" [(ngModel)]="usuario.senha">
-            <ion-fab horizontal="end" vertical="end">
-              <ion-button class="ocultarSenha" fill="clear" type="button" (click)="exibiOcultarSenha()">
-                <ion-icon style="color:#ffffff" [name]="tipo ? 'eye-off-outline' : 'eye-outline'"></ion-icon>
-              </ion-button>
-            </ion-fab>
-          </ion-input>
-        </ion-item>
+      <ion-item>
+        <ion-label position="floating">Senha</ion-label>
+        <ion-input class="input-senha" [type]="tipo ? 'text' : 'password'" name="senha" [(ngModel)]="creds.senha">
+          <ion-fab horizontal="end" vertical="end">
+            <ion-button class="ocultarSenha" fill="clear" type="button" (click)="exibiOcultarSenha()">
+              <ion-icon style="color:black" [name]="tipo ? 'eye-off-outline' : 'eye-outline'"></ion-icon>
+            </ion-button>
+          </ion-fab>
+        </ion-input>
+      </ion-item>
       <div class="clear"></div>
 
       <ion-fab vertical="end" horizontal="end">
         <ion-fab-button class="button-submit" color="light" type="submit" (click)="acessar()">
-          <ion-spinner color="primary" name="crescent" *ngIf="isloading"></ion-spinner>
-          <ion-icon color="primary" name="arrow-forward" *ngIf="!isloading"></ion-icon>
+          <ion-spinner color="secondary" name="crescent" *ngIf="isloading"></ion-spinner>
+          <ion-icon color="secondary" name="arrow-forward" *ngIf="!isloading"></ion-icon>
         </ion-fab-button>
       </ion-fab>
       <div class="clear"></div>
 
-      <a class="esqueciMinhaSenha" (click)="passwordRe()">Esqueci minha senha</a>
-
+      <button ion-button block outline class="esqueciMinhaSenha" (click)="recoveryPassword()">Esqueci minha senha</button>
     </form>
 
-    <ion-footer style="bottom:5%;position: absolute">
-        <h1 class="cadastrarse" style="text-align: center; font-size: 15px; color: white; cursor: pointer" (click)="cadastrarSe()" >Quero me cadastrar</h1>
+    <ion-footer style="bottom:5%;position: absolute;text-align: center">
+      <button ion-button block outline class="cadastrarse" (click)="cadastrarSe()" >Quero me cadastrar</button>
     </ion-footer>
 
   </ion-grid>

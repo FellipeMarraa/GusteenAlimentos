@@ -1,6 +1,6 @@
 export interface CredenciaisDTO {
 
-  cpf: string;
+  cpfOuCnpj: string;
 
   senha: string;
 

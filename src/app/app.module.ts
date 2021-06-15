@@ -10,6 +10,8 @@ import {HttpClientModule} from '@angular/common/http';
 import {ErrorInterceptorProvider} from './interceptors/error-interceptor';
 import {StorageService} from './service/storage.service';
 import {AuthService} from './service/auth.service';
+import {ClienteService} from "./service/cliente.service";
+import {ImageUtilService} from "./service/image.util.service";
 
 @NgModule({
   declarations: [AppComponent],
@@ -23,6 +25,8 @@ import {AuthService} from './service/auth.service';
     ErrorInterceptorProvider,
     StorageService,
     AuthService,
+    ClienteService,
+    ImageUtilService,
     {
     provide: RouteReuseStrategy,
     useClass: IonicRouteStrategy

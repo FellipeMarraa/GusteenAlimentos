@@ -1,8 +1,7 @@
-//body-page//
 .cadastro-content {
 
   ion-label {
-    color: white;
+    color: black;
   }
 
   .div-senha {
@@ -25,23 +24,13 @@
   ion-item {
     --background: transparent !important;
     --color: transparent !important;
-    color: white;
-    border-bottom: 1px solid white !important;
+    color: black;
+    border-bottom: 1px solid black !important;
   }
 
   .clear{
     clear: both;
   }
-}
-
-//logo//
-.logoCadastro{
-  position: absolute;
-  left: 50%;
-  top: 16%;
-  transform: translate(-50%,-50%);
-  height: 200px;
-  width: auto;
 }
 
 //error
@@ -85,7 +74,7 @@
 .possuo-cadastro{
   text-align: center;
   font-size: 15px;
-  color: white;
+  color: black;
   cursor: pointer;
 }
 

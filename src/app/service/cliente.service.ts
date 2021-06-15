@@ -5,6 +5,7 @@ import {API_CONFIG} from '../config/api.config';
 import {Observable, throwError} from 'rxjs';
 import {catchError, retry} from 'rxjs/operators';
 import {LocalUser} from '../class/local.user';
+import {ImageUtilService} from "./image.util.service";
 
 
 @Injectable({
@@ -14,7 +15,8 @@ export class ClienteService {
 
 
 
-  constructor(public _http: HttpClient) {
+  constructor(public _http: HttpClient,
+              public imageUtilService: ImageUtilService) {
   }
 
   httpOptions = {
@@ -22,6 +24,14 @@ export class ClienteService {
     })
   };
 
+  findByEmail(email: string) {
+    return this._http.get(`${API_CONFIG.baseUrl}/clientes/email?value=${email}`);
+  }
+
+  getImageFromBucket(id : string) : Observable<any> {
+    let url = `${API_CONFIG.bucketBaseUrl}/cp${id}.jpg`
+    return this._http.get(url, {responseType : 'blob'});
+  }
 
 
   getByID(id: number) {
@@ -41,6 +51,20 @@ export class ClienteService {
         retry(2),
         catchError(this.handleError)
       );
+  }
+
+  uploadPicture(picture) {
+    let pictureBlob = this.imageUtilService.dataUriToBlob(picture);
+    let formData : FormData = new FormData();
+    formData.set('file', pictureBlob, 'file.png');
+    return this._http.post(
+      `${API_CONFIG.baseUrl}/clientes/picture`,
+      formData,
+      {
+        observe: 'response',
+        responseType: 'text'
+      }
+    );
   }
 
   update(cliente: Cliente): Observable<Cliente> {

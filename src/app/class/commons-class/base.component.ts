@@ -1,8 +1,8 @@
 import {Subscription} from 'rxjs';
 import {Injector, Input, SimpleChanges} from '@angular/core';
 import {AlertController, LoadingController, ModalController, NavController, ToastController} from '@ionic/angular';
-import {ActivatedRoute, Router} from "@angular/router";
-import {IBaseComponent} from "./i.base.component";
+import {ActivatedRoute, Router} from '@angular/router';
+import {IBaseComponent} from './i.base.component';
 
 export abstract class BaseComponent implements IBaseComponent {
 

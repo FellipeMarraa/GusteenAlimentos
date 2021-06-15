@@ -36,6 +36,10 @@ export class CadastroPage extends BaseComponent {
   ngOnInit() {
   }
 
+  cadastrarCidade() {
+
+  }
+
   dismiss() {
     this.navCtrl.navigateRoot('/login')
   }
@@ -118,4 +122,6 @@ export class CadastroPage extends BaseComponent {
   onRadioGroupChange(event: any) {
     this.cnpjVisible = event.detail.value != 'cpf';
   }
+
+
 }
