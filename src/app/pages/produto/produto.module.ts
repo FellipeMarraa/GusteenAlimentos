@@ -17,6 +17,10 @@ export class ProdutoModule extends BaseComponent {
   }
 
   init() {
+
   }
 
+  cadastrar() {
+    console.log(this.produto)
+  }
 }

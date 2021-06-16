@@ -11,8 +11,27 @@
 
 <ion-content>
 
+  <ion-grid>
+    <form>
+      <ion-item>
+        <ion-label position="floating">Nome</ion-label>
+        <ion-input class="ion-text-lowercase" type="text" name="nome" [(ngModel)]="produto.nome"></ion-input>
+      </ion-item>
 
+      <ion-item>
+        <ion-label position="floating">Preço</ion-label>
+        <ion-input class="ion-text-lowercase" type="number" name="nome" [(ngModel)]="produto.preco"></ion-input>
+      </ion-item>
+    </form>
 
-
-
+  </ion-grid>
 </ion-content>
+
+<ion-footer>
+
+  <ion-toolbar color="primary">
+    <ion-button expand="full" (click)="cadastrar()">
+      Cadastrar
+    </ion-button>
+  </ion-toolbar>
+</ion-footer>
