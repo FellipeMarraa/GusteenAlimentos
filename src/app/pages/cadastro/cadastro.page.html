@@ -1,7 +1,7 @@
 <ion-header>
   <ion-toolbar color="primary">
     <ion-buttons slot="start">
-      <ion-icon fill="clear" name="arrow-back-outline" style="color: white" (click)="dismiss()"></ion-icon>
+      <ion-icon name="arrow-back-outline" style="color: white" (click)="dismiss()"></ion-icon>
     </ion-buttons>
 
     <ion-title>Cadastrar</ion-title>
@@ -26,7 +26,7 @@
 
       <ion-item class="input-cpfOuCnpj">
         <ion-label position="floating">CPF/CNPJ</ion-label>
-        <ion-input class="ion-text-lowercase" type="text" name="cpfOuCnpj"
+        <ion-input class="ion-text-lowercase" type="text" name="cpfOuCnpj" [(ngModel)]="usuario.cpfOuCnpj"
         ></ion-input>
       </ion-item>
 
@@ -34,21 +34,21 @@
 
       <ion-item class="input-nome">
         <ion-label position="floating">Nome</ion-label>
-        <ion-input class="ion-text" type="text" name="nome"
+        <ion-input class="ion-text" type="text" name="nome" [(ngModel)]="usuario.nome"
         ></ion-input>
       </ion-item>
       <div class="clear"></div>
 
       <ion-item>
         <ion-label position="floating">Email</ion-label>
-        <ion-input class="ion-text-lowercase" type="email" name="email" (focusout)="focusoutEmail($event)"
+        <ion-input class="ion-text-lowercase" type="email" name="email" (focusout)="focusoutEmail($event)" [(ngModel)]="usuario.email"
         ></ion-input>
       </ion-item>
       <div class="clear"></div>
 
       <ion-item class="input-telefone">
         <ion-label position="floating">Telefone/Whatsapp</ion-label>
-        <ion-input class="ion-text" type="text" name="nome"
+        <ion-input class="ion-text" type="text" name="nome" [(ngModel)]="usuario.telefone"
         ></ion-input>
       </ion-item>
       <div class="clear"></div>
@@ -57,7 +57,7 @@
 
       <ion-item>
         <ion-label position="floating">Senha</ion-label>
-        <ion-input [type]="tipo ? 'text' : 'password'" name="senha">
+        <ion-input [type]="tipo ? 'text' : 'password'" name="senha" [(ngModel)]="usuario.senha">
           <ion-fab horizontal="end" vertical="end">
             <ion-button class="ocultarSenha" fill="clear" type="button" (click)="exibiOcultarSenha()">
               <ion-icon style="color:black" [name]="tipo ? 'eye-off-outline' : 'eye-outline'"></ion-icon>

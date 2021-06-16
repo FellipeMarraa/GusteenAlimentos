@@ -35,6 +35,10 @@ const routes: Routes = [
     loadChildren: () => import('./pages/carrinho/carrinho.module').then(m => m.CarrinhoModule)
   },
   {
+    path: 'produto',
+    loadChildren: () => import('./pages/produto/produto.page.module').then(m => m.ProdutoPageModule)
+  },
+  {
     path: 'recovery-password',
     loadChildren: () => import('./pages/recovery-password/recovery.password.module').then(m => m.RecoveryPasswordPageModule)
   }

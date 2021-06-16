@@ -3,6 +3,8 @@ import {Component, Injector} from "@angular/core";
 import {AuthService} from "../../service/auth.service";
 import {API_CONFIG} from "../../config/api.config";
 import {CredenciaisDTO} from "../../class/dto/credenciais.dto";
+import {StorageService} from "../../service/storage.service";
+import {Cliente} from "../../class/cliente";
 
 @Component({
   selector: 'app-login',
@@ -11,22 +13,19 @@ import {CredenciaisDTO} from "../../class/dto/credenciais.dto";
 })
 export class LoginPage extends BaseComponent {
   tipo: boolean;
-  creds: CredenciaisDTO = {
-    "cpfOuCnpj": "",
-    "senha": ""
-  };
+  usuario: Cliente = new Cliente();
   bucketUrl: string = API_CONFIG.bucketBaseUrl;
 
   isloading: boolean = false;
 
   constructor(private injector: Injector,
-              public auth: AuthService
+              public auth: AuthService,
+              private storageService: StorageService,
   ) {
     super(injector);
   }
 
   ngOnInit() {
-
     this.auth.refreshToken()
       .subscribe(response => {
           this.auth.successfulLogin(response.headers.get('Authorization'));
@@ -45,13 +44,15 @@ export class LoginPage extends BaseComponent {
   }
 
   acessar() {
+
     this.navCtrl.navigateRoot('/home');
-    // this.auth.authenticate(this.creds)
-    //   .subscribe(response => {
-    //       this.auth.successfulLogin(response.headers.get('Authorization'));
-    //       this.navCtrl.navigateRoot('/home');
-    //     },
-    //     error => {});
+    this.auth.authenticate(this.usuario)
+      .subscribe(response => {
+          this.auth.successfulLogin(response.headers.get('Authorization'));
+          this.navCtrl.navigateRoot('/home');
+        },
+        error => {
+        });
   }
 
   recoveryPassword() {

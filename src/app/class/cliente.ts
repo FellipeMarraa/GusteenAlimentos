@@ -10,4 +10,12 @@ export class Cliente {
   senha: string;
 
   imageUrl?: string;
+
+  perfil: string;
+
+  telefone: string;
+
+  aceitaTermosUso: boolean;
+
+  aceitaPolitica: boolean;
 }

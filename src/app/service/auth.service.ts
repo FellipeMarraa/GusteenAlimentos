@@ -14,8 +14,8 @@ export class AuthService {
               public storage: StorageService) {
   }
 
-  authenticate(creds: CredenciaisDTO) {
-    return this.http.post(`${API_CONFIG.baseUrl}/login`, creds,
+  authenticate(usuario: Cliente) {
+    return this.http.post(`${API_CONFIG.baseUrl}/login`, usuario,
       {
         observe: 'response',
         responseType: 'text'
@@ -63,9 +63,7 @@ export class AuthService {
   }
 
   logout() {
-
-    this.storage.setLocalUser(null);
-
+    // this.storage.setLocalUser(null);
   }
 
 }
