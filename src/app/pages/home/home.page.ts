@@ -6,6 +6,8 @@ import {AuthService} from '../../service/auth.service';
 import {Produto} from "../../class/dto/produto.dto";
 import {CategoriaDTO} from "../../class/dto/categoria.dto";
 import {NavigationExtras} from "@angular/router";
+import {PositionToast, ToastUtil} from "../../class/commons-class/toast.util";
+import {ToastType} from "../../class/commons-class/toast.type";
 
 @Component({
   selector: 'app-home',
@@ -100,6 +102,7 @@ export class HomePage extends BaseComponent {
     if (!adicionado) {
       this.listaProdutosCarrinho.push(produto)
     }
+    ToastUtil.presentToast(this.toastCtrl, "Item Adicionado", PositionToast.BOTTOM, ToastType.SUCCESS,500);
   }
 
 
