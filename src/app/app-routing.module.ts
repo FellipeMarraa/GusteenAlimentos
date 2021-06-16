@@ -27,10 +27,6 @@ const routes: Routes = [
     loadChildren: () => import('./pages/help/help.module').then(m => m.HelpPageModule)
   },
   {
-    path: 'emprestimos',
-    loadChildren: () => import('./emprestimos/emprestimo.module').then(m => m.EmprestimoPageModule)
-  },
-  {
     path: 'carrinho',
     loadChildren: () => import('./pages/carrinho/carrinho.module').then(m => m.CarrinhoModule)
   },

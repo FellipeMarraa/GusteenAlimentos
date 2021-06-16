@@ -1,6 +1,8 @@
 import {Component, Injector} from "@angular/core";
 import {BaseComponent} from "../../class/commons-class/base.component";
 import {Produto} from "../../class/dto/produto.dto";
+import {CategoriaDTO} from "../../class/dto/categoria.dto";
+import {CategoriaService} from "../../service/categoria.service";
 
 @Component({
   selector: 'produto-page',
@@ -10,13 +12,20 @@ import {Produto} from "../../class/dto/produto.dto";
 export class ProdutoModule extends BaseComponent {
 
   produto: Produto = new Produto();
+  categorias: CategoriaDTO[] = [];
 
-  constructor(private injector: Injector) {
+  constructor(private injector: Injector,
+              private categoriaService: CategoriaService) {
     super(injector);
 
   }
 
   init() {
+
+    this.categoriaService.findAll().subscribe(cat => {
+      this.categorias = cat;
+    })
+
 
   }
 

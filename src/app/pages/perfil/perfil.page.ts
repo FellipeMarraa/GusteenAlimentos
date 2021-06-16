@@ -5,7 +5,7 @@ import {StorageService} from '../../service/storage.service';
 import {ClienteDTO} from "../../class/dto/cliente.dto";
 import {DomSanitizer} from "@angular/platform-browser";
 import {NavController} from "@ionic/angular";
-// import {Camera, CameraOptions} from '@ionic-native/camera/ngx';
+import {Camera, CameraOptions} from '@ionic-native/camera/ngx';
 import {API_CONFIG} from "../../config/api.config";
 
 @Component({
@@ -17,7 +17,7 @@ export class PerfilPage extends BaseComponent {
 
   cliente: ClienteDTO;
   picture: string;
-  profileImage;
+  profileImage: any;
   cameraOn: boolean = false;
   editImage: boolean = false;
 
@@ -26,7 +26,7 @@ export class PerfilPage extends BaseComponent {
               public navCtrl: NavController,
               public storage: StorageService,
               public clienteService: ClienteService,
-              // private camera: Camera,
+              private camera: Camera,
               public sanitizer: DomSanitizer) {
     super(injector);
   }
@@ -63,7 +63,7 @@ export class PerfilPage extends BaseComponent {
           });
         },
         error => {
-          this.profileImage = 'assets/imgs/avatar-blank.png';
+          this.profileImage = '/src/assets/imgs/logo.png';
         });
   }
 
@@ -81,39 +81,39 @@ export class PerfilPage extends BaseComponent {
 
     this.cameraOn = true;
 
-    // const options: CameraOptions = {
-    //   quality: 100,
-    //   destinationType: this.camera.DestinationType.DATA_URL,
-    //   encodingType: this.camera.EncodingType.PNG,
-    //   mediaType: this.camera.MediaType.PICTURE
-    // }
-    //
-    // this.camera.getPicture(options).then((imageData) => {
-    //   this.picture = 'data:image/png;base64,' + imageData;
-    //   this.cameraOn = false;
-    // }, (err) => {
-    //   this.cameraOn = false;
-    // });
+    const options: CameraOptions = {
+      quality: 100,
+      destinationType: this.camera.DestinationType.DATA_URL,
+      encodingType: this.camera.EncodingType.PNG,
+      mediaType: this.camera.MediaType.PICTURE
+    }
+
+    this.camera.getPicture(options).then((imageData) => {
+      this.picture = 'data:image/png;base64,' + imageData;
+      this.cameraOn = false;
+    }, (err) => {
+      this.cameraOn = false;
+    });
   }
 
   getGalleryPicture() {
 
     this.cameraOn = true;
 
-    // const options: CameraOptions = {
-    //   quality: 100,
-    //   sourceType: this.camera.PictureSourceType.PHOTOLIBRARY,
-    //   destinationType: this.camera.DestinationType.DATA_URL,
-    //   encodingType: this.camera.EncodingType.PNG,
-    //   mediaType: this.camera.MediaType.PICTURE
-    // }
-    //
-    // this.camera.getPicture(options).then((imageData) => {
-    //   this.picture = 'data:image/png;base64,' + imageData;
-    //   this.cameraOn = false;
-    // }, (err) => {
-    //   this.cameraOn = false;
-    // });
+    const options: CameraOptions = {
+      quality: 100,
+      sourceType: this.camera.PictureSourceType.PHOTOLIBRARY,
+      destinationType: this.camera.DestinationType.DATA_URL,
+      encodingType: this.camera.EncodingType.PNG,
+      mediaType: this.camera.MediaType.PICTURE
+    }
+
+    this.camera.getPicture(options).then((imageData) => {
+      this.picture = 'data:image/png;base64,' + imageData;
+      this.cameraOn = false;
+    }, (err) => {
+      this.cameraOn = false;
+    });
   }
 
   sendPicture() {

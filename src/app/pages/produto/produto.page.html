@@ -14,6 +14,13 @@
   <ion-grid>
     <form>
       <ion-item>
+        <ion-label>Categoria</ion-label>
+        <ion-select value="selecione">
+          <ion-select-option value="produtor" *ngFor="let item for categorias">{{item.nome}}</ion-select-option>
+        </ion-select>
+      </ion-item>
+
+      <ion-item>
         <ion-label position="floating">Nome</ion-label>
         <ion-input class="ion-text-lowercase" type="text" name="nome" [(ngModel)]="produto.nome"></ion-input>
       </ion-item>

@@ -12,6 +12,8 @@ import {StorageService} from './service/storage.service';
 import {AuthService} from './service/auth.service';
 import {ClienteService} from "./service/cliente.service";
 import {ImageUtilService} from "./service/image.util.service";
+import {Camera} from "@ionic-native/camera/ngx";
+import {CategoriaService} from "./service/categoria.service";
 
 @NgModule({
   declarations: [AppComponent],
@@ -21,12 +23,16 @@ import {ImageUtilService} from "./service/image.util.service";
     HttpClientModule,
     IonicModule.forRoot(),
     AppRoutingModule],
+
   providers: [
     ErrorInterceptorProvider,
     StorageService,
+    Camera,
     AuthService,
     ClienteService,
     ImageUtilService,
+    CategoriaService,
+
     {
     provide: RouteReuseStrategy,
     useClass: IonicRouteStrategy
