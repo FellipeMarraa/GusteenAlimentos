@@ -1,9 +1,9 @@
 import {Component, Injector} from '@angular/core';
-import {BaseComponent} from '../class/commons-class/base.component';
-import {Cliente} from '../class/cliente';
-import {ClienteService} from '../service/cliente.service';
-import {PositionToast, ToastUtil} from '../class/commons-class/toast.util';
-import {ToastType} from '../class/commons-class/toast.type';
+import {BaseComponent} from '../../class/commons-class/base.component';
+import {Cliente} from '../../class/cliente';
+import {ClienteService} from '../../service/cliente.service';
+import {PositionToast, ToastUtil} from '../../class/commons-class/toast.util';
+import {ToastType} from '../../class/commons-class/toast.type';
 
 @Component({
   selector: 'app-cadastro',
@@ -73,7 +73,7 @@ export class CadastroPage extends BaseComponent {
   validate(usuario: Cliente) {
     let valido: boolean = true
 
-    if (usuario.cpf == null || usuario.nome == null || usuario.senha == null) {
+    if (usuario.cpfOuCnpj == null || usuario.nome == null || usuario.senha == null) {
       valido = false
     }
 

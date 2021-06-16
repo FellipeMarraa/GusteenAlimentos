@@ -2,7 +2,7 @@
 <widget id="io.ionic.starter" version="0.0.1" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
     <name>Service Bank</name>
     <description>Uma forma de comunicação fácil para simplificar a portabilidade de dados</description>
-    <author email="fellipemarra@hotmail.com" href="">Service Bank Team</author>
+    <author email="fellipemarra@hotmail.com" href="">Gusteen Alimentos</author>
     <content src="index.html" />
     <access origin="*" />
     <allow-intent href="http://*/*" />

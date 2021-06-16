@@ -1,6 +1,6 @@
 import {Component, Injector} from "@angular/core";
-import {BaseComponent} from "../class/commons-class/base.component";
-import {ProdutoDTO} from "../class/dto/produto.dto";
+import {BaseComponent} from "../../class/commons-class/base.component";
+import {ProdutoDTO} from "../../class/dto/produto.dto";
 
 @Component({
   selector: 'carrinho-modal',
@@ -36,7 +36,7 @@ export class CarrinhoModal extends BaseComponent {
 
 
   getTotal() {
-    return this.listaProdutosCarrinho.reduce((i, j) => i + j.preco * j.quantidade, 0)
+    return this.listaProdutosCarrinho.reduce((i, j) => i + (j.preco * j.desconto / 100) * j.quantidade, 0)
   }
 
   limparCarrinho() {

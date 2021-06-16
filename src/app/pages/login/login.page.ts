@@ -1,8 +1,8 @@
-import {BaseComponent} from "../class/commons-class/base.component";
+import {BaseComponent} from "../../class/commons-class/base.component";
 import {Component, Injector} from "@angular/core";
-import {AuthService} from "../service/auth.service";
-import {API_CONFIG} from "../config/api.config";
-import {CredenciaisDTO} from "../class/dto/credenciais.dto";
+import {AuthService} from "../../service/auth.service";
+import {API_CONFIG} from "../../config/api.config";
+import {CredenciaisDTO} from "../../class/dto/credenciais.dto";
 
 @Component({
   selector: 'app-login',

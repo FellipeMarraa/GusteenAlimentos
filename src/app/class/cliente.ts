@@ -1,14 +1,13 @@
 export class Cliente {
+  id: string;
 
-    id: number;
+  cpfOuCnpj: string;
 
-    cpf: string;
+  nome: string;
 
-    cnpj: string;
+  email: string;
 
-    nome: string;
+  senha: string;
 
-    email: string;
-
-    senha: string;
+  imageUrl?: string;
 }

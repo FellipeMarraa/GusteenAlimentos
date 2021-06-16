@@ -3,7 +3,7 @@ import {CommonModule} from "@angular/common";
 import {NgModule} from "@angular/core";
 import {FormsModule} from "@angular/forms";
 import {CarrinhoModal} from "./carrinho.modal";
-import {ComponentsModule} from "../commons-module/components.commons.module";
+import {ComponentsModule} from "../../commons-module/components.commons.module";
 import {RouterModule, Routes} from "@angular/router";
 
 

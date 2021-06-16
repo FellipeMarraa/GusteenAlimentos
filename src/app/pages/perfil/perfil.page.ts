@@ -1,12 +1,12 @@
 import {Component, Injector} from '@angular/core';
-import {ClienteService} from '../service/cliente.service';
-import {BaseComponent} from '../class/commons-class/base.component';
-import {StorageService} from '../service/storage.service';
-import {ClienteDTO} from "../class/dto/cliente.dto";
+import {ClienteService} from '../../service/cliente.service';
+import {BaseComponent} from '../../class/commons-class/base.component';
+import {StorageService} from '../../service/storage.service';
+import {ClienteDTO} from "../../class/dto/cliente.dto";
 import {DomSanitizer} from "@angular/platform-browser";
 import {NavController} from "@ionic/angular";
 // import {Camera, CameraOptions} from '@ionic-native/camera/ngx';
-import {API_CONFIG} from "../config/api.config";
+import {API_CONFIG} from "../../config/api.config";
 
 @Component({
   selector: 'app-perfil',

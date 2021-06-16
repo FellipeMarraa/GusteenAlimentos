@@ -4,27 +4,27 @@ import {PreloadAllModules, RouterModule, Routes} from '@angular/router';
 const routes: Routes = [
   {
     path: '',
-    loadChildren: () => import('./login/login.module').then(m => m.LoginPageModule)
+    loadChildren: () => import('./pages/login/login.module').then(m => m.LoginPageModule)
   },
   {
     path: 'login',
-    loadChildren: () => import('./login/login.module').then(m => m.LoginPageModule)
+    loadChildren: () => import('./pages/login/login.module').then(m => m.LoginPageModule)
   },
   {
     path: 'cadastro',
-    loadChildren: () => import('./cadastro/cadastro.module').then(m => m.CadastroPageModule)
+    loadChildren: () => import('./pages/cadastro/cadastro.module').then(m => m.CadastroPageModule)
   },
   {
     path: 'home',
-    loadChildren: () => import('./home/home.module').then(m => m.HomePageModule)
+    loadChildren: () => import('./pages/home/home.module').then(m => m.HomePageModule)
   },
   {
     path: 'perfil',
-    loadChildren: () => import('./perfil/perfil.module').then(m => m.PerfilPageModule)
+    loadChildren: () => import('./pages/perfil/perfil.module').then(m => m.PerfilPageModule)
   },
   {
     path: 'help',
-    loadChildren: () => import('./help/help.module').then(m => m.HelpPageModule)
+    loadChildren: () => import('./pages/help/help.module').then(m => m.HelpPageModule)
   },
   {
     path: 'emprestimos',
@@ -32,7 +32,11 @@ const routes: Routes = [
   },
   {
     path: 'carrinho',
-    loadChildren: () => import('./carrinho/carrinho.module').then(m => m.CarrinhoModule)
+    loadChildren: () => import('./pages/carrinho/carrinho.module').then(m => m.CarrinhoModule)
+  },
+  {
+    path: 'recovery-password',
+    loadChildren: () => import('./pages/recovery-password/recovery.password.module').then(m => m.RecoveryPasswordPageModule)
   }
 ];
 

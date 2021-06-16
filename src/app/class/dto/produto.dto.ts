@@ -9,4 +9,8 @@ export class ProdutoDTO {
   imageUrl?: string;
 
   quantidade: number;
+
+  promocao: boolean;
+
+  desconto: number;
 }
