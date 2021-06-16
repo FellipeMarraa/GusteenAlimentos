@@ -13,6 +13,7 @@ import {Cliente} from "../../class/cliente";
 })
 export class LoginPage extends BaseComponent {
   tipo: boolean;
+  usuarioLogin: CredenciaisDTO = new CredenciaisDTO();
   usuario: Cliente = new Cliente();
   bucketUrl: string = API_CONFIG.bucketBaseUrl;
 
@@ -45,10 +46,10 @@ export class LoginPage extends BaseComponent {
 
   acessar() {
 
-    this.navCtrl.navigateRoot('/home');
-    this.auth.authenticate(this.usuario)
+    // this.navCtrl.navigateRoot('/home');
+    this.auth.authenticate(this.usuarioLogin)
       .subscribe(response => {
-          this.auth.successfulLogin(response.headers.get('Authorization'));
+          // this.auth.successfulLogin(response.headers.get('Authorization'));
           this.navCtrl.navigateRoot('/home');
         },
         error => {

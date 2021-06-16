@@ -4,19 +4,19 @@ import {NgModule} from "@angular/core";
 import {FormsModule} from "@angular/forms";
 import {ComponentsModule} from "../../commons-module/components.commons.module";
 import {RouterModule, Routes} from "@angular/router";
-import {ProdutoModule} from "./produto.module";
+import {ProdutoPage} from "./produto.page";
 
 
 const routes: Routes = [
   {
     path: '',
-    component: ProdutoModule
+    component: ProdutoPage
   }
 ];
 
 @NgModule({
   declarations: [
-    ProdutoModule
+    ProdutoPage
   ],
   imports: [
     CommonModule,
@@ -26,7 +26,7 @@ const routes: Routes = [
     RouterModule.forChild(routes),
   ],
   exports: [
-    ProdutoModule,
+    ProdutoPage,
   ],
 })
 

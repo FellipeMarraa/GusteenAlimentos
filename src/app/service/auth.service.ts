@@ -14,7 +14,7 @@ export class AuthService {
               public storage: StorageService) {
   }
 
-  authenticate(usuario: Cliente) {
+  authenticate(usuario: CredenciaisDTO) {
     return this.http.post(`${API_CONFIG.baseUrl}/login`, usuario,
       {
         observe: 'response',

@@ -1,6 +1,6 @@
 import {Component, Injector} from "@angular/core";
 import {BaseComponent} from "../../class/commons-class/base.component";
-import {Produto} from "../../class/dto/produto.dto";
+import {ProdutoDTO} from "../../class/dto/produto.dto";
 
 @Component({
   selector: 'carrinho-modal',
@@ -8,7 +8,7 @@ import {Produto} from "../../class/dto/produto.dto";
   styleUrls: ['./carrinho.modal.scss']
 })
 export class CarrinhoModal extends BaseComponent {
-  listaProdutosCarrinho: Produto[] = [];
+  listaProdutosCarrinho: ProdutoDTO[] = [];
 
 
   constructor(private injector: Injector) {
@@ -26,7 +26,7 @@ export class CarrinhoModal extends BaseComponent {
     });
   }
 
-  removerItem(produto: Produto) {
+  removerItem(produto: ProdutoDTO) {
     this.listaProdutosCarrinho.splice(this.listaProdutosCarrinho.indexOf(produto), 1)
   }
 
@@ -43,7 +43,7 @@ export class CarrinhoModal extends BaseComponent {
     this.listaProdutosCarrinho = [];
   }
 
-  adicionaItem(produto: Produto) {
+  adicionaItem(produto: ProdutoDTO) {
     let adicionado = false;
     for (let p of this.listaProdutosCarrinho) {
       if (p.id === produto.id) {

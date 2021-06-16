@@ -14,9 +14,9 @@
   <ion-grid>
     <form>
       <ion-item>
-        <ion-label>Categoria</ion-label>
-        <ion-select value="selecione">
-          <ion-select-option value="produtor" *ngFor="let item for categorias">{{item.nome}}</ion-select-option>
+        <ion-label>Categorias</ion-label>
+        <ion-select class="multiple" [(ngModel)]="produto.categoria" name="categoria">
+          <ion-select-option *ngFor="let item of categorias" [value] = "item.nome" >{{item.nome}}</ion-select-option>
         </ion-select>
       </ion-item>
 

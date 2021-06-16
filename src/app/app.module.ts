@@ -14,6 +14,7 @@ import {ClienteService} from "./service/cliente.service";
 import {ImageUtilService} from "./service/image.util.service";
 import {Camera} from "@ionic-native/camera/ngx";
 import {CategoriaService} from "./service/categoria.service";
+import {ProdutoService} from "./service/produto.service";
 
 @NgModule({
   declarations: [AppComponent],
@@ -31,6 +32,7 @@ import {CategoriaService} from "./service/categoria.service";
     AuthService,
     ClienteService,
     ImageUtilService,
+    ProdutoService,
     CategoriaService,
 
     {
