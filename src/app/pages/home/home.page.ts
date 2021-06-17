@@ -30,13 +30,21 @@ export class HomePage extends BaseComponent {
   }
 
   ngOnInit() {
+    this.carregaListaProdutos();
+    // this.carregaListaCategorias();
+  }
+
+  carregaListaProdutos() {
+
+    console.log("home page")
+    console.log(this.currentUser)
+
     this.produtoService.findAll().subscribe(prod => {
       this.listaProdutos = prod;
       console.log(this.listaProdutos);
     })
-    // this.carregaListaProdutos();
-    // this.carregaListaCategorias();
   }
+
 
   carregaListaCategorias() {
     this.listaCategorias = [];
@@ -48,44 +56,6 @@ export class HomePage extends BaseComponent {
 
     this.listaCategorias.push(produto1, produto2)
   }
-
-  // carregaListaProdutos() {
-  //   this.listaProdutosCarrinho = [];
-  //   let produto1: Produto = new Produto()
-  //   produto1.id = "1";
-  //   produto1.nome = "Arroz";
-  //   produto1.preco = 40;
-  //   produto1.quantidade = 1;
-  //   produto1.promocao = true;
-  //   produto1.desconto = 50;
-  //   produto1.imageUrl = "https://img.cybercook.com.br/receitas/842/como-fazer-arroz-branco-1-840x480.jpeg?q=75";
-  //
-  //   let produto2: Produto = new Produto()
-  //   produto2.id = "2";
-  //   produto2.nome = "Feijão";
-  //   produto2.preco = 50;
-  //   produto2.quantidade = 1;
-  //   produto2.desconto = 100;
-  //   produto2.imageUrl = "https://img.cybercook.com.br/receitas/972/feijao-3-840x480.jpeg?q=75";
-  //
-  //   let produto3: Produto = new Produto()
-  //   produto3.id = "3";
-  //   produto3.nome = "cenoura";
-  //   produto3.preco = 60;
-  //   produto3.quantidade = 1;
-  //   produto3.desconto = 100;
-  //   produto3.imageUrl = "https://saborizatti.com.br/wp-content/uploads/2020/12/Cenoura-saborizatti.png";
-  //
-  //   let produto4: Produto = new Produto()
-  //   produto4.id = "4";
-  //   produto4.nome = "beterraba";
-  //   produto4.preco = 70;
-  //   produto4.desconto = 1;
-  //   produto4.quantidade = 100;
-  //   produto4.imageUrl = "https://img.cybercook.com.br/receitas/842/como-fazer-arroz-branco-1-840x480.jpeg?q=75";
-  //
-  //   this.lisataProdutos.push(produto1, produto2, produto3, produto4)
-  // }
 
 
   async openCar() {
@@ -108,7 +78,7 @@ export class HomePage extends BaseComponent {
     if (!adicionado) {
       this.listaProdutosCarrinho.push(produto)
     }
-    ToastUtil.presentToast(this.toastCtrl, "Item Adicionado", PositionToast.BOTTOM, ToastType.SUCCESS,500);
+    ToastUtil.presentToast(this.toastCtrl, "Item Adicionado" + " - " + produto.nome, PositionToast.BOTTOM, ToastType.SUCCESS, 500);
   }
 
 

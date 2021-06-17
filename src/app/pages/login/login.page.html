@@ -6,14 +6,14 @@
     <form>
       <ion-item>
         <ion-label position="floating">CPF ou CNPJ</ion-label>
-        <ion-input class="ion-text-lowercase" type="text" name="cpf" [(ngModel)]="usuarioLogin.username"></ion-input>
+        <ion-input class="ion-text-lowercase" type="text" name="cpf" [(ngModel)]="usuario.username"></ion-input>
       </ion-item>
 
       <div class="clear"></div>
 
       <ion-item>
         <ion-label position="floating">Senha</ion-label>
-        <ion-input class="input-senha" [type]="tipo ? 'text' : 'password'" name="senha" [(ngModel)]="usuarioLogin.senha">
+        <ion-input class="input-senha" [type]="tipo ? 'text' : 'password'" name="senha" [(ngModel)]="usuario.senha">
           <ion-fab horizontal="end" vertical="end">
             <ion-button class="ocultarSenha" fill="clear" type="button" (click)="exibiOcultarSenha()">
               <ion-icon style="color:black" [name]="tipo ? 'eye-off-outline' : 'eye-outline'"></ion-icon>

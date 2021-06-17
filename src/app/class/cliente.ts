@@ -3,6 +3,8 @@ export class Cliente {
 
   cpfOuCnpj: string;
 
+  username: string;
+
   nome: string;
 
   email: string;

@@ -4,6 +4,8 @@ import {ProdutoDTO} from "../../class/dto/produto.dto";
 import {CategoriaDTO} from "../../class/dto/categoria.dto";
 import {CategoriaService} from "../../service/categoria.service";
 import {ProdutoService} from "../../service/produto.service";
+import {PositionToast, ToastUtil} from "../../class/commons-class/toast.util";
+import {ToastType} from "../../class/commons-class/toast.type";
 
 @Component({
   selector: 'produto-page',
@@ -23,19 +25,49 @@ export class ProdutoPage extends BaseComponent {
   }
 
   init() {
-    this.categoriaService.findAll().subscribe(cat => {
-      this.categorias = cat;
-      console.log(this.categorias);
+    this.carregaCategorias();
+  }
+
+  carregaCategorias() {
+    this.categoriaService.findAll().subscribe((categoria) => {
+      this.categorias = categoria;
     })
-
-
   }
 
   cadastrar() {
 
-    this.produtoService.save(this.produto).subscribe(prod => {
-      this.produto = prod;
-      console.log(this.produto)
-    })
+    if (this.validaCadastro()) {
+      if (!this.produto.desconto) {
+        this.produto.desconto = 100;
+      }
+      this.produtoService.save(this.produto).subscribe((produto) => {
+        this.produto = produto;
+      }, error => {
+        ToastUtil.presentToast(this.toastCtrl, "Erro no servidor", PositionToast.BOTTOM, ToastType.ERROR, 500);
+      })
+    } else {
+      ToastUtil.presentToast(this.toastCtrl, "Necessita dados", PositionToast.BOTTOM, ToastType.INFO, 500);
+    }
   }
+
+
+  validaCadastro() {
+    //TODO VALIDAR
+
+    let erros: string[];
+    if (!this.produto.nome) {
+      erros.push("erros")
+    }
+
+    return true;
+
+
+  }
+
+
+  onCategoriaChange(categoria: CategoriaDTO) {
+    this.produto.categoria = categoria;
+  }
+
+
 }

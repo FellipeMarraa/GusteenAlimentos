@@ -14,7 +14,6 @@ export class CarrinhoModal extends BaseComponent {
   constructor(private injector: Injector) {
     super(injector);
     this.listaProdutosCarrinho = [];
-
   }
 
   init() {
@@ -33,7 +32,6 @@ export class CarrinhoModal extends BaseComponent {
   backToHome() {
     this.navCtrl.navigateForward(`/home`);
   }
-
 
   getTotal() {
     return this.listaProdutosCarrinho.reduce((i, j) => i + (j.preco * j.desconto / 100) * j.quantidade, 0)
@@ -69,6 +67,6 @@ export class CarrinhoModal extends BaseComponent {
   }
 
   finaliza() {
-
+    //manda para a tela de pagamento;
   }
 }

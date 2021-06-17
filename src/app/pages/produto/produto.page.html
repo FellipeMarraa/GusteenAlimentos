@@ -15,20 +15,26 @@
     <form>
       <ion-item>
         <ion-label>Categorias</ion-label>
-        <ion-select class="multiple" [(ngModel)]="produto.categoria" name="categoria">
-          <ion-select-option *ngFor="let item of categorias" [value] = "item.nome" >{{item.nome}}</ion-select-option>
+        <ion-select class="multiple" [(ngModel)]="produto.categoria" (ngModelChange)="onCategoriaChange($event)" name="categoria">
+          <ion-select-option *ngFor="let item of categorias" [value]="item.nome">{{item.nome}}</ion-select-option>
         </ion-select>
       </ion-item>
 
       <ion-item>
         <ion-label position="floating">Nome</ion-label>
-        <ion-input class="ion-text-lowercase" type="text" name="nome" [(ngModel)]="produto.nome"></ion-input>
+        <ion-input type="text" name="nome" [(ngModel)]="produto.nome"></ion-input>
       </ion-item>
 
       <ion-item>
         <ion-label position="floating">Preço</ion-label>
-        <ion-input class="ion-text-lowercase" type="number" name="nome" [(ngModel)]="produto.preco"></ion-input>
+        <ion-input type="number" name="preco" [(ngModel)]="produto.preco"></ion-input>
       </ion-item>
+
+      <ion-item>
+        <ion-label position="floating">Quantidade</ion-label>
+        <ion-input type="number" name="quantidade" [(ngModel)]="produto.quantidade"></ion-input>
+      </ion-item>
+
     </form>
 
   </ion-grid>

@@ -1,3 +1,5 @@
+import {CategoriaDTO} from "./categoria.dto";
+
 export class ProdutoDTO {
 
   id: string;
@@ -14,5 +16,6 @@ export class ProdutoDTO {
 
   desconto: number;
 
-  categoria: string;
+  categoria: CategoriaDTO;
+
 }

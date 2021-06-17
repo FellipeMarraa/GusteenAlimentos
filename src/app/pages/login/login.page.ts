@@ -5,6 +5,7 @@ import {API_CONFIG} from "../../config/api.config";
 import {CredenciaisDTO} from "../../class/dto/credenciais.dto";
 import {StorageService} from "../../service/storage.service";
 import {Cliente} from "../../class/cliente";
+import {Subscription} from "rxjs";
 
 @Component({
   selector: 'app-login',
@@ -13,9 +14,9 @@ import {Cliente} from "../../class/cliente";
 })
 export class LoginPage extends BaseComponent {
   tipo: boolean;
-  usuarioLogin: CredenciaisDTO = new CredenciaisDTO();
   usuario: Cliente = new Cliente();
   bucketUrl: string = API_CONFIG.bucketBaseUrl;
+  currentUserSubscription: Subscription;
 
   isloading: boolean = false;
 
@@ -27,6 +28,12 @@ export class LoginPage extends BaseComponent {
   }
 
   ngOnInit() {
+    this.currentUserSubscription = this.appService.currentUser.subscribe((value) => {
+      if (value) {
+        console.log(value)
+      }
+    });
+
     this.auth.refreshToken()
       .subscribe(response => {
           this.auth.successfulLogin(response.headers.get('Authorization'));
@@ -45,11 +52,9 @@ export class LoginPage extends BaseComponent {
   }
 
   acessar() {
-
-    // this.navCtrl.navigateRoot('/home');
-    this.auth.authenticate(this.usuarioLogin)
-      .subscribe(response => {
-          // this.auth.successfulLogin(response.headers.get('Authorization'));
+    this.auth.authenticate(this.usuario)
+      .subscribe((response) => {
+          this.appService.setCurrentUser(this.usuario);
           this.navCtrl.navigateRoot('/home');
         },
         error => {
