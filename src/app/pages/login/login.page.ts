@@ -6,6 +6,7 @@ import {CredenciaisDTO} from "../../class/dto/credenciais.dto";
 import {StorageService} from "../../service/storage.service";
 import {Cliente} from "../../class/cliente";
 import {Subscription} from "rxjs";
+import {ClienteService} from "../../service/cliente.service";
 
 @Component({
   selector: 'app-login',
@@ -23,6 +24,7 @@ export class LoginPage extends BaseComponent {
   constructor(private injector: Injector,
               public auth: AuthService,
               private storageService: StorageService,
+              private clienteService: ClienteService
   ) {
     super(injector);
   }
@@ -54,7 +56,9 @@ export class LoginPage extends BaseComponent {
   acessar() {
     this.auth.authenticate(this.usuario)
       .subscribe((response) => {
+        let usuario = this.clienteService.findByCpfOuCnpj(this.usuario.username)
           this.appService.setCurrentUser(this.usuario);
+          console.log(usuario);
           this.navCtrl.navigateRoot('/home');
         },
         error => {

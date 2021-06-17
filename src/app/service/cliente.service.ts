@@ -28,6 +28,10 @@ export class ClienteService {
     return this._http.get(`${API_CONFIG.baseUrl}/clientes/email?value=${email}`);
   }
 
+  findByCpfOuCnpj(username: string): Observable<Cliente> {
+    return this._http.get<Cliente>(`${API_CONFIG.baseUrl}/clientes/username?value=${username}`);
+  }
+
   getImageFromBucket(id : string) : Observable<any> {
     let url = `${API_CONFIG.bucketBaseUrl}/cp${id}.jpg`
     return this._http.get(url, {responseType : 'blob'});
