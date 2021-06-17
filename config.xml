@@ -24,24 +24,24 @@
         </edit-config>
         <resource-file src="resources/android/xml/network_security_config.xml" target="app/src/main/res/xml/network_security_config.xml" />
         <allow-intent href="market:*" />
-        <icon density="ldpi" src="https://agro-app.s3.sa-east-1.amazonaws.com/icone.png" />
-        <icon density="mdpi" src="https://agro-app.s3.sa-east-1.amazonaws.com/icone.png" />
-        <icon density="hdpi" src="https://agro-app.s3.sa-east-1.amazonaws.com/icone.png" />
-        <icon density="xhdpi" src="https://agro-app.s3.sa-east-1.amazonaws.com/icone.png" />
-        <icon density="xxhdpi" src="https://agro-app.s3.sa-east-1.amazonaws.com/icone.png" />
-        <icon density="xxxhdpi" src="https://agro-app.s3.sa-east-1.amazonaws.com/icone.png" />
-        <splash density="land-ldpi" src="https://agro-app.s3.sa-east-1.amazonaws.com/icone.png" />
-        <splash density="land-mdpi" src="https://agro-app.s3.sa-east-1.amazonaws.com/icone.png" />
-        <splash density="land-hdpi" src="https://agro-app.s3.sa-east-1.amazonaws.com/icone.png" />
-        <splash density="land-xhdpi" src="https://agro-app.s3.sa-east-1.amazonaws.com/icone.png" />
-        <splash density="land-xxhdpi" src="https://agro-app.s3.sa-east-1.amazonaws.com/icone.png" />
-        <splash density="land-xxxhdpi" src="https://agro-app.s3.sa-east-1.amazonaws.com/icone.png" />
-        <splash density="port-ldpi" src="https://agro-app.s3.sa-east-1.amazonaws.com/icone.png" />
-        <splash density="port-mdpi" src="https://agro-app.s3.sa-east-1.amazonaws.com/icone.png" />
-        <splash density="port-hdpi" src="https://agro-app.s3.sa-east-1.amazonaws.com/icone.png" />
-        <splash density="port-xhdpi" src="https://agro-app.s3.sa-east-1.amazonaws.com/icone.png" />
-        <splash density="port-xxhdpi" src="https://agro-app.s3.sa-east-1.amazonaws.com/icone.png" />
-        <splash density="port-xxxhdpi" src="https://agro-app.s3.sa-east-1.amazonaws.com/icone.png" />
+        <icon density="ldpi" src="src/assets/imgs/icone.png" />
+        <icon density="mdpi" src="src/assets/imgs/icone.png" />
+        <icon density="hdpi" src="src/assets/imgs/icone.png" />
+        <icon density="xhdpi" src="src/assets/imgs/icone.png" />
+        <icon density="xxhdpi" src="src/assets/imgs/icone.png" />
+        <icon density="xxxhdpi" src="src/assets/imgs/icone.png" />
+        <splash density="land-ldpi" src="src/assets/imgs/icone.png" />
+        <splash density="land-mdpi" src="src/assets/imgs/icone.png" />
+        <splash density="land-hdpi" src="src/assets/imgs/icone.png" />
+        <splash density="land-xhdpi" src="src/assets/imgs/icone.png" />
+        <splash density="land-xxhdpi" src="src/assets/imgs/icone.png" />
+        <splash density="land-xxxhdpi" src="src/assets/imgs/icone.png" />
+        <splash density="port-ldpi" src="src/assets/imgs/icone.png" />
+        <splash density="port-mdpi" src="src/assets/imgs/icone.png" />
+        <splash density="port-hdpi" src="src/assets/imgs/icone.png" />
+        <splash density="port-xhdpi" src="src/assets/imgs/icone.png" />
+        <splash density="port-xxhdpi" src="src/assets/imgs/icone.png" />
+        <splash density="port-xxxhdpi" src="src/assets/imgs/icone.png" />
     </platform>
     <platform name="ios">
         <allow-intent href="itms:*" />
