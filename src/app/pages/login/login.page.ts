@@ -58,6 +58,19 @@ export class LoginPage extends BaseComponent {
       .subscribe((response) => {
         let usuario = this.clienteService.findByCpfOuCnpj(this.usuario.username)
           this.appService.setCurrentUser(this.usuario);
+
+          this.clienteService.list().subscribe((clientes) => {
+
+            if(clientes){
+              clientes.forEach(cliente =>{
+                if (cliente.username == this.currentUser.username && cliente.senha == this.currentUser.senha){
+                    this.appService.setCurrentUser(cliente);
+                }
+              })
+            }
+
+          })
+
           console.log(usuario);
           this.navCtrl.navigateRoot('/home');
         },

@@ -34,11 +34,6 @@ export class HomePage extends BaseComponent {
     this.carregaListaProdutos();
     // this.carregaListaCategorias();
 
-    this.clienteService.list().subscribe(cliente => {
-      this.clientes = cliente;
-      console.log(this.clientes);
-    })
-
   }
 
   carregaListaProdutos() {
