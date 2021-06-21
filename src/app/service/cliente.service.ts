@@ -39,18 +39,18 @@ export class ClienteService {
 
 
   getByID(id: number) {
-    return this._http.get(`${API_CONFIG.baseUrl}/cliente/` + id);
+    return this._http.get(`${API_CONFIG.baseUrl}/clientes/` + id);
   }
 
   list(): Observable<Cliente[]> {
-    return this._http.get<Cliente[]>(`${API_CONFIG.baseUrl}/cliente/list`)
+    return this._http.get<Cliente[]>(`${API_CONFIG.baseUrl}/clientes`)
         .pipe(
             retry(2),
             catchError(this.handleError));
   }
 
   save(cliente: Cliente): Observable<Cliente> {
-    return this._http.post<Cliente>(`${API_CONFIG.baseUrl}/cliente/create`, JSON.stringify(cliente), this.httpOptions)
+    return this._http.post<Cliente>(`${API_CONFIG.baseUrl}/clientes/create`, JSON.stringify(cliente), this.httpOptions)
       .pipe(
         retry(2),
         catchError(this.handleError)
@@ -72,7 +72,7 @@ export class ClienteService {
   }
 
   update(cliente: Cliente): Observable<Cliente> {
-    return this._http.put<Cliente>(`${API_CONFIG.baseUrl}/cliente/edit`, JSON.stringify(cliente), this.httpOptions)
+    return this._http.put<Cliente>(`${API_CONFIG.baseUrl}/clientes/edit`, JSON.stringify(cliente), this.httpOptions)
       .pipe(
         retry(2),
         catchError(this.handleError)

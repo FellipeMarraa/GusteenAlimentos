@@ -9,6 +9,7 @@ import {NavigationExtras} from "@angular/router";
 import {PositionToast, ToastUtil} from "../../class/commons-class/toast.util";
 import {ToastType} from "../../class/commons-class/toast.type";
 import {ProdutoService} from "../../service/produto.service";
+import {Cliente} from "../../class/cliente";
 
 @Component({
   selector: 'app-home',
@@ -17,7 +18,7 @@ import {ProdutoService} from "../../service/produto.service";
 })
 export class HomePage extends BaseComponent {
   listaCategorias: CategoriaDTO[] = [];
-
+  clientes: Cliente[] = [];
   listaProdutos: ProdutoDTO[] = [];
   listaProdutosCarrinho: ProdutoDTO[] = [];
 
@@ -32,6 +33,12 @@ export class HomePage extends BaseComponent {
   ngOnInit() {
     this.carregaListaProdutos();
     // this.carregaListaCategorias();
+
+    this.clienteService.list().subscribe(cliente => {
+      this.clientes = cliente;
+      console.log(this.clientes);
+    })
+
   }
 
   carregaListaProdutos() {
