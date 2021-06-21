@@ -2,21 +2,21 @@ import {IonicModule} from "@ionic/angular";
 import {CommonModule} from "@angular/common";
 import {NgModule} from "@angular/core";
 import {FormsModule} from "@angular/forms";
-import {ComponentsModule} from "../../commons-module/components.commons.module";
+import {ComponentsModule} from "../../../commons-module/components.commons.module";
 import {RouterModule, Routes} from "@angular/router";
-import {ProdutoPage} from "./produto.page";
+import {ProdutoEditPage} from "./produto.edit.page";
 
 
 const routes: Routes = [
   {
     path: '',
-    component: ProdutoPage
+    component: ProdutoEditPage
   }
 ];
 
 @NgModule({
   declarations: [
-    ProdutoPage
+    ProdutoEditPage
   ],
   imports: [
     CommonModule,
@@ -26,9 +26,9 @@ const routes: Routes = [
     RouterModule.forChild(routes),
   ],
   exports: [
-    ProdutoPage,
+    ProdutoEditPage,
   ],
 })
 
-export class ProdutoPageModule {
+export class ProdutoEditPageModule {
 }

@@ -34,17 +34,12 @@
         <ion-label position="floating">Quantidade</ion-label>
         <ion-input type="number" name="quantidade" [(ngModel)]="produto.quantidade"></ion-input>
       </ion-item>
-
     </form>
-
   </ion-grid>
 </ion-content>
 
-<ion-footer>
-
-  <ion-toolbar color="primary">
-    <ion-button expand="full" (click)="cadastrar()">
-      Cadastrar
-    </ion-button>
-  </ion-toolbar>
-</ion-footer>
+<ion-fab vertical="bottom" horizontal="end" (click)="cadastrar()">
+  <ion-fab-button color="primary">
+    <ion-icon name="checkmark-outline"></ion-icon>
+  </ion-fab-button>
+</ion-fab>

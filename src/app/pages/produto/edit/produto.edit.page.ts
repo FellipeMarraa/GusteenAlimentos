@@ -1,18 +1,18 @@
 import {Component, Injector} from "@angular/core";
-import {BaseComponent} from "../../class/commons-class/base.component";
-import {ProdutoDTO} from "../../class/dto/produto.dto";
-import {CategoriaDTO} from "../../class/dto/categoria.dto";
-import {CategoriaService} from "../../service/categoria.service";
-import {ProdutoService} from "../../service/produto.service";
-import {PositionToast, ToastUtil} from "../../class/commons-class/toast.util";
-import {ToastType} from "../../class/commons-class/toast.type";
+import {BaseComponent} from "../../../class/commons-class/base.component";
+import {ProdutoDTO} from "../../../class/dto/produto.dto";
+import {CategoriaDTO} from "../../../class/dto/categoria.dto";
+import {CategoriaService} from "../../../service/categoria.service";
+import {ProdutoService} from "../../../service/produto.service";
+import {PositionToast, ToastUtil} from "../../../class/commons-class/toast.util";
+import {ToastType} from "../../../class/commons-class/toast.type";
 
 @Component({
   selector: 'produto-page',
-  templateUrl: 'produto.page.html',
-  styleUrls: ['./produto.page.scss']
+  templateUrl: 'produto.edit.page.html',
+  styleUrls: ['./produto.edit.page.scss']
 })
-export class ProdutoPage extends BaseComponent {
+export class ProdutoEditPage extends BaseComponent {
 
   produto: ProdutoDTO = new ProdutoDTO();
   categorias: CategoriaDTO[] = [];

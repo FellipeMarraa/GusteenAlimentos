@@ -1,5 +1,6 @@
 import {NgModule} from '@angular/core';
 import {PreloadAllModules, RouterModule, Routes} from '@angular/router';
+import {ProdutoListPageModule} from "./pages/produto/list/produto.list.page.module";
 
 const routes: Routes = [
   {
@@ -32,7 +33,16 @@ const routes: Routes = [
   },
   {
     path: 'produto',
-    loadChildren: () => import('./pages/produto/produto.page.module').then(m => m.ProdutoPageModule)
+    children: [
+      {
+        path: 'list',
+        loadChildren: () => import('./pages/produto/list/produto.list.page.module').then(m => m.ProdutoListPageModule)
+      },
+      {
+        path: 'edit/',
+        loadChildren: () => import('./pages/produto/edit/produto.edit.page.module').then(m => m.ProdutoEditPageModule)
+      }
+    ]
   },
   {
     path: 'recovery-password',

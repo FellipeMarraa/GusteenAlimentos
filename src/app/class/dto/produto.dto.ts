@@ -1,4 +1,5 @@
 import {CategoriaDTO} from "./categoria.dto";
+import {Cliente} from "../cliente";
 
 export class ProdutoDTO {
 
@@ -17,5 +18,7 @@ export class ProdutoDTO {
   desconto: number;
 
   categoria: CategoriaDTO;
+
+  cliente: Cliente;
 
 }
