@@ -69,7 +69,6 @@ export abstract class BaseComponent implements IBaseComponent {
   }
 
   ngOnDestroy(): void {
-    console.log('this.currentUserSubscription.unsubscribe();');
     if (this.userSubscription) {
       this.userSubscription.unsubscribe();
     }

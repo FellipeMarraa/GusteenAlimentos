@@ -31,11 +31,15 @@ export class PerfilPage extends BaseComponent {
     super(injector);
   }
 
-  ionViewDidLoad() {
+  ngOnInit() {
     this.loadData();
   }
 
   loadData() {
+    console.log("perfil page page");
+    console.log(this.currentUser);
+
+
     let localUser = this.storage.getLocalUser();
     if (localUser && localUser.email) {
       this.clienteService.findByEmail(localUser.email)

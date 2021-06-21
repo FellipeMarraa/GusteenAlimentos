@@ -30,11 +30,6 @@ export class LoginPage extends BaseComponent {
   }
 
   ngOnInit() {
-    this.currentUserSubscription = this.appService.currentUser.subscribe((value) => {
-      if (value) {
-        console.log(value)
-      }
-    });
 
     this.auth.refreshToken()
       .subscribe(response => {
@@ -56,22 +51,19 @@ export class LoginPage extends BaseComponent {
   acessar() {
     this.auth.authenticate(this.usuario)
       .subscribe((response) => {
-        let usuario = this.clienteService.findByCpfOuCnpj(this.usuario.username)
-          this.appService.setCurrentUser(this.usuario);
 
           this.clienteService.list().subscribe((clientes) => {
-
             if(clientes){
               clientes.forEach(cliente =>{
-                if (cliente.username == this.currentUser.username && cliente.senha == this.currentUser.senha){
-                    this.appService.setCurrentUser(cliente);
+                if (cliente.cpfOuCnpj == this.usuario.username && "123" == this.usuario.senha){
+                  console.log(cliente)
+                  this.appService.setCurrentUser(cliente);
                 }
               })
             }
 
           })
 
-          console.log(usuario);
           this.navCtrl.navigateRoot('/home');
         },
         error => {

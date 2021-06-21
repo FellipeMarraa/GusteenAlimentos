@@ -44,7 +44,6 @@ export class RecoveryPasswordPage extends BaseComponent {
         this.isloading = false;
         ToastUtil.presentToast(this.toastCtrl, "Usuário não encontrado!", PositionToast.BOTTOM, ToastType.ERROR);
       }
-      console.log(item);
     }, error => {
       this.isloading = false;
       ToastUtil.presentToast(this.toastCtrl, "Erro no servidor", PositionToast.BOTTOM, ToastType.ERROR);

@@ -37,13 +37,10 @@ export class HomePage extends BaseComponent {
   }
 
   carregaListaProdutos() {
-
-    console.log("home page")
-    console.log(this.currentUser)
-
+    console.log("home page");
+    console.log(this.currentUser);
     this.produtoService.findAll().subscribe(prod => {
       this.listaProdutos = prod;
-      console.log(this.listaProdutos);
     })
   }
 
@@ -61,7 +58,6 @@ export class HomePage extends BaseComponent {
 
 
   async openCar() {
-    console.log(this.listaProdutosCarrinho);
     const navigationExtra: NavigationExtras = {
       state: {listaProdutosCarrinho: this.listaProdutosCarrinho}
     };

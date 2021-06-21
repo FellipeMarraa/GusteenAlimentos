@@ -43,7 +43,7 @@ export class ClienteService {
   }
 
   list(): Observable<Cliente[]> {
-    return this._http.get<Cliente[]>(`${API_CONFIG.baseUrl}/clientes`)
+    return this._http.get<Cliente[]>(`${API_CONFIG.baseUrl}/clientes/listALL`)
         .pipe(
             retry(2),
             catchError(this.handleError));
@@ -96,7 +96,6 @@ export class ClienteService {
       // Erro ocorreu no lado do servidor
       errorMessage = `Código do erro: ${error.status}, ` + `menssagem: ${error.message}`;
     }
-    console.log(errorMessage);
     return throwError(errorMessage);
   }
 

@@ -37,7 +37,6 @@ export class CadastroPage extends BaseComponent {
   }
 
   cadastrarCidade() {
-    console.log(this.usuario)
   }
 
   dismiss() {
