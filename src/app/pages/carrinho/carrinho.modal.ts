@@ -67,6 +67,6 @@ export class CarrinhoModal extends BaseComponent {
   }
 
   finaliza() {
-    //manda para a tela de pagamento;
+      this.navCtrl.navigateRoot('/finaliza');
   }
 }

@@ -34,8 +34,29 @@
   <div class="clear"></div>
 
   <div style="text-align: left; padding-left: 6%">
-    <p>Meus Produtos</p>
-    <p>Meus pedidos</p>
+    <ion-item class="input-nome">
+      <ion-label position="floating">CPF OU CNPJ:</ion-label>
+      <ion-input class="ion-text" type="text" name="cpfOuCnpj" [disabled]="editUser">pinto</ion-input>
+    </ion-item>
+    <div class="clear"></div>
+
+    <ion-item class="input-nome">
+      <ion-label position="floating">Nome:</ion-label>
+      <ion-input class="ion-text" type="text" name="nome" [disabled]="editUser">pinto</ion-input>
+    </ion-item>
+    <div class="clear"></div>
+
+    <ion-item class="input-nome">
+      <ion-label position="floating">E-mail:</ion-label>
+      <ion-input class="ion-text" type="text" name="email" [disabled]="editUser">pinto</ion-input>
+    </ion-item>
+    <div class="clear"></div>
+
+    <ion-item class="input-nome">
+      <ion-label position="floating">Senha:</ion-label>
+      <ion-input class="ion-text" type="text" name="senha" [disabled]="editUser">pinto</ion-input>
+    </ion-item>
+    <div class="clear"></div>
   </div>
 
 </ion-content>

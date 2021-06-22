@@ -2,14 +2,14 @@ import {Component, Injector} from '@angular/core';
 import {ClienteService} from '../../service/cliente.service';
 import {BaseComponent} from '../../class/commons-class/base.component';
 import {StorageService} from '../../service/storage.service';
-import {ClienteDTO} from "../../class/dto/cliente.dto";
-import {DomSanitizer} from "@angular/platform-browser";
-import {NavController} from "@ionic/angular";
+import {ClienteDTO} from '../../class/dto/cliente.dto';
+import {DomSanitizer} from '@angular/platform-browser';
+import {NavController} from '@ionic/angular';
 import {Camera, CameraOptions} from '@ionic-native/camera/ngx';
-import {API_CONFIG} from "../../config/api.config";
+import {API_CONFIG} from '../../config/api.config';
 
 @Component({
-  selector: 'app-perfil',
+  selector: 'app-z',
   templateUrl: './perfil.page.html',
   styleUrls: ['./perfil.page.scss'],
 })
@@ -20,6 +20,7 @@ export class PerfilPage extends BaseComponent {
   profileImage: any;
   cameraOn: boolean = false;
   editImage: boolean = false;
+  editUser: boolean = false;
 
 
   constructor(private injector: Injector,

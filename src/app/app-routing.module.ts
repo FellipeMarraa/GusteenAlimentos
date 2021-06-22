@@ -46,6 +46,14 @@ const routes: Routes = [
   {
     path: 'recovery-password',
     loadChildren: () => import('./pages/recovery-password/recovery.password.module').then(m => m.RecoveryPasswordPageModule)
+  },
+  {
+    path: 'finaliza',
+    loadChildren: () => import('./pages/finalizar-pedido/finaliza.module').then(m => m.FinalizaPageModule)
+  },
+  {
+    path: 'dados',
+    loadChildren: () => import('./pages/perfil/perfil-dados/dados.module').then(m => m.DadosPageModule)
   }
 ];
 
