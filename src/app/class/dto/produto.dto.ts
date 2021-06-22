@@ -21,4 +21,6 @@ export class ProdutoDTO {
 
   cliente: Cliente;
 
+  idCliente: string;
+
 }
