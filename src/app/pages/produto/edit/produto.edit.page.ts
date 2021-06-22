@@ -40,6 +40,7 @@ export class ProdutoEditPage extends BaseComponent {
       if (!this.produto.desconto) {
         this.produto.desconto = 100;
       }
+      this.produto.idCliente = this.currentUser.id;
       this.produtoService.save(this.produto).subscribe((produto) => {
         this.produto = produto;
       }, error => {
