@@ -19,11 +19,19 @@ export class ProdutoListPage extends BaseComponent {
   }
 
   init() {
-
+    this.carregaProdutos();
   }
 
 
   new() {
     this.navCtrl.navigateForward(`/produto/edit/`);
+  }
+
+  carregaProdutos() {
+    this.produtoService.findAll().subscribe((item) => {
+
+
+      this.listaProdutos = item
+    })
   }
 }
