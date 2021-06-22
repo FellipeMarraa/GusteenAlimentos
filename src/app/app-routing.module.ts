@@ -50,10 +50,6 @@ const routes: Routes = [
   {
     path: 'finaliza',
     loadChildren: () => import('./pages/finalizar-pedido/finaliza.module').then(m => m.FinalizaPageModule)
-  },
-  {
-    path: 'dados',
-    loadChildren: () => import('./pages/perfil/perfil-dados/dados.module').then(m => m.DadosPageModule)
   }
 ];
 

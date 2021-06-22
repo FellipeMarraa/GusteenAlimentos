@@ -140,6 +140,7 @@ export class PerfilPage extends BaseComponent {
   }
 
   editarImagem() {
+    this.editUser = true;
     if (this.editImage == false) {
       this.editImage = true;
     } else {
