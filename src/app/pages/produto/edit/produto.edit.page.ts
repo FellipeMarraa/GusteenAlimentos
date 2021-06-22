@@ -46,7 +46,7 @@ export class ProdutoEditPage extends BaseComponent {
     })
   }
 
-  cadastrar() {
+  salvar() {
 
     if (this.validaCadastro()) {
       if (!this.produto.desconto) {
