@@ -2,6 +2,7 @@ import {Component, Injector} from "@angular/core";
 import {BaseComponent} from "../../../class/commons-class/base.component";
 import {ProdutoService} from "../../../service/produto.service";
 import {ProdutoDTO} from "../../../class/dto/produto.dto";
+import {NavigationExtras} from "@angular/router";
 
 @Component({
   selector: 'produto-list-page',
@@ -29,10 +30,15 @@ export class ProdutoListPage extends BaseComponent {
 
   carregaProdutos() {
     this.produtoService.findAll().subscribe((produtosDB) => {
-      console.log(produtosDB);
       this.listaProdutos = produtosDB.filter(item => item.idCliente == this.currentUser.id);
-
-      console.log(this.listaProdutos);
     })
+  }
+
+  edit(produto: ProdutoDTO) {
+    const navigationExtra: NavigationExtras = {
+      state: {avaliacao: produto}
+    };
+    this.navCtrl.navigateForward(`/produto/edit/`, navigationExtra);
+
   }
 }

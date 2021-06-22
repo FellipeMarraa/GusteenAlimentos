@@ -14,7 +14,7 @@ import {ToastType} from "../../../class/commons-class/toast.type";
 })
 export class ProdutoEditPage extends BaseComponent {
 
-  produto: ProdutoDTO = new ProdutoDTO();
+  produto: ProdutoDTO;
   categorias: CategoriaDTO[] = [];
 
   constructor(private injector: Injector,
@@ -22,10 +22,22 @@ export class ProdutoEditPage extends BaseComponent {
               private produtoService: ProdutoService) {
     super(injector);
 
+    this.activatedRoute.queryParams.subscribe(params => {
+      let returnedObject = this.router.getCurrentNavigation().extras.state;
+      if (returnedObject) {
+        this.produto = returnedObject.avaliacao;
+      } else {
+        this.produto = new ProdutoDTO();
+      }
+    });
+
+
   }
 
   init() {
-    this.carregaCategorias();
+
+
+    // this.carregaCategorias();
   }
 
   carregaCategorias() {
