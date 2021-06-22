@@ -28,10 +28,11 @@ export class ProdutoListPage extends BaseComponent {
   }
 
   carregaProdutos() {
-    this.produtoService.findAll().subscribe((item) => {
+    this.produtoService.findAll().subscribe((produtosDB) => {
+      console.log(produtosDB);
+      this.listaProdutos = produtosDB.filter(item => item.idCliente == this.currentUser.id);
 
-
-      this.listaProdutos = item
+      console.log(this.listaProdutos);
     })
   }
 }

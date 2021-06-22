@@ -41,11 +41,9 @@ export class ProdutoEditPage extends BaseComponent {
         this.produto.desconto = 100;
       }
       this.produto.idCliente = this.currentUser.id;
-      this.produtoService.save(this.produto).subscribe((produto) => {
-        this.produto = produto;
-      }, error => {
-        ToastUtil.presentToast(this.toastCtrl, "Erro no servidor", PositionToast.BOTTOM, ToastType.ERROR, 500);
-      })
+      this.produtoService.save(this.produto);
+      this.navCtrl.navigateForward(`/produto/list`);
+
     } else {
       ToastUtil.presentToast(this.toastCtrl, "Necessita dados", PositionToast.BOTTOM, ToastType.INFO, 500);
     }
@@ -59,16 +57,13 @@ export class ProdutoEditPage extends BaseComponent {
     if (!this.produto.nome) {
       erros.push("erros")
     }
-
     return true;
-
-
   }
 
 
-  onCategoriaChange(categoria: CategoriaDTO) {
-    this.produto.categoria = categoria;
-  }
+  // onCategoriaChange(categoria: CategoriaDTO) {
+  //   this.produto.categoria = categoria;
+  // }
 
 
 }

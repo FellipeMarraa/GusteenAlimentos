@@ -1,20 +1,33 @@
-import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms';
+import {NgModule} from '@angular/core';
+import {CommonModule} from '@angular/common';
+import {FormsModule} from '@angular/forms';
+import {IonicModule} from '@ionic/angular';
+import {RecoveryPasswordPage} from './recovery.password.page';
+import {ComponentsModule} from "../../commons-module/components.commons.module";
+import {RouterModule, Routes} from "@angular/router";
 
-import { IonicModule } from '@ionic/angular';
 
-import { RecoveryPasswordPageRoutingModule } from './recovery.password.routing.module';
-
-import { RecoveryPasswordPage } from './recovery.password.page';
+const routes: Routes = [
+  {
+    path: '',
+    component: RecoveryPasswordPage
+  }
+];
 
 @NgModule({
+  declarations: [
+    RecoveryPasswordPage
+  ],
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    RecoveryPasswordPageRoutingModule
+    ComponentsModule,
+    RouterModule.forChild(routes),
   ],
-  declarations: [RecoveryPasswordPage]
+  exports: [
+    RecoveryPasswordPage,
+  ],
 })
-export class RecoveryPasswordPageModule {}
+export class RecoveryPasswordPageModule {
+}

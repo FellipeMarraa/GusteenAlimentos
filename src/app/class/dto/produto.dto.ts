@@ -17,9 +17,7 @@ export class ProdutoDTO {
 
   desconto: number;
 
-  categoria: CategoriaDTO;
-
-  cliente: Cliente;
+  // categoria: CategoriaDTO;
 
   idCliente: string;
 
