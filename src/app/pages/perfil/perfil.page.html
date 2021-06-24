@@ -5,12 +5,18 @@
     </ion-buttons>
 
     <ion-title>Perfil</ion-title>
+
+
+    <ion-buttons slot="end">
+      <!--  BUTOON   de edição  -->
+    </ion-buttons>
+
   </ion-toolbar>
 </ion-header>
 
 <ion-content class="ion-padding">
   <ion-avatar style="margin-left: 33%; margin-top: 20px; width: 100px; height: 100px">
-    <img class="circle" [src]="profileImage" >
+    <img class="circle" [src]="profileImage">
   </ion-avatar>
   <ion-icon id="iconEdit" (click)="editarImagem()" style="float: right; margin-right: 30%" name="create"></ion-icon>
   <h2 class="ion-text-center">{{cliente?.nome}}</h2>
@@ -36,29 +42,28 @@
   <div style="text-align: left; padding-left: 6%">
     <ion-item class="input-cpfOuCnpj">
       <ion-label position="stacked">CPF OU CNPJ:</ion-label>
-      <ion-input class="ion-text" type="text" name="cpfOuCnpj" [disabled]=true>{{currentUser.cpfOuCnpj}}</ion-input>
+      <ion-input class="ion-text" type="text" name="cpfOuCnpj" [disabled]=true>{{cliente.cpfOuCnpj}}</ion-input>
     </ion-item>
     <div class="clear"></div>
 
     <ion-item class="input-nome">
       <ion-label position="stacked">Nome:</ion-label>
-      <ion-input class="ion-text" type="text" name="nome" [disabled]=true>{{currentUser.nome}}</ion-input>
+      <ion-input class="ion-text" type="text" name="nome" [disabled]=true>{{cliente.nome}}</ion-input>
     </ion-item>
     <div class="clear"></div>
 
     <ion-item class="input-email">
       <ion-label position="stacked">E-mail:</ion-label>
-      <p *ngIf="!editUser" class="ion-text" type="text" name="email">{{currentUser.email}}</p>
-      <ion-input *ngIf="editUser" class="ion-text" type="text" name="email" placeholder="{{currentUser.email}}"></ion-input>
+      <p *ngIf="!editUser" class="ion-text">{{cliente.email}}</p>
+      <ion-input *ngIf="editUser" class="ion-text" type="text" name="email" placeholder="{{cliente.email}}"></ion-input>
     </ion-item>
     <div class="clear"></div>
 
-    <ion-item class="input-senha">
-      <ion-label position="stacked">E-mail:</ion-label>
-      <p *ngIf="!editUser" class="ion-text">********</p>
-      <ion-input *ngIf="editUser" class="ion-text" type="text" name="email" placeholder="*********"></ion-input>
-    </ion-item>
-    <div class="clear"></div>
+    <!--    <ion-item class="input-senha">-->
+    <!--      <ion-label position="stacked">Senha:</ion-label>-->
+    <!--      <p *ngIf="!editUser" class="ion-text">********</p>-->
+    <!--      <ion-input *ngIf="editUser" class="ion-text" type="text" placeholder="*********"></ion-input>-->
+    <!--    </ion-item>-->
   </div>
 
 </ion-content>

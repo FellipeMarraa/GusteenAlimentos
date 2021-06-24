@@ -16,6 +16,8 @@ import {API_CONFIG} from '../../config/api.config';
 export class PerfilPage extends BaseComponent {
 
   cliente: ClienteDTO;
+
+
   picture: string;
   profileImage: any;
   cameraOn: boolean = false;
@@ -40,22 +42,9 @@ export class PerfilPage extends BaseComponent {
     console.log("perfil page page");
     console.log(this.currentUser);
 
+    this.cliente = this.currentUser;
 
-    // let localUser = this.storage.getLocalUser();
-    // if (localUser && localUser.email) {
-    //   this.clienteService.findByEmail(localUser.email)
-    //     .subscribe(response => {
-    //         this.cliente = response as ClienteDTO;
-    //         this.getImageIfExists();
-    //       },
-    //       error => {
-    //         if (error.status == 403) {
-    //           this.navCtrl.navigateRoot('/home');
-    //         }
-    //       });
-    // } else {
-    //   this.navCtrl.navigateRoot('/home');
-    // }
+
   }
 
   getImageIfExists() {

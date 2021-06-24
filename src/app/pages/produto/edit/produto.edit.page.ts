@@ -35,7 +35,7 @@ export class ProdutoEditPage extends BaseComponent {
   }
 
   init() {
-
+    this.produto.idCliente = this.currentUser.id;
 
     // this.carregaCategorias();
   }
@@ -47,13 +47,14 @@ export class ProdutoEditPage extends BaseComponent {
   }
 
   salvar() {
-
     if (this.validaCadastro()) {
       if (!this.produto.desconto) {
         this.produto.desconto = 100;
       }
-      this.produto.idCliente = this.currentUser.id;
-      this.produtoService.save(this.produto);
+
+      this.produtoService.save(this.produto).subscribe(item => {
+        console.log("salvou" + item.nome)
+      });
       this.navCtrl.navigateForward(`/produto/list`);
 
     } else {

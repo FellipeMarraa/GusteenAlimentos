@@ -1,15 +1,12 @@
-class Categoria {
-}
+import {Categoria} from "./categoria";
 
-export class ProdutoDTO {
+export class Produto {
 
   id: string;
 
   nome: string;
 
   preco: number;
-
-  imageUrl?: string;
 
   quantidade: number;
 

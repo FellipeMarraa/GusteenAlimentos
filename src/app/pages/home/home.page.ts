@@ -23,9 +23,9 @@ export class HomePage extends BaseComponent {
   listaProdutosCarrinho: ProdutoDTO[] = [];
 
   constructor(private injector: Injector,
-              public clienteService: ClienteService,
-              public bancoService: BancoService,
-              public authService: AuthService,
+              private clienteService: ClienteService,
+              private bancoService: BancoService,
+              private authService: AuthService,
               private produtoService: ProdutoService) {
     super(injector);
   }
@@ -37,8 +37,6 @@ export class HomePage extends BaseComponent {
   }
 
   carregaListaProdutos() {
-    console.log("home page");
-    console.log(this.currentUser);
     this.produtoService.findAll().subscribe(prod => {
       this.listaProdutos = prod;
     })
