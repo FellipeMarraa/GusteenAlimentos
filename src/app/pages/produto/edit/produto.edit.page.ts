@@ -54,7 +54,7 @@ export class ProdutoEditPage extends BaseComponent {
       }
       this.produto.idCliente = this.currentUser.id;
       this.produtoService.save(this.produto);
-      this.navCtrl.navigateForward(`/produto/list`);
+      // this.navCtrl.navigateForward(`/produtos/list`);
 
     } else {
       ToastUtil.presentToast(this.toastCtrl, "Necessita dados", PositionToast.BOTTOM, ToastType.INFO, 500);
