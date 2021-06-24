@@ -7,6 +7,7 @@ import {DomSanitizer} from '@angular/platform-browser';
 import {NavController} from '@ionic/angular';
 import {Camera, CameraOptions} from '@ionic-native/camera/ngx';
 import {API_CONFIG} from '../../config/api.config';
+import {Cliente} from "../../class/cliente";
 
 @Component({
   selector: 'app-z',
@@ -15,7 +16,7 @@ import {API_CONFIG} from '../../config/api.config';
 })
 export class PerfilPage extends BaseComponent {
 
-  cliente: ClienteDTO;
+  cliente: Cliente;
 
 
   picture: string;

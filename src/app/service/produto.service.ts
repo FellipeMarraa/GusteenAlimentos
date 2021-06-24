@@ -6,6 +6,7 @@ import {ProdutoDTO} from "../class/dto/produto.dto";
 import {CategoriaDTO} from "../class/dto/categoria.dto";
 import {Cliente} from "../class/cliente";
 import {catchError, retry} from "rxjs/operators";
+import {Produto} from "../class/produto";
 
 @Injectable()
 export class ProdutoService {
@@ -14,39 +15,40 @@ export class ProdutoService {
   }
 
   httpOptions = {
-    headers: new HttpHeaders({'Content-Type': 'application/json',
+    headers: new HttpHeaders({
+      'Content-Type': 'application/json',
     })
   };
 
 
-  findById(produto_id : string) {
-    return this.http.get<ProdutoDTO>(`${API_CONFIG.baseUrl}/produtos/${produto_id}`);
+  findById(produto_id: string) {
+    return this.http.get<ProdutoDTO>(`${API_CONFIG.baseUrl}/produto/${produto_id}`);
   }
 
-  findAll() : Observable<ProdutoDTO[]>  {
-    return this.http.get<ProdutoDTO[]>(`${API_CONFIG.baseUrl}/produtos/list`);
+  findAll(): Observable<Produto[]> {
+    return this.http.get<Produto[]>(`${API_CONFIG.baseUrl}/produto/list`);
   }
 
-  save(produto: ProdutoDTO): Observable<ProdutoDTO> {
-    return this.http.post<ProdutoDTO>(`${API_CONFIG.baseUrl}/produtos/create`, JSON.stringify(produto), this.httpOptions)
+  save(produto: Produto): Observable<Produto> {
+    return this.http.post<Produto>(`${API_CONFIG.baseUrl}/produto/create`, JSON.stringify(produto), this.httpOptions)
       .pipe(
         retry(2),
         catchError(this.handleError)
       );
   }
 
-  findByCategoria(categoria_id : string, page : number = 0, linesPerPage : number = 24) {
-    return this.http.get(`${API_CONFIG.baseUrl}/produtos/?categorias=${categoria_id}&page=${page}&linesPerPage=${linesPerPage}`);
+  findByCategoria(categoria_id: string, page: number = 0, linesPerPage: number = 24) {
+    return this.http.get(`${API_CONFIG.baseUrl}/produto/?categorias=${categoria_id}&page=${page}&linesPerPage=${linesPerPage}`);
   }
 
-  getSmallImageFromBucket(id : string) : Observable<any> {
+  getSmallImageFromBucket(id: string): Observable<any> {
     let url = `${API_CONFIG.bucketBaseUrl}/prod${id}-small.jpg`
-    return this.http.get(url, {responseType : 'blob'});
+    return this.http.get(url, {responseType: 'blob'});
   }
 
-  getImageFromBucket(id : string) : Observable<any> {
+  getImageFromBucket(id: string): Observable<any> {
     let url = `${API_CONFIG.bucketBaseUrl}/prod${id}.jpg`
-    return this.http.get(url, {responseType : 'blob'});
+    return this.http.get(url, {responseType: 'blob'});
   }
 
   handleError(error: HttpErrorResponse) {

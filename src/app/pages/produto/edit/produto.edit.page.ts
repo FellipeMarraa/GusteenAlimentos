@@ -1,11 +1,11 @@
 import {Component, Injector} from "@angular/core";
 import {BaseComponent} from "../../../class/commons-class/base.component";
-import {ProdutoDTO} from "../../../class/dto/produto.dto";
 import {CategoriaDTO} from "../../../class/dto/categoria.dto";
 import {CategoriaService} from "../../../service/categoria.service";
 import {ProdutoService} from "../../../service/produto.service";
 import {PositionToast, ToastUtil} from "../../../class/commons-class/toast.util";
 import {ToastType} from "../../../class/commons-class/toast.type";
+import {Produto} from "../../../class/produto";
 
 @Component({
   selector: 'produto-page',
@@ -14,7 +14,7 @@ import {ToastType} from "../../../class/commons-class/toast.type";
 })
 export class ProdutoEditPage extends BaseComponent {
 
-  produto: ProdutoDTO;
+  produto: Produto;
   categorias: CategoriaDTO[] = [];
 
   constructor(private injector: Injector,
@@ -27,7 +27,7 @@ export class ProdutoEditPage extends BaseComponent {
       if (returnedObject) {
         this.produto = returnedObject.avaliacao;
       } else {
-        this.produto = new ProdutoDTO();
+        this.produto = new Produto();
       }
     });
 

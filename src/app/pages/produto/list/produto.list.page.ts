@@ -3,6 +3,7 @@ import {BaseComponent} from "../../../class/commons-class/base.component";
 import {ProdutoService} from "../../../service/produto.service";
 import {ProdutoDTO} from "../../../class/dto/produto.dto";
 import {NavigationExtras} from "@angular/router";
+import {Produto} from "../../../class/produto";
 
 @Component({
   selector: 'produto-list-page',
@@ -10,7 +11,7 @@ import {NavigationExtras} from "@angular/router";
   styleUrls: ['./produto.list.page.scss']
 })
 export class ProdutoListPage extends BaseComponent {
-  listaProdutos: ProdutoDTO[] = [];
+  listaProdutos: Produto[] = [];
 
 
   constructor(private injector: Injector,
