@@ -1,7 +1,6 @@
 import {Component, Injector} from '@angular/core';
 import {BaseComponent} from '../../class/commons-class/base.component';
 import {ClienteService} from '../../service/cliente.service';
-import {BancoService} from '../../service/banco.service';
 import {AuthService} from '../../service/auth.service';
 import {ProdutoDTO} from "../../class/dto/produto.dto";
 import {CategoriaDTO} from "../../class/dto/categoria.dto";
@@ -24,7 +23,6 @@ export class HomePage extends BaseComponent {
 
   constructor(private injector: Injector,
               private clienteService: ClienteService,
-              private bancoService: BancoService,
               private authService: AuthService,
               private produtoService: ProdutoService) {
     super(injector);
