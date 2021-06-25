@@ -26,11 +26,11 @@ export class ProdutoService {
   }
 
   findAll(): Observable<Produto[]> {
-    return this.http.get<Produto[]>(`${API_CONFIG.baseUrl}/produto/list`);
+    return this.http.get<Produto[]>(`${API_CONFIG.baseUrl}/produtos/list`);
   }
 
   save(produto: Produto): Observable<Produto> {
-    return this.http.post<Produto>(`${API_CONFIG.baseUrl}/produto/create`, JSON.stringify(produto), this.httpOptions)
+    return this.http.post<Produto>(`${API_CONFIG.baseUrl}/produtos/create`, JSON.stringify(produto), this.httpOptions)
       .pipe(
         retry(2),
         catchError(this.handleError)
