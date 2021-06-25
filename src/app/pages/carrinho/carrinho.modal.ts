@@ -1,6 +1,7 @@
 import {Component, Injector} from "@angular/core";
 import {BaseComponent} from "../../class/commons-class/base.component";
-import {ProdutoDTO} from "../../class/dto/produto.dto";
+import {AlertButtonSecondaryTypeEnum, AlertButtonTypeEnum, AlertTypeEnum} from "../../commons-module/utils/alert.util";
+import {Produto} from "../../class/produto";
 
 @Component({
   selector: 'carrinho-modal',
@@ -8,7 +9,7 @@ import {ProdutoDTO} from "../../class/dto/produto.dto";
   styleUrls: ['./carrinho.modal.scss']
 })
 export class CarrinhoModal extends BaseComponent {
-  listaProdutosCarrinho: ProdutoDTO[] = [];
+  listaProdutosCarrinho: Produto[] = [];
 
 
   constructor(private injector: Injector) {
@@ -25,7 +26,7 @@ export class CarrinhoModal extends BaseComponent {
     });
   }
 
-  removerItem(produto: ProdutoDTO) {
+  removerItem(produto: Produto) {
     this.listaProdutosCarrinho.splice(this.listaProdutosCarrinho.indexOf(produto), 1)
   }
 
@@ -37,15 +38,34 @@ export class CarrinhoModal extends BaseComponent {
     return this.listaProdutosCarrinho.reduce((i, j) => i + (j.preco * j.desconto / 100) * j.quantidade, 0)
   }
 
-  limparCarrinho() {
-    this.listaProdutosCarrinho = [];
+
+  async limparCarrinho() {
+    const alert = await this.alertCtrl.create({
+      message: 'Deseja realmente limpar o carrinho?',
+      cssClass: AlertTypeEnum.INFO,
+      buttons: [
+        {
+          text: 'Não',
+          cssClass: AlertButtonSecondaryTypeEnum.PRIMARY,
+        }, {
+          text: 'Sim',
+          cssClass: AlertButtonTypeEnum.INFO,
+          handler: () => {
+            this.listaProdutosCarrinho = [];
+          }
+        }
+      ]
+    });
+
+    await alert.present();
   }
 
-  adicionaItem(produto: ProdutoDTO) {
+
+  adicionaItem(produto: Produto) {
     let adicionado = false;
-    for (let p of this.listaProdutosCarrinho) {
-      if (p.id === produto.id) {
-        p.quantidade += 1;
+    for (let produtoCarrinho of this.listaProdutosCarrinho) {
+      if (produtoCarrinho.id === produto.id) {
+        produtoCarrinho.quantidade += 1;
         adicionado = true;
         break;
       }
@@ -56,10 +76,10 @@ export class CarrinhoModal extends BaseComponent {
   }
 
   diminuirItem(produto) {
-    for (let p of this.listaProdutosCarrinho) {
-      if (p.id === produto.id) {
-        p.quantidade -= 1;
-        if (p.quantidade == 0) {
+    for (let produtoCarrinho of this.listaProdutosCarrinho) {
+      if (produtoCarrinho.id === produto.id) {
+        produtoCarrinho.quantidade -= 1;
+        if (produtoCarrinho.quantidade == 0) {
           this.listaProdutosCarrinho.splice(this.listaProdutosCarrinho.indexOf(produto), 1)
         }
       }
@@ -67,6 +87,6 @@ export class CarrinhoModal extends BaseComponent {
   }
 
   finaliza() {
-      this.navCtrl.navigateRoot('/finaliza');
+    this.navCtrl.navigateRoot('/finaliza');
   }
 }
