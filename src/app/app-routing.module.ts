@@ -15,6 +15,10 @@ const routes: Routes = [
     loadChildren: () => import('./pages/cadastro/cadastro.module').then(m => m.CadastroPageModule)
   },
   {
+    path: 'cadastro-endereco',
+    loadChildren: () => import('./pages/cadastro/cadastro-endereco/cadastro.endereco.module').then(m => m.CadastroEnderecoPageModule)
+  },
+  {
     path: 'home',
     loadChildren: () => import('./pages/home/home.module').then(m => m.HomePageModule)
   },

@@ -1,10 +1,13 @@
 import {Injectable} from '@angular/core';
 import {Cliente} from '../class/cliente';
-import {HttpClient} from '@angular/common/http';
+import {HttpClient, HttpErrorResponse, HttpHeaders} from '@angular/common/http';
 import {API_CONFIG} from '../config/api.config';
 import {StorageService} from './storage.service';
 import {CredenciaisDTO} from '../class/dto/credenciais.dto';
 import {LocalUser} from "../class/local.user";
+import {Observable, throwError} from 'rxjs';
+import {catchError, retry} from 'rxjs/operators';
+import {Cep} from '../class/cep';
 
 @Injectable()
 export class AuthService {
@@ -13,6 +16,11 @@ export class AuthService {
   constructor(public http: HttpClient,
               public storage: StorageService) {
   }
+
+  httpOptions = {
+    headers: new HttpHeaders({'Content-Type': 'application/json',
+    })
+  };
 
   authenticate(usuario: CredenciaisDTO) {
     return this.http.post(`${API_CONFIG.baseUrl}/login`, usuario,
@@ -66,4 +74,19 @@ export class AuthService {
     // this.storage.setLocalUser(null);
   }
 
+  buscaCep(cep: string): Observable <Cep>{
+    return this.http.get<Cep>(`${API_CONFIG.buscaCep}/` + cep + '.json');
+
+  }
+  handleError(error: HttpErrorResponse) {
+    let errorMessage = '';
+    if (error.error instanceof ErrorEvent) {
+      // Erro ocorreu no lado do cliente
+      errorMessage = error.error.message;
+    } else {
+      // Erro ocorreu no lado do servidor
+      errorMessage = `Código do erro: ${error.status}, ` + `menssagem: ${error.message}`;
+    }
+    return throwError(errorMessage);
+  }
 }
