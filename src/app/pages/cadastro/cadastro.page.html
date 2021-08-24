@@ -1,5 +1,5 @@
 <ion-header>
-  <ion-toolbar color="primary">
+  <ion-toolbar style="padding-left: 5%" color="primary">
     <ion-buttons slot="start">
       <ion-icon name="arrow-back-outline" style="color: white" (click)="dismiss()"></ion-icon>
     </ion-buttons>
@@ -8,14 +8,14 @@
 
   </ion-toolbar>
 </ion-header>
-<ion-content class="cadastro-content" fullscreen>
+<ion-content class="ion-padding"  fullscreen>
 
   <ion-grid>
 
     <form>
 
       <ion-item>
-        <ion-label>Atividade</ion-label>
+        <ion-label>Eu sou...</ion-label>
         <ion-select value="selecione">
           <ion-select-option value="produtor">Produtor</ion-select-option>
           <ion-select-option value="cliente">Cliente</ion-select-option>
@@ -46,6 +46,9 @@
       </ion-item>
       <div class="clear"></div>
 
+      <p class="form-error" *ngIf="emailErroVisible">* Email Invalido.</p>
+
+
       <ion-item class="input-telefone">
         <ion-label position="floating">Telefone/Whatsapp</ion-label>
         <ion-input class="ion-text" type="text" name="nome" [(ngModel)]="usuario.telefone"
@@ -53,7 +56,6 @@
       </ion-item>
       <div class="clear"></div>
 
-      <p class="form-error" *ngIf="emailErroVisible">* Email Invalido.</p>
 
       <ion-item>
         <ion-label position="floating">Senha</ion-label>
@@ -78,21 +80,11 @@
           </ion-fab>
         </ion-input>
       </ion-item>
-      <div class="clear"></div>
-
-      <ion-item>
-        <ion-label>Termos de uso</ion-label>
-        <ion-checkbox color="primary" slot="start"></ion-checkbox>
-      </ion-item>
-
-      <ion-item>
-        <ion-label>Política de privacidade</ion-label>
-        <ion-checkbox color="primary" slot="start"></ion-checkbox>
-      </ion-item>
 
       <div class="clear"></div>
 
       <p class="form-error" *ngIf="senhaIguaiserrovisible">* Senhas diferentes.</p>
+
 
       <ion-fab vertical="end" horizontal="end">
         <ion-fab-button class="button-submit" color="light" type="submit" (click)="cadastrarCidade()">
@@ -102,10 +94,6 @@
 
       <div class="clear"></div>
     </form>
-
-    <ion-footer>
-      <p class="possuo-cadastro" (click)="dismiss()">Já possuo cadastro!</p>
-    </ion-footer>
 
   </ion-grid>
 </ion-content>

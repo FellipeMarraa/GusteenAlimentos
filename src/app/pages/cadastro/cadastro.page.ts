@@ -37,6 +37,7 @@ export class CadastroPage extends BaseComponent {
   }
 
   cadastrarCidade() {
+    this.navCtrl.navigateRoot('/cadastro-endereco')
   }
 
   dismiss() {

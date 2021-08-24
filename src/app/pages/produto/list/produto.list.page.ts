@@ -37,9 +37,13 @@ export class ProdutoListPage extends BaseComponent {
 
   edit(produto: ProdutoDTO) {
     const navigationExtra: NavigationExtras = {
-      state: {avaliacao: produto}
+      state: {produto: produto}
     };
-    // this.navCtrl.navigateForward(`/produtos/edit/`, navigationExtra);
+    this.navCtrl.navigateForward(`/produto/edit/`, navigationExtra);
+
+  }
+
+  removeProduto(produto: Produto) {
 
   }
 }

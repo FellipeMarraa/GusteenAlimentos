@@ -37,6 +37,14 @@ export class ProdutoService {
       );
   }
 
+  edit(produto: Produto): Observable<Produto> {
+    return this.http.post<Produto>(`${API_CONFIG.baseUrl}/produtos/edit`, JSON.stringify(produto), this.httpOptions)
+      .pipe(
+        retry(2),
+        catchError(this.handleError)
+      );
+  }
+
   findByCategoria(categoria_id: string, page: number = 0, linesPerPage: number = 24) {
     return this.http.get(`${API_CONFIG.baseUrl}/produto/?categorias=${categoria_id}&page=${page}&linesPerPage=${linesPerPage}`);
   }

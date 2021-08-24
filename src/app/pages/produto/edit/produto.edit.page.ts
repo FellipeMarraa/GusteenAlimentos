@@ -25,7 +25,7 @@ export class ProdutoEditPage extends BaseComponent {
     this.activatedRoute.queryParams.subscribe(params => {
       let returnedObject = this.router.getCurrentNavigation().extras.state;
       if (returnedObject) {
-        this.produto = returnedObject.avaliacao;
+        this.produto = returnedObject.produto;
       } else {
         this.produto = new Produto();
       }
@@ -52,9 +52,16 @@ export class ProdutoEditPage extends BaseComponent {
         this.produto.desconto = 100;
       }
 
-      this.produtoService.save(this.produto).subscribe(item => {
-        console.log("salvou" + item.nome)
-      });
+      if (this.produto.id) {
+        this.produtoService.edit(this.produto).subscribe(item => {
+          console.log("editou" + "-" + item.nome)
+        });
+      } else {
+        this.produtoService.save(this.produto).subscribe(item => {
+          console.log("salvou" + "-" + item.nome)
+        });
+      }
+
       this.navCtrl.navigateForward(`/produto/list`);
 
     } else {

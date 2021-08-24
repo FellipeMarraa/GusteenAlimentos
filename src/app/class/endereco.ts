@@ -1,5 +1,6 @@
 import {Cliente} from "./cliente";
 import {Cidade} from "./cidade";
+import {Estado} from './estado';
 
 export class Endereco {
 
@@ -9,7 +10,7 @@ export class Endereco {
   complemento: string;
   bairro: string;
   cep: string;
-
+  estado: Estado;
   cliente: Cliente;
 
   cidade: Cidade;
