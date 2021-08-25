@@ -34,9 +34,12 @@
       <button class="esqueciMinhaSenha" (click)="recoveryPassword()">Esqueci minha senha</button>
     </form>
 
-    <ion-footer style="bottom:5%;text-align: center">
-      <button class="cadastrarse" (click)="cadastrarSe()">Quero me cadastrar</button>
-    </ion-footer>
-
   </ion-grid>
+
+
+    <ion-footer style="position:fixed; bottom:0; ">
+      <ion-toolbar style="text-align: center;width: 100vw;">
+        <ion-title color="primary" class="cadastrarse" (click)="cadastrarSe()">Quero me cadastrar</ion-title>
+      </ion-toolbar>
+    </ion-footer>
 </ion-content>

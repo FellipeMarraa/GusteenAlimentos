@@ -85,7 +85,10 @@
   cursor: pointer;
   font-size: 12px;
 }
+.footer-md::before{
+  background-image: none !important;
 
+}
 @media screen and (max-width: 1024px){
   .form-style-login{
     position: relative;
