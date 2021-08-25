@@ -8,18 +8,18 @@
 
 
     <ion-buttons slot="end">
-      <!--  BUTOON   de edição  -->
+      <!--  BUTTON   de edição  -->
     </ion-buttons>
 
   </ion-toolbar>
 </ion-header>
 
 <ion-content class="ion-padding">
-  <ion-avatar style="margin-left: 33%; margin-top: 20px; width: 100px; height: 100px">
+  <ion-avatar style="margin-right: 70%; margin-top: 20px; width: 100px; height: 100px">
     <img class="circle" [src]="profileImage">
   </ion-avatar>
-  <ion-icon id="iconEdit" (click)="editarImagem()" style="float: right; margin-right: 30%" name="create"></ion-icon>
-  <h2 class="ion-text-center">{{cliente?.nome}}</h2>
+  <ion-icon id="iconEdit" (click)="editarImagem()" style="float: left; margin-right: 30%" name="create"></ion-icon>
+  <h2 style="float: right; margin-left: -30%" class="ion-text-center">{{cliente?.nome}}</h2>
   <p class="ion-text-center">{{cliente?.email}}</p>
 
   <ion-card *ngIf="editImage">
@@ -59,11 +59,11 @@
     </ion-item>
     <div class="clear"></div>
 
-    <!--    <ion-item class="input-senha">-->
-    <!--      <ion-label position="stacked">Senha:</ion-label>-->
-    <!--      <p *ngIf="!editUser" class="ion-text">********</p>-->
-    <!--      <ion-input *ngIf="editUser" class="ion-text" type="text" placeholder="*********"></ion-input>-->
-    <!--    </ion-item>-->
+        <ion-item class="input-senha">
+          <ion-label position="stacked">Senha:</ion-label>
+          <p *ngIf="!editUser" class="ion-text">********</p>
+          <ion-input *ngIf="editUser" class="ion-text" type="text" placeholder="*********"></ion-input>
+        </ion-item>
   </div>
 
 </ion-content>

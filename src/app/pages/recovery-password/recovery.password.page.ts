@@ -16,6 +16,7 @@ export class RecoveryPasswordPage extends BaseComponent {
 
   tipo: boolean;
   usuario: Cliente = new Cliente()
+  cpfOuCnpj: string;
   isloading: boolean = false;
 
   constructor(private injector: Injector,
@@ -36,7 +37,7 @@ export class RecoveryPasswordPage extends BaseComponent {
   enviarEmail() {
     this.isloading = true;
     this.clienteService.recuperarSenha(this.usuario).subscribe(item => {
-      if (item) {
+      if (this.usuario) {
         ToastUtil.presentToast(this.toastCtrl, "Email enviado!", PositionToast.BOTTOM, ToastType.SUCCESS);
         this.navCtrl.navigateRoot('/login');
         this.isloading = false;
