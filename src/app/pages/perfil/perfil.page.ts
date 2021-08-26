@@ -8,6 +8,10 @@ import {NavController} from '@ionic/angular';
 import {Camera, CameraOptions} from '@ionic-native/camera/ngx';
 import {API_CONFIG} from '../../config/api.config';
 import {Cliente} from "../../class/cliente";
+import {Endereco} from '../../class/endereco';
+import {newArray} from '@angular/compiler/src/util';
+import {Cidade} from '../../class/cidade';
+import {Estado} from '../../class/estado';
 
 @Component({
   selector: 'app-z',
@@ -17,10 +21,12 @@ import {Cliente} from "../../class/cliente";
 export class PerfilPage extends BaseComponent {
 
   cliente: Cliente;
-
+  endereco: Endereco[] = [];
+  cidade: Cidade;
+  // estado: Estado;
 
   picture: string;
-  profileImage: any;
+  profileImage: any = 'src/assets/imgs/userImage.png';
   cameraOn: boolean = false;
   editImage: boolean = false;
   editUser: boolean = false;
@@ -44,7 +50,9 @@ export class PerfilPage extends BaseComponent {
     console.log(this.currentUser);
 
     this.cliente = this.currentUser;
-
+    this.endereco[0] = this.currentUser.enderecos[0];
+    this.endereco[0].cidade = this.currentUser.enderecos[0].cidade;
+    // this.cidade.estado = this.estado;
 
   }
 
@@ -130,13 +138,24 @@ export class PerfilPage extends BaseComponent {
   }
 
   editarImagem() {
-    this.editUser = true;
     if (this.editImage == false) {
       this.editImage = true;
     } else {
       this.editImage = false;
     }
   }
+  edicaoUsuario(){
+    this.editUser = true;
 
+  }
+  cancelarEdicao(){
+    this.editUser = false
+  }
 
+  salvarEdicao(){
+    this.clienteService.update(this.currentUser).subscribe(cliente =>{
+      console.log(cliente);
+      this.editUser = false;
+    })
+  }
 }

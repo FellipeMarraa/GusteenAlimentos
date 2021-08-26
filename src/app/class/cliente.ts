@@ -1,3 +1,5 @@
+import {Endereco} from './endereco';
+
 export class Cliente {
   id: string;
 
@@ -20,4 +22,6 @@ export class Cliente {
   aceitaTermosUso: boolean;
 
   aceitaPolitica: boolean;
+
+  enderecos: Endereco[];
 }
