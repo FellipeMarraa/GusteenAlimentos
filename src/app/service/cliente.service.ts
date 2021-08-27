@@ -72,7 +72,7 @@ export class ClienteService {
   }
 
   update(cliente: Cliente): Observable<Cliente> {
-    return this._http.put<Cliente>(`${API_CONFIG.baseUrl}/clientes/edit`, JSON.stringify(cliente), this.httpOptions)
+    return this._http.put<Cliente>(`${API_CONFIG.baseUrl}/clientes/edit/${cliente.id}`, JSON.stringify(cliente), this.httpOptions)
       .pipe(
         retry(2),
         catchError(this.handleError)
