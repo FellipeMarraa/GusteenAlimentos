@@ -31,6 +31,7 @@ export class CadastroPage extends BaseComponent {
   constructor(private injector: Injector,
               private clienteService: ClienteService) {
     super(injector);
+
   }
 
   ngOnInit() {

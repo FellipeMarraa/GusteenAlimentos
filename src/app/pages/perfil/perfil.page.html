@@ -16,7 +16,7 @@
 
       <ion-col style="float: left">
         <ion-avatar style="margin-top: 20px; width: 60px; height: 60px;">
-          <img class="circle" [src]="profileImage">
+          <img class="circle" [src]="cliente?.imageUrl || 'assets/imgs/avatar-blank.png'">
           <ion-icon (click)="editarImagem()" style="float:right; margin-right: 10%" name="create"></ion-icon>
         </ion-avatar>
       </ion-col>
@@ -45,7 +45,7 @@
 
     <div class="clear"></div>
 
-    <div style="text-align: left; padding-left: 6%">
+    <div style="text-align: left; padding-left: 6%;padding-top: 10%">
       <ion-item class="input-email">
         <ion-label position="stacked">E-mail:</ion-label>
         <p *ngIf="!editUser" class="ion-text">{{cliente.email}}</p>
