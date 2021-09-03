@@ -52,7 +52,6 @@ export class PerfilPage extends BaseComponent {
     this.cliente = this.currentUser;
     this.endereco[0] = this.currentUser.enderecos[0];
     this.endereco[0].cidade = this.currentUser.enderecos[0].cidade;
-    // this.cidade.estado = this.estado;
 
   }
 
@@ -70,7 +69,6 @@ export class PerfilPage extends BaseComponent {
         });
   }
 
-  // https://gist.github.com/frumbert/3bf7a68ffa2ba59061bdcfc016add9ee
   blobToDataURL(blob) {
     return new Promise((fulfill, reject) => {
       let reader = new FileReader();
