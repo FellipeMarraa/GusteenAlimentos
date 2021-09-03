@@ -37,7 +37,7 @@ export class ProdutoEditPage extends BaseComponent {
   init() {
     this.produto.idCliente = this.currentUser.id;
 
-    // this.carregaCategorias();
+    this.carregaCategorias();
   }
 
   carregaCategorias() {
@@ -81,9 +81,9 @@ export class ProdutoEditPage extends BaseComponent {
   }
 
 
-  // onCategoriaChange(categoria: CategoriaDTO) {
-  //   this.produto.categoria = categoria;
-  // }
+  onCategoriaChange(categoria: CategoriaDTO) {
+    this.produto.categoria = categoria;
+  }
 
 
 }

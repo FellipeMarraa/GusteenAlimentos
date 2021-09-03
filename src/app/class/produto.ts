@@ -18,4 +18,6 @@ export class Produto {
 
   idCliente: string;
 
+  imageUrl: string;
+
 }
