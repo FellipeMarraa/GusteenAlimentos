@@ -6,6 +6,7 @@ import {PositionToast, ToastUtil} from '../../../class/commons-class/toast.util'
 import {ToastType} from '../../../class/commons-class/toast.type';
 import {Endereco} from '../../../class/endereco';
 import {AuthService} from '../../../service/auth.service';
+import {Cep} from '../../../class/cep';
 
 
 @Component({
@@ -16,22 +17,20 @@ import {AuthService} from '../../../service/auth.service';
 
 export class CadastroEnderecoPage extends BaseComponent {
   usuario: Cliente = new Cliente();
-  endereco: Endereco = new Endereco();
   cep: boolean = true;
-  buscaCep: any = this.authService.buscaCep(this.endereco.cep);
+  enderecoCompleto: Cep =  new Cep();
+  termosDeUso: boolean = false;
+  termosDePrivacidade: boolean = false;
 
 
   constructor(private injector: Injector,
               private clienteService: ClienteService,
-              private authService: AuthService ) {
+              private authService: AuthService) {
     super(injector);
   }
 
   ngOnInit() {
-    this.endereco.cep = "38414-536";
-    let busca = this.authService.buscaCep(this.endereco.cep);
-    console.log(busca);
-    console.log(this.clienteService.list());
+
   }
 
 
@@ -41,8 +40,9 @@ export class CadastroEnderecoPage extends BaseComponent {
 
 
   cadastrar() {
-    if (this.validate(this.endereco)) {
-
+    if (this.validate(this.enderecoCompleto)) {
+  this.termosDeUso = true;
+  this.termosDePrivacidade = true;
       this.clienteService.save(this.usuario).subscribe(item => {
         if (item) {
           ToastUtil.presentToast(this.toastCtrl, "Usuário cadastrado", PositionToast.BOTTOM, ToastType.SUCCESS);
@@ -58,10 +58,10 @@ export class CadastroEnderecoPage extends BaseComponent {
     }
   }
 
-  validate(endereco:Endereco) {
+  validate(endereco:Cep) {
     let valido: boolean = true
 
-    if (endereco.cep == null || endereco.bairro == null || endereco.complemento == null || endereco.cidade ==null || endereco.logradouro == null || endereco.numero == null) {
+    if (endereco.code == null || endereco.district == null  || endereco.city ==null || endereco.address == null || endereco.number == null || this.termosDeUso == false || this.termosDePrivacidade == false) {
       valido = false
     }
 
@@ -69,25 +69,39 @@ export class CadastroEnderecoPage extends BaseComponent {
   }
 
   focusout(event: FocusEvent) {
-    if (!(this.endereco.cep)) {
-      this.cep = false;
+    if (this.enderecoCompleto.code != null ) {
+      this.buscaCep(this.enderecoCompleto.code);
+    }else {
+      ToastUtil.presentToast(this.toastCtrl, "Cep invalido", PositionToast.BOTTOM, ToastType.ERROR);
+
     }
   }
 
-  // focusoutEmail(event: FocusEvent) {
-  //   this.validaCep(this.endereco.cep)
-  // }
+  buscaCep(cep:string){
+    this.authService.buscaCep(cep).subscribe(end =>{
+      this.enderecoCompleto = end;
+    });
+  }
 
-  // private validaCep(cep: any) {
-  //   if (this.endereco.cep == null){
-  //     this.cep = true;
-  //   }
-  // }
+  termoDePrivacidadeOnChange($event: MouseEvent){
+    if(this.termosDePrivacidade == false) {
+      this.termosDePrivacidade = true;
+      console.log(this.termosDePrivacidade);
+    }else if(this.termosDePrivacidade == true){
+      this.termosDePrivacidade = false;
+      console.log(this.termosDePrivacidade);
+    }
 
-  // buscaCep(cep:any){
-  //   cep = this.endereco.cep;
-  //   this.authService.buscaCep(cep);
-  //   console.log(cep);
-  // }
+}
+
+  termoDeUsoOnChange($event: MouseEvent) {
+    if(this.termosDeUso == false) {
+      this.termosDeUso = true;
+      console.log(this.termosDeUso);
+    }else if(this.termosDeUso == true){
+      this.termosDeUso = false;
+      console.log(this.termosDeUso);
+    }
+  }
 
 }

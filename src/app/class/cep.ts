@@ -5,5 +5,6 @@ export class Cep {
   city: string;
   district: string;
   address: string;
-
+  number: number;
+  complemento: string;
 }
