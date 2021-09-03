@@ -28,13 +28,19 @@
     <ion-item *ngFor="let produto of listaProdutosCarrinho" class="ion-text-wrap">
       <ion-grid>
         <ion-row>
-          <ion-col size="9">
+          <ion-col size="5">
+<!--            <ion-avatar style="margin-top: 20px; width: 60px; height: 60px;">-->
+              <img class="square" [src]="produto?.imageUrl || 'assets/imgs/avatar-blank.png'">
+<!--            </ion-avatar>-->
+          </ion-col>
+          <ion-col size="4">
             <b>{{produto.nome}} {{ "      "}}</b><b *ngIf="produto.desconto<100" style="color: green">{{produto.desconto + "%" + " " + "OFF"}}</b>
           </ion-col>
           <ion-col size="3" class="ion-text-end ion-text-nowrap">
             {{produto.quantidade * produto.preco|currency:'BRL'}}
           </ion-col>
         </ion-row>
+
 
         <ion-row class="ion-align-items-center">
           <ion-col size="2" class="ion-align-items-center">

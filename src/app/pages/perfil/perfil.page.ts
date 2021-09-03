@@ -26,7 +26,7 @@ export class PerfilPage extends BaseComponent {
   // estado: Estado;
 
   picture: string;
-  profileImage: any = 'src/assets/imgs/userImage.png';
+  profileImage: any = '';
   cameraOn: boolean = false;
   editImage: boolean = false;
   editUser: boolean = false;
@@ -122,6 +122,7 @@ export class PerfilPage extends BaseComponent {
       .subscribe(response => {
           this.picture = null;
           this.getImageIfExists();
+          this.loadData();
         },
         error => {
         });
