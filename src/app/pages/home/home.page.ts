@@ -37,6 +37,7 @@ export class HomePage extends BaseComponent {
   carregaListaProdutos() {
     this.produtoService.findAll().subscribe(prod => {
       this.listaProdutos = prod;
+      console.log(prod);
     })
   }
 
