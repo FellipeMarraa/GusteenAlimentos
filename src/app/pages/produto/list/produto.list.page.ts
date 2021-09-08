@@ -21,7 +21,12 @@ export class ProdutoListPage extends BaseComponent {
   }
 
   init() {
+    this.ionViewWillEnter();
+  }
+
+  ionViewWillEnter(){
     this.carregaProdutos();
+
   }
 
 

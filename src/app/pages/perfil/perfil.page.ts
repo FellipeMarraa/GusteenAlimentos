@@ -42,10 +42,10 @@ export class PerfilPage extends BaseComponent {
   }
 
   ngOnInit() {
-    this.loadData();
+    this.ionViewWillEnter();
   }
 
-  loadData() {
+  ionViewWillEnter() {
     console.log("perfil page page");
     console.log(this.currentUser);
 
@@ -122,7 +122,7 @@ export class PerfilPage extends BaseComponent {
       .subscribe(response => {
           this.picture = null;
           this.getImageIfExists();
-          this.loadData();
+          this.ionViewWillEnter();
         },
         error => {
         });
