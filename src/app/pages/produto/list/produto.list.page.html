@@ -18,13 +18,7 @@
     <ion-card-header (click)="edit(produto)">
       <ion-card-title>
         {{produto.nome}} - {{ "R$" + " " + produto.preco + ",00"}}
-
-        <ion-item>
-          <ion-item>
-            <img [src]="produto?.imageUrl || 'assets/imgs/imgNotFound.png'">
-          </ion-item>
-        </ion-item>
-
+            <img style="padding: 2%" [src]="produto?.imageUrl || 'assets/imgs/imgNotFound.png'">
         <ion-buttons slot="end">
           <ion-button fill="clear" (click)="removeProduto(produto)">
             <ion-icon color="danger" slot="icon-only" name="trash-outline"></ion-icon>
