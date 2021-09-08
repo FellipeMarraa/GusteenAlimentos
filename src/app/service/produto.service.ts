@@ -7,11 +7,13 @@ import {CategoriaDTO} from "../class/dto/categoria.dto";
 import {Cliente} from "../class/cliente";
 import {catchError, retry} from "rxjs/operators";
 import {Produto} from "../class/produto";
+import {ImageUtilService} from './image.util.service';
 
 @Injectable()
 export class ProdutoService {
 
-  constructor(public http: HttpClient) {
+  constructor(public http: HttpClient,
+              public imageUtilService: ImageUtilService) {
   }
 
   httpOptions = {
@@ -59,6 +61,20 @@ export class ProdutoService {
     return this.http.get(url, {responseType: 'blob'});
   }
 
+  uploadPicture(picture) {
+    let pictureBlob = this.imageUtilService.dataUriToBlob(picture);
+    let formData : FormData = new FormData();
+    formData.set('file', pictureBlob, 'file.png');
+    return this.http.post(
+      `${API_CONFIG.baseUrl}/clientes/picture`,
+      formData,
+      {
+        observe: 'response',
+        responseType: 'text'
+      }
+    );
+  }
+
   handleError(error: HttpErrorResponse) {
     let errorMessage = '';
     if (error.error instanceof ErrorEvent) {
@@ -70,4 +86,6 @@ export class ProdutoService {
     }
     return throwError(errorMessage);
   }
+
+
 }

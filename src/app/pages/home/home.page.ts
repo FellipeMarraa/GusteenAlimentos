@@ -9,6 +9,7 @@ import {PositionToast, ToastUtil} from "../../class/commons-class/toast.util";
 import {ToastType} from "../../class/commons-class/toast.type";
 import {ProdutoService} from "../../service/produto.service";
 import {Cliente} from "../../class/cliente";
+import {Produto} from '../../class/produto';
 
 @Component({
   selector: 'app-home',
@@ -29,8 +30,11 @@ export class HomePage extends BaseComponent {
   }
 
   ngOnInit() {
+    this.ionViewWillEnter();
+  }
+
+  ionViewWillEnter() {
     this.carregaListaProdutos();
-    // this.carregaListaCategorias();
 
   }
 
@@ -76,5 +80,33 @@ export class HomePage extends BaseComponent {
     ToastUtil.presentToast(this.toastCtrl, "Item Adicionado" + " - " + produto.nome, PositionToast.BOTTOM, ToastType.SUCCESS, 500);
   }
 
+  removerItem(produto: Produto) {
+    this.listaProdutosCarrinho.splice(this.listaProdutosCarrinho.indexOf(produto), 1)
+  }
 
+  adicionaItem(produto: Produto) {
+    let adicionado = false;
+    for (let produtoCarrinho of this.listaProdutosCarrinho) {
+      if (produtoCarrinho.id === produto.id) {
+        produtoCarrinho.quantidade += 1;
+        adicionado = true;
+        break;
+      }
+    }
+    if (!adicionado) {
+      this.listaProdutosCarrinho.push(produto)
+    }
+  }
+
+  diminuirItem(produto) {
+    for (let produtoCarrinho of this.listaProdutosCarrinho) {
+      if (produtoCarrinho.id === produto.id) {
+        produtoCarrinho.quantidade -= 1;
+        if (produtoCarrinho.quantidade == 0) {
+          this.listaProdutosCarrinho.splice(this.listaProdutosCarrinho.indexOf(produto), 1)
+        }
+      }
+    }
+
+  }
 }
