@@ -4,9 +4,9 @@ import {Cliente} from '../../../class/cliente';
 import {ClienteService} from '../../../service/cliente.service';
 import {PositionToast, ToastUtil} from '../../../class/commons-class/toast.util';
 import {ToastType} from '../../../class/commons-class/toast.type';
-import {Endereco} from '../../../class/endereco';
 import {AuthService} from '../../../service/auth.service';
 import {Cep} from '../../../class/cep';
+import {error} from '@angular/compiler/src/util';
 
 
 @Component({
@@ -21,6 +21,7 @@ export class CadastroEnderecoPage extends BaseComponent {
   enderecoCompleto: Cep =  new Cep();
   termosDeUso: boolean = false;
   termosDePrivacidade: boolean = false;
+  cepErrorVisible: boolean = false;
 
 
   constructor(private injector: Injector,
@@ -80,6 +81,7 @@ export class CadastroEnderecoPage extends BaseComponent {
   buscaCep(cep:string){
     this.authService.buscaCep(cep).subscribe(end =>{
       this.enderecoCompleto = end;
+      console.log(this.enderecoCompleto.message);
     });
   }
 

@@ -31,6 +31,7 @@
     "@ionic/pwa-elements": "^1.5.2",
     "@pluritech/ion-mask": "^1.2.0",
     "lab": "^18.0.2",
+    "ngx-mask-ionic": "^1.1.2",
     "rxjs": "^6.6.0",
     "tslib": "^2.0.0",
     "zone.js": "~0.11.4"
