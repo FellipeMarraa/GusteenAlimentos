@@ -23,7 +23,9 @@ import {ProdutoService} from "./service/produto.service";
     BrowserModule,
     HttpClientModule,
     IonicModule.forRoot(),
-    AppRoutingModule],
+    AppRoutingModule,
+    ],
+
 
   providers: [
     ErrorInterceptorProvider,

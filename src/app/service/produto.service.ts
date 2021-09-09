@@ -29,7 +29,7 @@ export class ProdutoService {
     return this.http.get<Produto[]>(`${API_CONFIG.baseUrl}/produtos/list`);
   }
 
-  save(produto: Produto): Observable<Produto> {
+  insert(produto: Produto): Observable<Produto> {
     return this.http.post<Produto>(`${API_CONFIG.baseUrl}/produtos/create`, JSON.stringify(produto), this.httpOptions)
       .pipe(
         retry(2),
@@ -37,8 +37,8 @@ export class ProdutoService {
       );
   }
 
-  edit(produto: Produto): Observable<Produto> {
-    return this.http.post<Produto>(`${API_CONFIG.baseUrl}/produtos/edit`, JSON.stringify(produto), this.httpOptions)
+  update(produto: Produto): Observable<Produto> {
+    return this.http.put<Produto>(`${API_CONFIG.baseUrl}/produtos/edit/${produto.id}`, JSON.stringify(produto), this.httpOptions)
       .pipe(
         retry(2),
         catchError(this.handleError)
@@ -59,12 +59,12 @@ export class ProdutoService {
     return this.http.get(url, {responseType: 'blob'});
   }
 
-  uploadPicture(picture) {
+  uploadPicture(picture, id) {
     let pictureBlob = this.imageUtilService.dataUriToBlob(picture);
     let formData: FormData = new FormData();
     formData.set('file', pictureBlob, 'file.png');
     return this.http.post(
-      `${API_CONFIG.baseUrl}/clientes/picture`,
+      `${API_CONFIG.baseUrl}/produtos/picture/${id}`,
       formData,
       {
         observe: 'response',

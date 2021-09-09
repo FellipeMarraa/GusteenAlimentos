@@ -68,11 +68,12 @@ export class ProdutoEditPage extends BaseComponent {
       }
 
       if (this.produto.id) {
-        this.produtoService.edit(this.produto).subscribe(item => {
+        this.produtoService.update(this.produto).subscribe(item => {
           console.log("editou" + "-" + item.nome)
         });
       } else {
-        this.produtoService.save(this.produto).subscribe(item => {
+        this.produtoService.insert(this.produto).subscribe(item => {
+          this.produto.categoria = item.categoria;
           console.log("salvou" + "-" + item.nome)
         });
       }
@@ -97,7 +98,7 @@ export class ProdutoEditPage extends BaseComponent {
 
 
   onCategoriaChange(categoria: Categoria) {
-    this.produto.categoria = categoria;
+    this.produto.categoria = categoria.id;
   }
 
   getImageIfExists() {
@@ -163,7 +164,7 @@ export class ProdutoEditPage extends BaseComponent {
   }
 
   sendPicture() {
-    this.produtoService.uploadPicture(this.picture)
+    this.produtoService.uploadPicture(this.picture, this.produto.id)
       .subscribe(response => {
           this.picture = null;
           this.getImageIfExists();

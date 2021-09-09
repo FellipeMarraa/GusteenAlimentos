@@ -7,7 +7,7 @@
         </ion-button>
       </ion-buttons>
 
-      <ion-title class="ion-text-center"> {{cliente.nome}}</ion-title>
+      <ion-title class="ion-text-center"> {{cliente?.nome}}</ion-title>
 
       <ion-buttons slot="end">
         <ion-button fill="clear" style="background-color: green">
@@ -23,11 +23,11 @@
 
   <div class="food-list">
     <div class="card" *ngFor="let produto of listaProdutos">
-      <ion-img [src]="produto.imageUrl"></ion-img>
+      <ion-img [src]="produto?.imageUrl"></ion-img>
 
       <div class="card-content">
-        <h3 class="title">{{produto.nome}}</h3>
-        <h2 class="subtitle">R${{produto.preco|number:'1.2'}}</h2>
+        <h3 class="title">{{produto?.nome}}</h3>
+        <h2 class="subtitle">R${{produto?.preco|number:'1.2'}}</h2>
 
         <ion-buttons slot="start">
           <ion-button>
@@ -35,10 +35,13 @@
           </ion-button>
         </ion-buttons>
       </div>
-
-
     </div>
   </div>
+  <ion-fab vertical="bottom" horizontal="end" (click)="new()">
+    <ion-fab-button color="primary">
+      <ion-icon name="add-outline"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
 
 </ion-content>
 

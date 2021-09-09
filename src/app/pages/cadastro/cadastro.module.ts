@@ -18,13 +18,13 @@ const routes: Routes = [
   declarations: [
     CadastroPage
   ],
-  imports: [
-    CommonModule,
-    FormsModule,
-    IonicModule,
-    ComponentsModule,
-    RouterModule.forChild(routes),
-  ],
+    imports: [
+        CommonModule,
+        FormsModule,
+        IonicModule,
+        ComponentsModule,
+        RouterModule.forChild(routes),
+    ],
   exports: [
     CadastroPage,
   ],

@@ -74,7 +74,7 @@ export class CadastroPage extends BaseComponent {
   validate(usuario: Cliente) {
     let valido: boolean = true
 
-    if (usuario.cpfOuCnpj == null || usuario.nome == null || usuario.senha == null) {
+    if (usuario.cpfOuCnpj == null || usuario.nome == null || usuario.senha == null || usuario.email == null) {
       valido = false
     }
 
@@ -91,13 +91,15 @@ export class CadastroPage extends BaseComponent {
    *Esse metodo é chamado quando o focus é tirado do input do email
    */
   focusoutEmail(event: FocusEvent) {
-    this.validaEmail(this.usuario.nome)
+    this.validaEmail(this.usuario.email)
   }
 
   validaEmail(email: any) {
     const re = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
     if (!re.test(email)) {
       this.emailErroVisible = true;
+    }else {
+      this.emailErroVisible = false;
     }
   }
 

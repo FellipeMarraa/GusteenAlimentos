@@ -14,7 +14,7 @@ export class Produto {
 
   desconto: number;
 
-  categoria: Categoria;
+  categoria: string;
 
   idCliente: string;
 

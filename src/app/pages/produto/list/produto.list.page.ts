@@ -47,6 +47,8 @@ export class ProdutoListPage extends BaseComponent {
   }
 
   carregaProdutos() {
+
+
     this.produtoService.findAll().subscribe((produtosDB) => {
       this.listaProdutos = produtosDB.filter(item => item.idCliente == this.cliente.id);
 
