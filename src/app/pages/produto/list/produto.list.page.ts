@@ -49,6 +49,21 @@ export class ProdutoListPage extends BaseComponent {
   carregaProdutos() {
     this.produtoService.findAll().subscribe((produtosDB) => {
       this.listaProdutos = produtosDB.filter(item => item.idCliente == this.cliente.id);
+
+      console.log(this.listaProdutos);
+
+      this.listaProdutos.forEach(item => {
+        if (item.nome == 'Hamburguer') {
+          item.imageUrl = '/assets/imgs/foods/hamburger.png';
+        }
+        if (item.nome == 'Pizza') {
+          item.imageUrl = '/assets/imgs/foods/pizza.png';
+        }
+        if (item.nome == 'Tambi') {
+          item.imageUrl = '/assets/imgs/foods/tambi.png';
+        }
+      });
+
     });
   }
 
@@ -64,4 +79,7 @@ export class ProdutoListPage extends BaseComponent {
 
   }
 
+  backHome() {
+    this.navCtrl.navigateForward(`/home`);
+  }
 }

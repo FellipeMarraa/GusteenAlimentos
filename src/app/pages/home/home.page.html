@@ -20,15 +20,39 @@
 <ion-content>
   <!--  lista de Produtores-->
 
-  <ion-list class="produtores" >
+  <ion-list class="produtores">
     <div (click)="goToProdutos(cliente)" class="cliente" *ngFor="let cliente of clientes" [ngClass]="cliente.active ? 'active' : ''">
-
       <ion-avatar style="background-color: green">
         <ion-img [src]="cliente.imageUrl "></ion-img>
       </ion-avatar>
-
       <p class="ion-no-margin">{{cliente.nome}}</p>
     </div>
   </ion-list>
+
+  <div>
+    <h1 class="list-header">Popular</h1>
+    <ion-list class="produtores">
+      <div (click)="goToProdutos(cliente)" class="cliente" *ngFor="let cliente of clientes" [ngClass]="cliente.active ? 'active' : ''">
+        <ion-avatar style="background-color: green">
+          <ion-img [src]="cliente.imageUrl "></ion-img>
+        </ion-avatar>
+        <p class="ion-no-margin">{{cliente.nome}}</p>
+      </div>
+    </ion-list>
+  </div>
+
+  <div>
+    <h1 class="list-header">Famosos no AgroAPP</h1>
+    <ion-list class="produtores">
+      <div (click)="goToProdutos(cliente)" class="cliente" *ngFor="let cliente of clientes" [ngClass]="cliente.active ? 'active' : ''">
+        <ion-avatar style="background-color: green">
+          <ion-img [src]="cliente.imageUrl "></ion-img>
+        </ion-avatar>
+        <p class="ion-no-margin">{{cliente.nome}}</p>
+      </div>
+    </ion-list>
+  </div>
+
+
 
 </ion-content>

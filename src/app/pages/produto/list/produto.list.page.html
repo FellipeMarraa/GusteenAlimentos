@@ -1,64 +1,44 @@
-<ion-header>
-  <ion-toolbar color="primary">
-    <ion-buttons slot="start">
-      <ion-menu-button style="color: white" menu="main-menu"></ion-menu-button>
-    </ion-buttons>
-
-    <!-- nome do produtor -->
-    <ion-title>Lista Produto {{cliente.nome}}</ion-title>
-
-
-  </ion-toolbar>
-
-</ion-header>
-
 <ion-content>
+  <ion-header class="header-system">
+    <ion-toolbar>
+      <ion-buttons slot="start">
+        <ion-button fill="clear" (click)="backHome()" style="background-color: green">
+          <ion-icon name="arrow-back-outline"></ion-icon>
+        </ion-button>
+      </ion-buttons>
 
+      <ion-title class="ion-text-center"> {{cliente.nome}}</ion-title>
+
+      <ion-buttons slot="end">
+        <ion-button fill="clear" style="background-color: green">
+          <ion-icon name="heart-outline"></ion-icon>
+        </ion-button>
+      </ion-buttons>
+    </ion-toolbar>
+
+  </ion-header>
 
   <!--Lista de Produtos deste Produtor-->
-  <ion-card *ngFor="let produto of listaProdutos">
 
-    <ion-card-header>
-      <ion-card-title>
-        {{produto.nome}} - {{ "R$" + " " + produto.preco + ",00"}}
-        <img style="padding: 2%" [src]="produto?.imageUrl || 'assets/imgs/imgNotFound.png'">
-        <ion-buttons slot="end">
-          <ion-button fill="clear" (click)="removeProduto(produto)">
-            <ion-icon color="danger" slot="icon-only" name="trash-outline"></ion-icon>
+
+  <div class="food-list">
+    <div class="card" *ngFor="let produto of listaProdutos">
+      <ion-img [src]="produto.imageUrl"></ion-img>
+
+      <div class="card-content">
+        <h3 class="title">{{produto.nome}}</h3>
+        <h2 class="subtitle">R${{produto.preco|number:'1.2'}}</h2>
+
+        <ion-buttons slot="start">
+          <ion-button>
+            <ion-icon slot="icon-only" name="add-outline"></ion-icon>
           </ion-button>
         </ion-buttons>
-
-      </ion-card-title>
-    </ion-card-header>
-
-    <ion-card-content>
-      <!--      <img [src]="produto.imageUrl">-->
-      <p style="color: green" *ngIf="produto.promocao==true">{{produto.desconto + "%" + " " + "OFF"}} </p>
-      <!--      <ion-button (click)="addToCart(produto)" style="margin-left: 200px">-->
-      <!--        <ion-icon name="add-circle-outline"></ion-icon>-->
-      <!--      </ion-button>-->
+      </div>
 
 
-    </ion-card-content>
-
-
-  </ion-card>
-
+    </div>
+  </div>
 
 </ion-content>
 
-<ion-fab vertical="bottom" horizontal="end" (click)="new()">
-  <ion-fab-button color="primary">
-    <ion-icon name="add-outline"></ion-icon>
-  </ion-fab-button>
-</ion-fab>
-
-
-<!--<ion-footer>-->
-
-<!--  <ion-toolbar color="primary">-->
-<!--    <ion-button expand="full" (click)="novo()">-->
-<!--      Cadastrar-->
-<!--    </ion-button>-->
-<!--  </ion-toolbar>-->
-<!--</ion-footer>-->
