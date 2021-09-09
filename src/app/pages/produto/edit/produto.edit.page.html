@@ -22,24 +22,6 @@
         <ion-button style="width: 100vw" (click)="getGalleryPicture()">Adicionar Imagem</ion-button>
       </ion-item>
 
-<!--      <ion-item *ngIf="editImage">-->
-<!--        <ion-card >-->
-<!--          <ion-card-header>-->
-<!--            Adicionar imagem de produto-->
-<!--          </ion-card-header>-->
-<!--          <ion-item *ngIf="picture">-->
-<!--            <img [src]="picture">-->
-<!--          </ion-item>-->
-<!--          <ion-item>-->
-<!--            <ion-button (click)="getCameraPicture()" [disabled]="cameraOn">Camera</ion-button>-->
-<!--            <ion-button (click)="getGalleryPicture()" [disabled]="cameraOn">Galeria</ion-button>-->
-<!--            <ion-button *ngIf="picture" (click)="sendPicture()">Enviar imagem</ion-button>-->
-<!--            <ion-button *ngIf="picture" (click)="cancel()">Descartar imagem</ion-button>-->
-<!--          </ion-item>-->
-<!--        </ion-card>-->
-
-<!--      </ion-item>-->
-
       <ion-item>
         <ion-label>Categorias</ion-label>
         <ion-select class="multiple" [(ngModel)]="produto.categoria" (ngModelChange)="onCategoriaChange($event)"
@@ -67,8 +49,6 @@
         <ion-label position="floating">Desconto</ion-label>
         <ion-input type="number" name="desconto" [(ngModel)]="produto.desconto"></ion-input>
       </ion-item>
-
-
 
     </form>
   </ion-grid>

@@ -24,4 +24,8 @@ export class Cliente {
   aceitaPolitica: boolean;
 
   enderecos: Endereco[];
+
+
+
+  active: boolean;
 }

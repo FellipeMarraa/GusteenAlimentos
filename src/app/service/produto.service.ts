@@ -1,12 +1,10 @@
 import {HttpClient, HttpErrorResponse, HttpHeaders} from '@angular/common/http';
 import {Injectable} from '@angular/core';
 import {Observable, throwError} from 'rxjs';
-import {API_CONFIG} from "../config/api.config";
-import {ProdutoDTO} from "../class/dto/produto.dto";
-import {CategoriaDTO} from "../class/dto/categoria.dto";
-import {Cliente} from "../class/cliente";
-import {catchError, retry} from "rxjs/operators";
-import {Produto} from "../class/produto";
+import {API_CONFIG} from '../config/api.config';
+import {ProdutoDTO} from '../class/dto/produto.dto';
+import {catchError, retry} from 'rxjs/operators';
+import {Produto} from '../class/produto';
 import {ImageUtilService} from './image.util.service';
 
 @Injectable()
@@ -52,18 +50,18 @@ export class ProdutoService {
   }
 
   getSmallImageFromBucket(id: string): Observable<any> {
-    let url = `${API_CONFIG.bucketBaseUrl}/prod${id}-small.jpg`
+    let url = `${API_CONFIG.bucketBaseUrl}/prod${id}-small.jpg`;
     return this.http.get(url, {responseType: 'blob'});
   }
 
   getImageFromBucket(id: string): Observable<any> {
-    let url = `${API_CONFIG.bucketBaseUrl}/prod${id}.jpg`
+    let url = `${API_CONFIG.bucketBaseUrl}/prod${id}.jpg`;
     return this.http.get(url, {responseType: 'blob'});
   }
 
   uploadPicture(picture) {
     let pictureBlob = this.imageUtilService.dataUriToBlob(picture);
-    let formData : FormData = new FormData();
+    let formData: FormData = new FormData();
     formData.set('file', pictureBlob, 'file.png');
     return this.http.post(
       `${API_CONFIG.baseUrl}/clientes/picture`,

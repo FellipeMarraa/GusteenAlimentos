@@ -4,13 +4,7 @@
       <ion-menu-button style="color: white" menu="main-menu"></ion-menu-button>
     </ion-buttons>
 
-    <!----barra de pesquisar----->
-    <ion-title>
-      <ion-item style="height: 40px;width: 100%;border-radius: 10px">
-        <ion-icon style="margin-right:2px " color="primary" name="search-outline"></ion-icon>
-        <ion-input type="text" placeholder="buscar"></ion-input>
-      </ion-item>
-    </ion-title>
+    <ion-searchbar class="searchbar" placeholder="Buscar"></ion-searchbar>
 
     <!------carrinho-->
     <ion-buttons slot="end">
@@ -24,40 +18,17 @@
 
 
 <ion-content>
-  <!--  lista de categorias-->
-  <ion-button style="margin-left: 10px">
-    <ion-icon style="color: white" name="pricetag-outline"></ion-icon>
-  </ion-button>
+  <!--  lista de Produtores-->
 
-  <ion-button>
-    <ion-icon style="color: white" name="cart-outline"></ion-icon>
-  </ion-button>
+  <ion-list class="produtores" >
+    <div (click)="goToProdutos(cliente)" class="cliente" *ngFor="let cliente of clientes" [ngClass]="cliente.active ? 'active' : ''">
 
+      <ion-avatar style="background-color: green">
+        <ion-img [src]="cliente.imageUrl "></ion-img>
+      </ion-avatar>
 
-  <ion-card *ngFor="let produto of listaProdutos">
-
-    <ion-card-header>
-      <img [src]="produto?.imageUrl || 'assets/imgs/imgNotFound.png'">
-
-      <ion-card-title>
-        {{produto.nome}} - {{ "R$" + " " + produto.preco + ",00"}}
-      </ion-card-title>
-    </ion-card-header>
-
-    <ion-card-content>
-      <img [src]="produto.imageUrl">
-      <p style="color: green" *ngIf="produto.promocao==true">{{produto.desconto + "%" + " " + "OFF"}} </p>
-
-
-        <ion-col size="2" offset="5">
-          <ion-button (click)="addToCart(produto)" style="float:right">
-            <ion-icon name="add-circle-outline"></ion-icon>
-          </ion-button>
-        </ion-col>
-
-    </ion-card-content>
-
-
-  </ion-card>
+      <p class="ion-no-margin">{{cliente.nome}}</p>
+    </div>
+  </ion-list>
 
 </ion-content>

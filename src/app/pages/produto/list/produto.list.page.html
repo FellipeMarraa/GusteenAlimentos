@@ -4,7 +4,8 @@
       <ion-menu-button style="color: white" menu="main-menu"></ion-menu-button>
     </ion-buttons>
 
-    <ion-title>Lista Produto</ion-title>
+    <!-- nome do produtor -->
+    <ion-title>Lista Produto {{cliente.nome}}</ion-title>
 
 
   </ion-toolbar>
@@ -14,11 +15,13 @@
 <ion-content>
 
 
+  <!--Lista de Produtos deste Produtor-->
   <ion-card *ngFor="let produto of listaProdutos">
-    <ion-card-header (click)="edit(produto)">
+
+    <ion-card-header>
       <ion-card-title>
         {{produto.nome}} - {{ "R$" + " " + produto.preco + ",00"}}
-            <img style="padding: 2%" [src]="produto?.imageUrl || 'assets/imgs/imgNotFound.png'">
+        <img style="padding: 2%" [src]="produto?.imageUrl || 'assets/imgs/imgNotFound.png'">
         <ion-buttons slot="end">
           <ion-button fill="clear" (click)="removeProduto(produto)">
             <ion-icon color="danger" slot="icon-only" name="trash-outline"></ion-icon>

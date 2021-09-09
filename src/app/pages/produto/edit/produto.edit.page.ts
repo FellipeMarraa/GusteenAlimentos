@@ -9,6 +9,7 @@ import {Produto} from "../../../class/produto";
 import {API_CONFIG} from '../../../config/api.config';
 import {Camera, CameraOptions} from '@ionic-native/camera/ngx';
 import {DomSanitizer} from '@angular/platform-browser';
+import {Categoria} from '../../../class/categoria';
 
 @Component({
   selector: 'produto-page',
@@ -18,7 +19,7 @@ import {DomSanitizer} from '@angular/platform-browser';
 export class ProdutoEditPage extends BaseComponent {
 
   produto: Produto;
-  categorias: CategoriaDTO[] = [];
+  categorias: Categoria[] = [];
   picture: string;
   profileImage: any = '';
   cameraOn: boolean = false;
@@ -95,7 +96,7 @@ export class ProdutoEditPage extends BaseComponent {
   }
 
 
-  onCategoriaChange(categoria: CategoriaDTO) {
+  onCategoriaChange(categoria: Categoria) {
     this.produto.categoria = categoria;
   }
 
