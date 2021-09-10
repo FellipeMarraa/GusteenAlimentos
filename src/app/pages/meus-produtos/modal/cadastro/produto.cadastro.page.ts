@@ -59,7 +59,7 @@ export class ProdutoCadastroModalPage extends BaseComponent {
     if (this.validaCadastro()) {
       if (produto.id) {
         if (produto.imageUrl == null) {
-          produto.imageUrl = 'assets/imgs/imgNotFound.png';
+          // produto.imageUrl = 'assets/imgs/imgNotFound.png';
         }
 
         this.produtoService.update(produto).subscribe(produtoEditado => {

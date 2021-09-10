@@ -27,6 +27,7 @@ export class ProdutoViewPage extends BaseComponent {
     this.ionViewWillEnter();
   }
 
+
   ionViewWillEnter() {
     this.carregaProdutos();
   }

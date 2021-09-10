@@ -28,6 +28,7 @@ export class ProdutoListPage extends BaseComponent {
     this.carregaProdutos();
   }
 
+
   new() {
     this.navCtrl.navigateForward(`/produto/edit/`);
   }
@@ -55,6 +56,8 @@ export class ProdutoListPage extends BaseComponent {
       if (produtoEdit != null && produtoEdit.data != 'close') {
         this.listaProdutos.splice(this.listaProdutos.indexOf(produto), 1);
         this.listaProdutos.push(produtoEdit.data);
+      } else {
+        this.init();
       }
     });
 
@@ -72,6 +75,8 @@ export class ProdutoListPage extends BaseComponent {
     produtoModal.onDidDismiss().then(data => {
       if (data != null && data.data != 'close') {
         this.listaProdutos.push(data.data);
+      } else {
+        this.init();
       }
     });
 
