@@ -1,5 +1,6 @@
 import {NgModule} from '@angular/core';
 import {PreloadAllModules, RouterModule, Routes} from '@angular/router';
+import {ProdutoViewPageModule} from './pages/meus-produtos/view/produto.view.page.module';
 
 const routes: Routes = [
   {
@@ -18,10 +19,26 @@ const routes: Routes = [
     path: 'cadastro-endereco',
     loadChildren: () => import('./pages/cadastro/cadastro-endereco/cadastro.endereco.module').then(m => m.CadastroEnderecoPageModule)
   },
+
   {
     path: 'home',
     loadChildren: () => import('./pages/home/home.module').then(m => m.HomePageModule)
   },
+
+  {
+    path: 'meus-produtos',
+    children: [
+      {
+        path: 'list',
+        loadChildren: () => import('./pages/meus-produtos/list/produto.list.page.module').then(m => m.ProdutoListPageModule)
+      },
+      {
+        path: 'view',
+        loadChildren: () => import('./pages/meus-produtos/view/produto.view.page.module').then(m => m.ProdutoViewPageModule)
+      }
+    ]
+  },
+
   {
     path: 'perfil',
     loadChildren: () => import('./pages/perfil/perfil.module').then(m => m.PerfilPageModule)
@@ -39,11 +56,7 @@ const routes: Routes = [
     children: [
       {
         path: 'list',
-        loadChildren: () => import('./pages/produto/list/produto.list.page.module').then(m => m.ProdutoListPageModule)
-      },
-      {
-        path: 'edit/',
-        loadChildren: () => import('./pages/produto/edit/produto.edit.page.module').then(m => m.ProdutoEditPageModule)
+        loadChildren: () => import('./pages/meus-produtos/list/produto.list.page.module').then(m => m.ProdutoListPageModule)
       }
     ]
   },

@@ -1,10 +1,10 @@
 ion-toolbar {
-  --background: transparent;
+  --background: var(--ion-color-primary);
 }
 
 .header-system {
-  background: url("../../../../assets/imgs/icone.png") no-repeat;
-  background-size: cover;
+
+
 }
 
 .food-list {

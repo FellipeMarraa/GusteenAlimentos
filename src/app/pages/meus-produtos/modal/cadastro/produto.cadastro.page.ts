@@ -1,84 +1,78 @@
-import {Component, Injector} from '@angular/core';
-import {BaseComponent} from '../../../class/commons-class/base.component';
-import {CategoriaDTO} from '../../../class/dto/categoria.dto';
-import {CategoriaService} from '../../../service/categoria.service';
-import {ProdutoService} from '../../../service/produto.service';
-import {PositionToast, ToastUtil} from '../../../class/commons-class/toast.util';
-import {ToastType} from '../../../class/commons-class/toast.type';
-import {Produto} from '../../../class/produto';
-import {API_CONFIG} from '../../../config/api.config';
-import {Camera, CameraOptions} from '@ionic-native/camera/ngx';
+import {Component, Injector, Input} from '@angular/core';
+import {BaseComponent} from '../../../../class/commons-class/base.component';
+import {ProdutoService} from '../../../../service/produto.service';
+import {Produto} from '../../../../class/produto';
+import {API_CONFIG} from '../../../../config/api.config';
 import {DomSanitizer} from '@angular/platform-browser';
-import {Categoria} from '../../../class/categoria';
+import {PositionToast, ToastUtil} from '../../../../class/commons-class/toast.util';
+import {ToastType} from '../../../../class/commons-class/toast.type';
+import {Camera, CameraOptions} from '@ionic-native/camera/ngx';
 
 @Component({
-  selector: 'produto-page',
-  templateUrl: 'produto.edit.page.html',
-  styleUrls: ['./produto.edit.page.scss']
+  selector: 'produto-cadastro-page',
+  templateUrl: 'produto.cadastro.page.html',
+  styleUrls: ['./produto.cadastro.page.scss']
 })
-export class ProdutoEditPage extends BaseComponent {
+export class ProdutoCadastroModalPage extends BaseComponent {
+  @Input()
+  produto: Produto = new Produto();
 
-  produto: Produto;
-  categorias: Categoria[] = [];
-  picture: string;
+
+  title: string;
+  editOrNew: string;
+
+  //Variaveis Camera
   profileImage: any = '';
   cameraOn: boolean = false;
+  picture: string;
   editImage: boolean = false;
-  editUser: boolean = false;
+
 
   constructor(private injector: Injector,
-              private categoriaService: CategoriaService,
-              private produtoService: ProdutoService,
+              public sanitizer: DomSanitizer,
               private camera: Camera,
-              public sanitizer: DomSanitizer) {
+              private produtoService: ProdutoService) {
     super(injector);
-
-    this.activatedRoute.queryParams.subscribe(params => {
-      let returnedObject = this.router.getCurrentNavigation().extras.state;
-      if (returnedObject) {
-        this.produto = returnedObject.produto;
-      } else {
-        this.produto = new Produto();
-      }
-    });
-
-
   }
 
   init() {
-    this.ionViewWillEnter();
+    if (this.produto.nome) {
+      this.title = 'Edição Produto';
+      this.editOrNew = 'Editar Produto';
+    } else {
+      this.title = 'Cadastro Produto';
+      this.editOrNew = 'Adicionar Produto';
+      this.produto.idCliente = this.currentUser.id;
+    }
   }
 
-  ionViewWillEnter() {
-    this.produto.idCliente = this.currentUser.id;
-
-    this.carregaCategorias();
+  backToList() {
+    this.modalCtrl.dismiss('close');
   }
 
-  carregaCategorias() {
-    this.categoriaService.findAll().subscribe((categoria) => {
-      this.categorias = categoria;
-    });
+  removeProdut() {
+    //TODO remove product
   }
 
-  salvar() {
+
+  salvarProduto(produto: Produto) {
     if (this.validaCadastro()) {
-      if (!this.produto.desconto) {
-        this.produto.desconto = 100;
-      }
+      if (produto.id) {
+        if (produto.imageUrl == null) {
+          produto.imageUrl = 'assets/imgs/imgNotFound.png';
+        }
 
-      if (this.produto.id) {
-        this.produtoService.update(this.produto).subscribe(item => {
-          console.log('editou' + '-' + item.nome);
+        this.produtoService.update(produto).subscribe(produtoEditado => {
+          console.log('editou' + '-' + produtoEditado.nome);
+          this.modalCtrl.dismiss(produto);
         });
       } else {
-        this.produtoService.insert(this.produto).subscribe(item => {
-          this.produto.categoria = item.categoria;
-          console.log('salvou' + '-' + item.nome);
+        this.produtoService.insert(produto).subscribe(produtoSalvo => {
+          // this.produto.categoria = produtoSalvo.categoria;
+          console.log('salvou' + '-' + produtoSalvo.nome);
+          this.modalCtrl.dismiss(produto);
         });
       }
-
-      this.navCtrl.navigateForward(`/produto/list`);
 
     } else {
       ToastUtil.presentToast(this.toastCtrl, 'Necessita dados', PositionToast.BOTTOM, ToastType.INFO, 500);
@@ -89,17 +83,10 @@ export class ProdutoEditPage extends BaseComponent {
   validaCadastro() {
     //TODO VALIDAR
 
-    let erros: string[];
-    if (!this.produto.nome) {
-      erros.push('erros');
-    }
     return true;
   }
 
-
-  onCategoriaChange(categoria: Categoria) {
-    this.produto.categoria = categoria.id;
-  }
+  //Camera ============================================================
 
   getImageIfExists() {
     this.produtoService.getImageFromBucket(this.produto.id)
@@ -127,7 +114,6 @@ export class ProdutoEditPage extends BaseComponent {
   getCameraPicture() {
 
     this.cameraOn = true;
-
     const options: CameraOptions = {
       quality: 100,
       destinationType: this.camera.DestinationType.DATA_URL,
@@ -168,7 +154,6 @@ export class ProdutoEditPage extends BaseComponent {
       .subscribe(response => {
           this.picture = null;
           this.getImageIfExists();
-          this.ionViewWillEnter();
         },
         error => {
         });
@@ -185,4 +170,5 @@ export class ProdutoEditPage extends BaseComponent {
       this.editImage = false;
     }
   }
+
 }

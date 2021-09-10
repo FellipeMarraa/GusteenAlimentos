@@ -7,11 +7,11 @@ import {Produto} from '../../../class/produto';
 import {Cliente} from '../../../class/cliente';
 
 @Component({
-  selector: 'produto-list-page',
-  templateUrl: 'produto.list.page.html',
-  styleUrls: ['./produto.list.page.scss']
+  selector: 'produto-view-page',
+  templateUrl: 'produto.view.page.html',
+  styleUrls: ['./produto.view.page.scss']
 })
-export class ProdutoListPage extends BaseComponent {
+export class ProdutoViewPage extends BaseComponent {
   cliente: Cliente;
 
   listaProdutos: Produto[] = [];
@@ -29,15 +29,13 @@ export class ProdutoListPage extends BaseComponent {
 
   ionViewWillEnter() {
     this.carregaProdutos();
-
   }
 
   private pegarCliente() {
-    this.activatedRoute.queryParams.subscribe((params) => {
+    this.activatedRoute.queryParams.subscribe(params => {
       let returnedObject = this.router.getCurrentNavigation().extras.state;
       if (returnedObject) {
         this.cliente = returnedObject.cliente;
-        console.log(this.cliente);
       }
     });
   }
@@ -47,41 +45,26 @@ export class ProdutoListPage extends BaseComponent {
   }
 
   carregaProdutos() {
-
-
+    this.listaProdutos = [];
     this.produtoService.findAll().subscribe((produtosDB) => {
       this.listaProdutos = produtosDB.filter(item => item.idCliente == this.cliente.id);
-
-      console.log(this.listaProdutos);
-
-      this.listaProdutos.forEach(item => {
-        if (item.nome == 'Hamburguer') {
-          item.imageUrl = '/assets/imgs/foods/hamburger.png';
-        }
-        if (item.nome == 'Pizza') {
-          item.imageUrl = '/assets/imgs/foods/pizza.png';
-        }
-        if (item.nome == 'Tambi') {
-          item.imageUrl = '/assets/imgs/foods/tambi.png';
-        }
-      });
-
     });
   }
 
-  edit(produto: ProdutoDTO) {
-    const navigationExtra: NavigationExtras = {
-      state: {produto: produto}
-    };
-    this.navCtrl.navigateForward(`/produto/edit/`, navigationExtra);
-
-  }
-
-  removeProduto(produto: Produto) {
-
-  }
 
   backHome() {
     this.navCtrl.navigateForward(`/home`);
+  }
+
+  editProduto(produto: Produto) {
+    const navigationExtra: NavigationExtras = {
+      state: {produto: produto}
+    };
+    this.navCtrl.navigateForward(`/meus-produtos/cadastro`, navigationExtra);
+
+  }
+
+  newProdut() {
+    this.navCtrl.navigateForward(`/meus-produtos/cadastro`);
   }
 }

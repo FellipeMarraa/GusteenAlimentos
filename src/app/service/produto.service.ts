@@ -38,9 +38,9 @@ export class ProdutoService {
   }
 
   update(produto: Produto): Observable<Produto> {
-    return this.http.put<Produto>(`${API_CONFIG.baseUrl}/produtos/edit/${produto.id}`, JSON.stringify(produto), this.httpOptions)
+    return this.http.post<Produto>(`${API_CONFIG.baseUrl}/produtos/edit`, JSON.stringify(produto), this.httpOptions)
       .pipe(
-        retry(2),
+        retry(1),
         catchError(this.handleError)
       );
   }

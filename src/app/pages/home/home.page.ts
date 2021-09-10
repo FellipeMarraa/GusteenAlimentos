@@ -55,8 +55,7 @@ export class HomePage extends BaseComponent {
 
   goToProdutos(cliente: Cliente) {
     const navigationExtra: NavigationExtras = {state: {cliente: cliente}};
-    this.navCtrl.navigateRoot('/produto/list', navigationExtra);
-
+    this.navCtrl.navigateRoot('/meus-produtos/view', navigationExtra);
   }
 
 

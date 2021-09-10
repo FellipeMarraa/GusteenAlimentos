@@ -2,20 +2,13 @@
   <ion-header class="header-system">
     <ion-toolbar>
       <ion-buttons slot="start">
-        <ion-button fill="clear" (click)="backHome()" style="background-color: green">
-          <ion-icon name="arrow-back-outline"></ion-icon>
+        <ion-button fill="clear" (click)="backHome()">
+          <ion-icon name="arrow-back-outline" style="color: white"></ion-icon>
         </ion-button>
       </ion-buttons>
 
-      <ion-title class="ion-text-center"> {{cliente?.nome}}</ion-title>
-
-      <ion-buttons slot="end">
-        <ion-button fill="clear" style="background-color: green">
-          <ion-icon name="heart-outline"></ion-icon>
-        </ion-button>
-      </ion-buttons>
+      <ion-title class="ion-text-center" style="color: white">{{cliente.nome}}</ion-title>
     </ion-toolbar>
-
   </ion-header>
 
   <!--Lista de Produtos deste Produtor-->
@@ -29,19 +22,14 @@
         <h3 class="title">{{produto?.nome}}</h3>
         <h2 class="subtitle">R${{produto?.preco|number:'1.2'}}</h2>
 
+
         <ion-buttons slot="start">
           <ion-button>
-            <ion-icon slot="icon-only" name="add-outline"></ion-icon>
+            <ion-icon slot="icon-only" name="add"></ion-icon>
           </ion-button>
         </ion-buttons>
       </div>
     </div>
   </div>
-  <ion-fab vertical="bottom" horizontal="end" (click)="new()">
-    <ion-fab-button color="primary">
-      <ion-icon name="add-outline"></ion-icon>
-    </ion-fab-button>
-  </ion-fab>
 
 </ion-content>
-
