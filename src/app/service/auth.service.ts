@@ -19,6 +19,7 @@ export class AuthService {
 
   httpOptions = {
     headers: new HttpHeaders({'Content-Type': 'application/json',
+      observe:'response'
     })
   };
 
@@ -26,7 +27,7 @@ export class AuthService {
     return this.http.post(`${API_CONFIG.baseUrl}/login`, usuario,
       {
         observe: 'response',
-        responseType: 'text'
+        responseType: 'json'
       });
   }
 

@@ -7,4 +7,5 @@ export class Cep {
   address: string;
   number: number;
   complemento: string;
+  message:string;
 }
