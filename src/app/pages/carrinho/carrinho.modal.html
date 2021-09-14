@@ -4,10 +4,10 @@
       <ion-menu-button style="color: white" menu="main-menu"></ion-menu-button>
     </ion-buttons>
 
-    <ion-title>Carrinho</ion-title>
+    <ion-title class="ion-text-center">Carrinho</ion-title>
 
     <ion-buttons slot="end">
-      <ion-button fill="clear" size="large" (click)="limparCarrinho()">
+      <ion-button fill="clear" size="large" (click)="clearCar()">
         <ion-icon name="trash-outline" slot="end" style="color: white"></ion-icon>
       </ion-button>
     </ion-buttons>
@@ -19,35 +19,33 @@
 <ion-content>
   <div style="width: 100vw;text-align: center">
 
-    <p *ngIf="listaProdutosCarrinho.length == 0"> Seu carrinho está vazio</p>
+    <p *ngIf="listaProdutos.length == 0"> Seu carrinho está vazio</p>
   </div>
 
-
-  <div class="cart-item" *ngFor="let produto of listaProdutosCarrinho">
+  <div class="cart-item" *ngFor="let produto of listaProdutos">
     <div class="image">
       <ion-img [src]="produto.imageUrl"></ion-img>
     </div>
 
     <div class="description">
       <h3>{{produto.nome}}</h3>
-      <p><sup>$</sup>{{produto.preco | number:'1.2'}}</p>
+      <h2 class="sup">R${{produto?.preco|number:'1.2'}}</h2>
     </div>
 
-<!--    <div class="actions">-->
-<!--      <ion-buttons>-->
-<!--        <ion-button (click)="increase.emit()">-->
-<!--          <ion-icon slot="icon-only" name="add"></ion-icon>-->
-<!--        </ion-button>-->
-<!--      </ion-buttons>-->
-<!--      <div class="counter">{{item.quantity}}</div>-->
-<!--      <ion-buttons>-->
-<!--        <ion-button (click)="decrease.emit()">-->
-<!--          <ion-icon slot="icon-only" name="remove"></ion-icon>-->
-<!--        </ion-button>-->
-<!--      </ion-buttons>-->
-<!--    </div>-->
+    <div class="actions">
+      <ion-buttons>
+        <ion-button (click)="addProduct(produto)">
+          <ion-icon slot="icon-only" name="add-outline"></ion-icon>
+        </ion-button>
+      </ion-buttons>
+      <div class="counter">{{produto.quantidade}}</div>
+      <ion-buttons>
+        <ion-button (click)="removeProduct(produto)">
+          <ion-icon slot="icon-only" name="remove-outline"></ion-icon>
+        </ion-button>
+      </ion-buttons>
+    </div>
   </div>
-
 </ion-content>
 
 <ion-footer>

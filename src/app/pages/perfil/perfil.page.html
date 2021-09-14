@@ -3,7 +3,9 @@
     <ion-buttons slot="start">
       <ion-menu-button style="color: white" menu="main-menu"></ion-menu-button>
     </ion-buttons>
-    <ion-title>Perfil</ion-title>
+
+    <ion-title class="ion-text-center">Perfil</ion-title>
+
     <ion-buttons slot="end">
       <ion-icon name="create" (click)="edicaoUsuario()"></ion-icon>
     </ion-buttons>
@@ -102,10 +104,10 @@
 
       <ion-row>
         <ion-col>
-          <ion-button *ngIf="editUser" color="primary" (click)="salvarEdicao()" >Salvar</ion-button>
+          <ion-button *ngIf="editUser" color="primary" (click)="salvarEdicao()">Salvar</ion-button>
         </ion-col>
         <ion-col>
-          <ion-button *ngIf="editUser" color="danger" (click)="cancelarEdicao()" >Cancelar</ion-button>
+          <ion-button *ngIf="editUser" color="danger" (click)="cancelarEdicao()">Cancelar</ion-button>
         </ion-col>
       </ion-row>
 

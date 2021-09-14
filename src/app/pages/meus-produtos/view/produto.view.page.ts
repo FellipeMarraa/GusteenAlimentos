@@ -1,12 +1,9 @@
-import {Component, Injector, NgZone} from '@angular/core';
+import {Component, Injector} from '@angular/core';
 import {BaseComponent} from '../../../class/commons-class/base.component';
 import {ProdutoService} from '../../../service/produto.service';
-import {ProdutoDTO} from '../../../class/dto/produto.dto';
 import {NavigationExtras} from '@angular/router';
 import {Produto} from '../../../class/produto';
 import {Cliente} from '../../../class/cliente';
-import {CameraService} from '../../../service/camera.service';
-import {ActionSheetController} from '@ionic/angular';
 
 @Component({
   selector: 'produto-view-page',
@@ -17,6 +14,8 @@ export class ProdutoViewPage extends BaseComponent {
   cliente: Cliente;
 
   listaProdutos: Produto[] = [];
+
+  listaProdutosCarrinho: Produto[] = [];
 
   constructor(private injector: Injector,
               private produtoService: ProdutoService) {
@@ -52,7 +51,6 @@ export class ProdutoViewPage extends BaseComponent {
     });
   }
 
-
   backHome() {
     this.navCtrl.navigateForward(`/home`);
   }
@@ -70,6 +68,23 @@ export class ProdutoViewPage extends BaseComponent {
   }
 
   openCar() {
+    const navigationExtra: NavigationExtras = {
+      state: {listaProdutos: this.listaProdutosCarrinho}
+    };
+    this.navCtrl.navigateForward(`/carrinho`, navigationExtra);
+  }
 
+  addProdut(produto: Produto) {
+    let adicionado = false;
+    for (let produtoCarrinho of this.listaProdutosCarrinho) {
+      if (produtoCarrinho.id === produto.id) {
+        produtoCarrinho.quantidade += 1;
+        adicionado = true;
+        break;
+      }
+    }
+    if (!adicionado) {
+      this.listaProdutosCarrinho.push(produto)
+    }
   }
 }
