@@ -1,10 +1,12 @@
-import {Component, Injector} from '@angular/core';
+import {Component, Injector, NgZone} from '@angular/core';
 import {BaseComponent} from '../../../class/commons-class/base.component';
 import {ProdutoService} from '../../../service/produto.service';
 import {ProdutoDTO} from '../../../class/dto/produto.dto';
 import {NavigationExtras} from '@angular/router';
 import {Produto} from '../../../class/produto';
 import {Cliente} from '../../../class/cliente';
+import {CameraService} from '../../../service/camera.service';
+import {ActionSheetController} from '@ionic/angular';
 
 @Component({
   selector: 'produto-view-page',
@@ -16,7 +18,6 @@ export class ProdutoViewPage extends BaseComponent {
 
   listaProdutos: Produto[] = [];
 
-
   constructor(private injector: Injector,
               private produtoService: ProdutoService) {
     super(injector);
@@ -26,7 +27,6 @@ export class ProdutoViewPage extends BaseComponent {
   init() {
     this.ionViewWillEnter();
   }
-
 
   ionViewWillEnter() {
     this.carregaProdutos();

@@ -45,6 +45,19 @@ export class ProdutoService {
       );
   }
 
+
+  delete(produto_id: number) {
+
+
+
+
+
+    return this.http.delete(`${API_CONFIG.baseUrl}/produtos/delete/${produto_id}`).subscribe(item=>{
+      console.log('deletou')
+    });
+  }
+
+
   findByCategoria(categoria_id: string, page: number = 0, linesPerPage: number = 24) {
     return this.http.get(`${API_CONFIG.baseUrl}/produto/?categorias=${categoria_id}&page=${page}&linesPerPage=${linesPerPage}`);
   }

@@ -1,4 +1,4 @@
-import {Component, Injector, Input} from '@angular/core';
+import {Component, Injector, Input, NgZone} from '@angular/core';
 import {BaseComponent} from '../../../../class/commons-class/base.component';
 import {ProdutoService} from '../../../../service/produto.service';
 import {Produto} from '../../../../class/produto';
@@ -7,6 +7,10 @@ import {DomSanitizer} from '@angular/platform-browser';
 import {PositionToast, ToastUtil} from '../../../../class/commons-class/toast.util';
 import {ToastType} from '../../../../class/commons-class/toast.type';
 import {Camera, CameraOptions} from '@ionic-native/camera/ngx';
+import {ActionSheetController} from '@ionic/angular';
+import {CameraService} from '../../../../service/camera.service';
+import {StringUtil} from '../../../../util/string.util';
+import {AlertButtonTypeEnum, AlertTypeEnum} from '../../../../commons-module/utils/alert.util';
 
 @Component({
   selector: 'produto-cadastro-page',
@@ -29,8 +33,9 @@ export class ProdutoCadastroModalPage extends BaseComponent {
 
 
   constructor(private injector: Injector,
-              public sanitizer: DomSanitizer,
-              private camera: Camera,
+              private actionSheetCtrl: ActionSheetController,
+              private cameraService: CameraService,
+              private zone: NgZone,
               private produtoService: ProdutoService) {
     super(injector);
   }
@@ -50,8 +55,27 @@ export class ProdutoCadastroModalPage extends BaseComponent {
     this.modalCtrl.dismiss('close');
   }
 
-  removeProdut() {
-    //TODO remove product
+  async removeProdut() {
+
+    const alert = await this.alertCtrl.create({
+      message: 'Deseja realmente remover o produto?',
+      cssClass: AlertTypeEnum.INFO,
+      buttons: [
+        {
+          text: 'Não',
+          cssClass: AlertButtonTypeEnum.DANGER,
+        }, {
+          text: 'Sim',
+          cssClass: AlertButtonTypeEnum.INFO,
+          handler: () => {
+            this.produtoService.delete(StringUtil.stringToNumber(this.produto.id));
+          }
+        }
+      ]
+    });
+
+    await alert.present();
+
   }
 
 
@@ -88,87 +112,53 @@ export class ProdutoCadastroModalPage extends BaseComponent {
 
   //Camera ============================================================
 
-  getImageIfExists() {
-    this.produtoService.getImageFromBucket(this.produto.id)
-      .subscribe(response => {
-          this.produto.imageUrl = `${API_CONFIG.bucketBaseUrl}/cp${this.produto.id}.jpg`;
-          this.blobToDataURL(response).then(dataUrl => {
-            let str: string = dataUrl as string;
-            this.profileImage = this.sanitizer.bypassSecurityTrustUrl(str);
-          });
+  changeProductPicture(produto: Produto) {
+    this.showActionSheetWithOptions(produto);
+  }
+
+  private async showActionSheetWithOptions(produto: Produto) {
+    const actionSheet = await this.actionSheetCtrl.create({
+      header: 'Alterar foto do produto',
+      backdropDismiss: true,
+      buttons: [
+        {
+          text: 'Tirar foto',
+          icon: 'camera',
+          handler: () => {
+            this.zone.run(() => {
+              this.cameraService.getPictureFromCamera()
+                .then(data => {
+                  if (data) {
+                    produto.imageUrl = this.toDataUrl(data);
+                    // this.changeAvatar.emit(data);
+                  }
+                })
+                .catch(error => console.error(error));
+            });
+          }
         },
-        error => {
-          this.profileImage = '/src/assets/imgs/logo.png';
-        });
-  }
+        {
+          text: 'Usar uma foto da galeria',
+          icon: 'image',
+          handler: () => {
+            this.zone.run(() => {
+              this.cameraService.getPictureFromPhotoLibrary()
+                .then(data => {
+                  produto.imageUrl = this.toDataUrl(data);
 
-  blobToDataURL(blob) {
-    return new Promise((fulfill, reject) => {
-      let reader = new FileReader();
-      reader.onerror = reject;
-      reader.onload = (e) => fulfill(reader.result);
-      reader.readAsDataURL(blob);
+                  // this.changeAvatar.emit(data);
+                })
+                .catch(error => console.error(error));
+            });
+          }
+        }
+      ]
     });
+    await actionSheet.present();
   }
 
-  getCameraPicture() {
-
-    this.cameraOn = true;
-    const options: CameraOptions = {
-      quality: 100,
-      destinationType: this.camera.DestinationType.DATA_URL,
-      encodingType: this.camera.EncodingType.PNG,
-      mediaType: this.camera.MediaType.PICTURE
-    };
-
-    this.camera.getPicture(options).then((imageData) => {
-      this.picture = 'data:image/png;base64,' + imageData;
-      this.cameraOn = false;
-    }, (err) => {
-      this.cameraOn = false;
-    });
-  }
-
-  getGalleryPicture() {
-
-    this.cameraOn = true;
-
-    const options: CameraOptions = {
-      quality: 100,
-      sourceType: this.camera.PictureSourceType.PHOTOLIBRARY,
-      destinationType: this.camera.DestinationType.DATA_URL,
-      encodingType: this.camera.EncodingType.PNG,
-      mediaType: this.camera.MediaType.PICTURE
-    };
-
-    this.camera.getPicture(options).then((imageData) => {
-      this.picture = 'data:image/png;base64,' + imageData;
-      this.cameraOn = false;
-    }, (err) => {
-      this.cameraOn = false;
-    });
-  }
-
-  sendPicture() {
-    this.produtoService.uploadPicture(this.picture, this.produto.id)
-      .subscribe(response => {
-          this.picture = null;
-          this.getImageIfExists();
-        },
-        error => {
-        });
-  }
-
-  cancel() {
-    this.picture = null;
-  }
-
-  editarImagem() {
-    if (this.editImage == false) {
-      this.editImage = true;
-    } else {
-      this.editImage = false;
-    }
+  private toDataUrl(data) {
+    return `data:image/jpge;base64,${data}`;
   }
 
 }
