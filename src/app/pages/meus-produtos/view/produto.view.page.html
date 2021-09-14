@@ -8,6 +8,17 @@
       </ion-buttons>
 
       <ion-title class="ion-text-center" style="color: white">{{cliente.nome}}</ion-title>
+
+
+      <!------carrinho-->
+      <ion-buttons slot="end">
+        <ion-button fill="clear" size="large" (click)="openCar()">
+          <ion-icon style="color: white" name="cart-outline"></ion-icon>
+          <div style="color: white">{{0}}</div>
+        </ion-button>
+      </ion-buttons>
+
+
     </ion-toolbar>
   </ion-header>
 
@@ -16,7 +27,7 @@
 
   <div class="food-list">
     <div class="card" *ngFor="let produto of listaProdutos">
-      <ion-img [src]="produto?.imageUrl" ></ion-img>
+      <ion-img [src]="produto?.imageUrl"></ion-img>
 
       <div class="card-content">
         <h3 class="title">{{produto?.nome}}</h3>

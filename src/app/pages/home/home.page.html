@@ -1,19 +1,12 @@
-<ion-header >
+<ion-header>
   <ion-toolbar color="primary">
 
     <ion-buttons slot="start">
       <ion-menu-button style="color: white;padding-bottom: 25%" menu="main-menu"></ion-menu-button>
     </ion-buttons>
 
-    <ion-searchbar  class="searchbar" placeholder="Buscar"></ion-searchbar>
+    <ion-searchbar class="searchbar" placeholder="Buscar"></ion-searchbar>
 
-    <!------carrinho-->
-    <ion-buttons style="padding-bottom: 5%" slot="end">
-      <ion-button fill="clear" size="large" (click)="openCar()">
-        <ion-icon style="color: white" name="cart-outline"></ion-icon>
-        <div>{{listaProdutosCarrinho.length}}</div>
-      </ion-button>
-    </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
@@ -23,7 +16,7 @@
 
   <ion-list class="produtores">
     <div (click)="goToProdutos(cliente)" class="cliente" *ngFor="let cliente of clientes" [ngClass]="cliente.active ? 'active' : ''">
-      <ion-avatar style="background-color: green">
+      <ion-avatar>
         <ion-img [src]="cliente.imageUrl "></ion-img>
       </ion-avatar>
       <p class="ion-no-margin">{{cliente.nome}}</p>
@@ -34,7 +27,7 @@
     <h1 class="list-header">Popular</h1>
     <ion-list class="produtores">
       <div (click)="goToProdutos(cliente)" class="cliente" *ngFor="let cliente of clientes" [ngClass]="cliente.active ? 'active' : ''">
-        <ion-avatar style="background-color: green">
+        <ion-avatar>
           <ion-img [src]="cliente.imageUrl "></ion-img>
         </ion-avatar>
         <p class="ion-no-margin">{{cliente.nome}}</p>
@@ -46,7 +39,7 @@
     <h1 class="list-header">Famosos no AgroAPP</h1>
     <ion-list class="produtores">
       <div (click)="goToProdutos(cliente)" class="cliente" *ngFor="let cliente of clientes" [ngClass]="cliente.active ? 'active' : ''">
-        <ion-avatar style="background-color: green">
+        <ion-avatar>
           <ion-img [src]="cliente.imageUrl "></ion-img>
         </ion-avatar>
         <p class="ion-no-margin">{{cliente.nome}}</p>

@@ -68,4 +68,8 @@ export class ProdutoViewPage extends BaseComponent {
   newProdut() {
     this.navCtrl.navigateForward(`/meus-produtos/cadastro`);
   }
+
+  openCar() {
+
+  }
 }

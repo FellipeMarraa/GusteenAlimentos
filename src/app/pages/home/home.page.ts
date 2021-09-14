@@ -1,15 +1,10 @@
 import {Component, Injector} from '@angular/core';
 import {BaseComponent} from '../../class/commons-class/base.component';
 import {ClienteService} from '../../service/cliente.service';
-import {AuthService} from '../../service/auth.service';
 import {ProdutoDTO} from '../../class/dto/produto.dto';
 import {CategoriaDTO} from '../../class/dto/categoria.dto';
 import {NavigationExtras} from '@angular/router';
-import {PositionToast, ToastUtil} from '../../class/commons-class/toast.util';
-import {ToastType} from '../../class/commons-class/toast.type';
-import {ProdutoService} from '../../service/produto.service';
 import {Cliente} from '../../class/cliente';
-import {Produto} from '../../class/produto';
 
 @Component({
   selector: 'app-home',
@@ -22,15 +17,11 @@ export class HomePage extends BaseComponent {
   listaProdutos: ProdutoDTO[] = [];
   listaProdutosCarrinho: ProdutoDTO[] = [];
 
-  constructor(private injector: Injector,
-              private clienteService: ClienteService,
-              private authService: AuthService,
-              private produtoService: ProdutoService) {
+  constructor(private injector: Injector, private cliente: ClienteService) {
     super(injector);
   }
 
   ngOnInit() {
-    this.ionViewWillEnter();
 
     this.criarClientes();
 
@@ -40,15 +31,20 @@ export class HomePage extends BaseComponent {
     let cliente1 = new Cliente();
     cliente1.nome = 'Joao da cenoura';
     cliente1.id = '2';
+    cliente1.imageUrl = '/assets/users/cliente1.png';
 
     let cliente2 = new Cliente();
-    cliente2.nome = 'Joao da couve';
+    cliente2.nome = 'Joana da couve';
+    cliente2.imageUrl = '/assets/users/cliente2.png';
 
     let cliente3 = new Cliente();
     cliente3.nome = 'Joao da rabanete';
+    cliente3.imageUrl = '/assets/users/cliente3.png';
 
     let cliente4 = new Cliente();
     cliente4.nome = 'Joao da milho';
+    cliente4.imageUrl = '/assets/users/cliente4.png';
+
 
     this.clientes.push(cliente1, cliente2, cliente3, cliente4);
   }
@@ -56,84 +52,6 @@ export class HomePage extends BaseComponent {
   goToProdutos(cliente: Cliente) {
     const navigationExtra: NavigationExtras = {state: {cliente: cliente}};
     this.navCtrl.navigateRoot('/meus-produtos/view', navigationExtra);
-  }
-
-
-  ionViewWillEnter() {
-    this.carregaListaProdutos();
-
-  }
-
-  carregaListaProdutos() {
-    // this.produtoService.findAll().subscribe(prod => {
-    //   this.listaProdutos = prod;
-    //   console.log(prod);
-    // });
-  }
-
-
-  carregaListaCategorias() {
-    this.listaCategorias = [];
-    let produto1: CategoriaDTO = new CategoriaDTO();
-    produto1.nome = 'graaos';
-
-    let produto2: CategoriaDTO = new CategoriaDTO();
-    produto2.nome = 'Promoções';
-
-    this.listaCategorias.push(produto1, produto2);
-  }
-
-
-  async openCar() {
-    const navigationExtra: NavigationExtras = {
-      state: {listaProdutosCarrinho: this.listaProdutosCarrinho}
-    };
-    this.navCtrl.navigateForward(`/carrinho`, navigationExtra);
-  }
-
-  addToCart(produto: ProdutoDTO) {
-    let adicionado = false;
-    for (let p of this.listaProdutosCarrinho) {
-      if (p.id === produto.id) {
-        p.quantidade += 1;
-        adicionado = true;
-        break;
-      }
-    }
-    if (!adicionado) {
-      this.listaProdutosCarrinho.push(produto);
-    }
-    ToastUtil.presentToast(this.toastCtrl, 'Item Adicionado' + ' - ' + produto.nome, PositionToast.BOTTOM, ToastType.SUCCESS, 500);
-  }
-
-  removerItem(produto: Produto) {
-    this.listaProdutosCarrinho.splice(this.listaProdutosCarrinho.indexOf(produto), 1);
-  }
-
-  adicionaItem(produto: Produto) {
-    let adicionado = false;
-    for (let produtoCarrinho of this.listaProdutosCarrinho) {
-      if (produtoCarrinho.id === produto.id) {
-        produtoCarrinho.quantidade += 1;
-        adicionado = true;
-        break;
-      }
-    }
-    if (!adicionado) {
-      this.listaProdutosCarrinho.push(produto);
-    }
-  }
-
-  diminuirItem(produto) {
-    for (let produtoCarrinho of this.listaProdutosCarrinho) {
-      if (produtoCarrinho.id === produto.id) {
-        produtoCarrinho.quantidade -= 1;
-        if (produtoCarrinho.quantidade == 0) {
-          this.listaProdutosCarrinho.splice(this.listaProdutosCarrinho.indexOf(produto), 1);
-        }
-      }
-    }
-
   }
 
 }

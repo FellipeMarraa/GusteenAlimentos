@@ -1,7 +1,6 @@
 import {Component, Injector} from '@angular/core';
 import {BaseComponent} from '../../../class/commons-class/base.component';
 import {ProdutoService} from '../../../service/produto.service';
-import {NavigationExtras} from '@angular/router';
 import {Produto} from '../../../class/produto';
 import {Cliente} from '../../../class/cliente';
 import {ProdutoCadastroModalPage} from '../modal/cadastro/produto.cadastro.page';
