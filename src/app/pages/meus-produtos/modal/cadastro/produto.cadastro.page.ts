@@ -68,7 +68,9 @@ export class ProdutoCadastroModalPage extends BaseComponent {
           text: 'Sim',
           cssClass: AlertButtonTypeEnum.INFO,
           handler: () => {
-            this.produtoService.delete(StringUtil.stringToNumber(this.produto.id));
+            this.produtoService.delete(this.produto.id).subscribe(prod => {
+              console.log("Deletou")
+            });
           }
         }
       ]

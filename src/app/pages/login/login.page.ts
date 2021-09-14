@@ -52,11 +52,11 @@ export class LoginPage extends BaseComponent {
   }
 
   acessar() {
-let token;
+// let token;
     this.auth.authenticate(this.usuario)
       .subscribe((response) => {
-          token = response.headers.get('Authorization');
-          console.log(token);
+          // token = response.headers.get('Authorization');
+          // console.log(token);
 
           this.clienteService.list().subscribe((clientes) => {
             if (clientes) {

@@ -27,7 +27,7 @@ export class AuthService {
     return this.http.post(`${API_CONFIG.baseUrl}/login`, usuario,
       {
         observe: 'response',
-        responseType: 'json'
+        responseType: 'text'
       });
   }
 

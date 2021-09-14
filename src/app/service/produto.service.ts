@@ -17,6 +17,7 @@ export class ProdutoService {
   httpOptions = {
     headers: new HttpHeaders({
       'Content-Type': 'application/json',
+      observe: 'response'
     })
   };
 
@@ -38,7 +39,7 @@ export class ProdutoService {
   }
 
   update(produto: Produto): Observable<Produto> {
-    return this.http.post<Produto>(`${API_CONFIG.baseUrl}/produtos/edit`, JSON.stringify(produto), this.httpOptions)
+    return this.http.put<Produto>(`${API_CONFIG.baseUrl}/produtos/edit/${produto.id}`, JSON.stringify(produto), this.httpOptions)
       .pipe(
         retry(1),
         catchError(this.handleError)
@@ -46,15 +47,12 @@ export class ProdutoService {
   }
 
 
-  delete(produto_id: number) {
-
-
-
-
-
-    return this.http.delete(`${API_CONFIG.baseUrl}/produtos/delete/${produto_id}`).subscribe(item=>{
-      console.log('deletou')
-    });
+  delete(produto_id: string) {
+    return this.http.delete(`${API_CONFIG.baseUrl}/produtos/delete/${produto_id}`)
+      .pipe(
+      retry(1),
+      catchError(this.handleError)
+    );
   }
 
 
