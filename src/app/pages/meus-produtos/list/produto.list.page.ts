@@ -15,7 +15,6 @@ export class ProdutoListPage extends BaseComponent {
 
   listaProdutos: Produto[] = [];
 
-
   constructor(private injector: Injector,
               private produtoService: ProdutoService) {
     super(injector);

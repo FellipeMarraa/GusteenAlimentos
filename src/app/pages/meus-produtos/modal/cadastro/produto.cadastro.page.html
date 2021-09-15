@@ -6,7 +6,7 @@
       </ion-button>
     </ion-buttons>
 
-    <ion-title>{{title}}</ion-title>
+    <ion-title class="ion-text-center">{{title}}</ion-title>
 
     <ion-buttons slot="end">
       <ion-button fill="clear" (click)="removeProdut()">
@@ -33,6 +33,11 @@
       </ion-item>
 
       <ion-item>
+        <ion-label position="floating">Descrição</ion-label>
+        <ion-textarea type="text" name="descricao" [(ngModel)]="produto.descricao"></ion-textarea>
+      </ion-item>
+
+      <ion-item>
         <ion-label position="floating">Preço</ion-label>
         <ion-input type="number" name="preco" [(ngModel)]="produto.preco"></ion-input>
       </ion-item>
@@ -44,9 +49,12 @@
 
     </form>
   </ion-grid>
-
-  <ion-item lines="none">
-    <ion-button style="width: 100vw" (click)="salvarProduto(produto)">{{editOrNew}}</ion-button>
-  </ion-item>
 </ion-content>
 
+<ion-footer>
+  <ion-toolbar  >
+    <ion-button expand="full" (click)="salvarProduto(produto)">
+      {{editOrNew}}
+    </ion-button>
+  </ion-toolbar>
+</ion-footer>

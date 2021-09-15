@@ -3,17 +3,16 @@
     <ion-toolbar>
       <ion-buttons slot="start">
         <ion-button fill="clear" (click)="backHome()">
-          <ion-icon name="arrow-back-outline" style="color: white"></ion-icon>
+          <ion-icon slot="icon-only" name="arrow-back-outline" style="color: white"></ion-icon>
         </ion-button>
       </ion-buttons>
 
       <ion-title class="ion-text-center" style="color: white">{{cliente.nome}}</ion-title>
 
-
       <!------carrinho-->
       <ion-buttons slot="end">
         <ion-button fill="clear" size="large" (click)="openCar()">
-          <ion-icon style="color: white" name="cart-outline"></ion-icon>
+          <ion-icon slot="icon-only" style="color: white" name="cart-outline"></ion-icon>
           <div style="color: white">{{listaProdutosCarrinho.length}}</div>
         </ion-button>
       </ion-buttons>
@@ -22,11 +21,10 @@
 
   <!--Lista de Produtos deste Produtor-->
 
-
   <div class="food-list">
     <div class="card" *ngFor="let produto of listaProdutos">
 
-      <ion-img [src]="produto?.imageUrl"></ion-img>
+      <ion-img [src]="produto?.imageUrl" (click)="openDetalhes(produto)"></ion-img>
 
       <div class="card-content">
         <h3 class="title">{{produto?.nome}}</h3>
@@ -34,7 +32,7 @@
 
         <ion-buttons slot="start">
           <ion-button (click)="addProdut(produto)">
-            <ion-icon slot="icon-only" name="add"></ion-icon>
+            <ion-icon slot="icon-only" name="add-circle-outline"></ion-icon>
           </ion-button>
         </ion-buttons>
 

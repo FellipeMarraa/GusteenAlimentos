@@ -6,6 +6,13 @@ export class Produto {
 
   preco: number;
 
+  idCliente: string;
+
+  imageUrl: string;
+
+  descricao: string;
+
+
   quantidade: number;
 
   promocao: boolean;
@@ -14,8 +21,5 @@ export class Produto {
 
   categoria: string;
 
-  idCliente: string;
-
-  imageUrl: string;
 
 }

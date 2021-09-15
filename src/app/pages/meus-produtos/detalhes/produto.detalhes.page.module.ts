@@ -4,18 +4,19 @@ import {NgModule} from '@angular/core';
 import {FormsModule} from '@angular/forms';
 import {RouterModule, Routes} from '@angular/router';
 import {ComponentsModule} from '../../../commons-module/components.commons.module';
-import {ProdutoViewPage} from './produto.view.page';
+import {ProdutoDetalhesPage} from './produto.detalhes.page';
+
 
 const routes: Routes = [
   {
     path: '',
-    component: ProdutoViewPage
+    component: ProdutoDetalhesPage
   }
 ];
 
 @NgModule({
   declarations: [
-    ProdutoViewPage
+    ProdutoDetalhesPage
   ],
   imports: [
     CommonModule,
@@ -25,9 +26,9 @@ const routes: Routes = [
     RouterModule.forChild(routes),
   ],
   exports: [
-    ProdutoViewPage,
+    ProdutoDetalhesPage,
   ],
 })
 
-export class ProdutoViewPageModule {
+export class ProdutoDetalhesPageModule {
 }

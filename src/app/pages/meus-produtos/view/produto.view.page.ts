@@ -42,10 +42,6 @@ export class ProdutoViewPage extends BaseComponent {
     });
   }
 
-  new() {
-    this.navCtrl.navigateForward(`/produto/edit/`);
-  }
-
   carregaProdutos() {
     this.listaProdutos = [];
     this.produtoService.findAll().subscribe((produtosDB) => {
@@ -63,7 +59,6 @@ export class ProdutoViewPage extends BaseComponent {
       state: {produto: produto}
     };
     this.navCtrl.navigateForward(`/meus-produtos/cadastro`, navigationExtra);
-
   }
 
   newProdut() {
@@ -90,5 +85,12 @@ export class ProdutoViewPage extends BaseComponent {
       this.listaProdutosCarrinho.push(produto);
     }
     ToastUtil.presentToast(this.toastCtrl, 'Produto adicionado', PositionToast.BOTTOM, ToastType.SUCCESS);
+  }
+
+  openDetalhes(produto: Produto) {
+    const navigationExtra: NavigationExtras = {
+      state: {produto: produto}
+    };
+    this.navCtrl.navigateForward(`/meus-produtos/detalhes`, navigationExtra);
   }
 }
