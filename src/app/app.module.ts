@@ -15,6 +15,7 @@ import {ImageUtilService} from "./service/image.util.service";
 import {Camera} from "@ionic-native/camera/ngx";
 import {CategoriaService} from "./service/categoria.service";
 import {ProdutoService} from "./service/produto.service";
+import {BrMaskerModule} from 'br-mask';
 
 @NgModule({
   declarations: [AppComponent],
@@ -24,6 +25,7 @@ import {ProdutoService} from "./service/produto.service";
     HttpClientModule,
     IonicModule.forRoot(),
     AppRoutingModule,
+    BrMaskerModule
     ],
 
 

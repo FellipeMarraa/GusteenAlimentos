@@ -5,6 +5,7 @@ import {FormsModule} from '@angular/forms';
 import {RouterModule, Routes} from '@angular/router';
 import {ComponentsModule} from '../../../commons-module/components.commons.module';
 import {ProdutoViewPage} from './produto.view.page';
+import {AppModule} from '../../../app.module';
 
 
 const routes: Routes = [

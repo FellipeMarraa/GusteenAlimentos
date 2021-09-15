@@ -1,6 +1,5 @@
 import {NgModule} from '@angular/core';
 import {PreloadAllModules, RouterModule, Routes} from '@angular/router';
-import {ProdutoViewPageModule} from './pages/meus-produtos/view/produto.view.page.module';
 
 const routes: Routes = [
   {
@@ -42,10 +41,6 @@ const routes: Routes = [
   {
     path: 'perfil',
     loadChildren: () => import('./pages/perfil/perfil.module').then(m => m.PerfilPageModule)
-  },
-  {
-    path: 'help',
-    loadChildren: () => import('./pages/help/help.module').then(m => m.HelpPageModule)
   },
   {
     path: 'carrinho',

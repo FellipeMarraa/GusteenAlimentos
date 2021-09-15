@@ -54,6 +54,7 @@ export class ProdutoViewPage extends BaseComponent {
   }
 
   backHome() {
+    this.listaProdutosCarrinho = [];
     this.navCtrl.navigateForward(`/home`);
   }
 

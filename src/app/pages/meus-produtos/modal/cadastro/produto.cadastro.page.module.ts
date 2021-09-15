@@ -4,6 +4,7 @@ import {NgModule} from '@angular/core';
 import {FormsModule} from '@angular/forms';
 import {ComponentsModule} from '../../../../commons-module/components.commons.module';
 import {ProdutoCadastroModalPage} from './produto.cadastro.page';
+import {BrMaskerModule} from 'br-mask';
 
 
 @NgModule({
@@ -17,6 +18,7 @@ import {ProdutoCadastroModalPage} from './produto.cadastro.page';
     IonicModule,
     ComponentsModule,
     IonicModule.forRoot(),
+    BrMaskerModule,
   ],
   exports: [
     ProdutoCadastroModalPage,

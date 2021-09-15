@@ -88,5 +88,4 @@ export class CarrinhoModal extends BaseComponent {
       }
     }
   }
-
 }

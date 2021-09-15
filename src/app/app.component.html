@@ -5,7 +5,6 @@
       <img [src]="bucketUrl + '/logo.png'||'assets/imgs/logo.png'" style="padding-top: 20px"/>
     </header>
 
-
     <ion-content>
       <ion-list lines="none" style="height: 100%">
         <ion-menu-toggle>
@@ -25,13 +24,18 @@
             <ion-label>Minhas Compras</ion-label>
           </ion-item>
 
+          <ion-item>
+            <ion-icon name="bar-chart-outline" slot="start" color="primary"></ion-icon>
+            <ion-label>Minhas Vendas</ion-label>
+          </ion-item>
+
           <ion-item routerLink="/meus-produtos/list">
             <ion-icon name="cart-outline" slot="start" color="primary"></ion-icon>
             <ion-label>Meus Produtos</ion-label>
           </ion-item>
 
-          <ion-item routerLink="/help">
-            <ion-icon name="help-circle-outline" slot="start" color="primary"></ion-icon>
+          <ion-item>
+            <ion-icon name="desktop-outline" slot="start" color="primary"></ion-icon>
             <ion-label>Ajuda</ion-label>
           </ion-item>
 
@@ -41,7 +45,6 @@
               <ion-label>Sair</ion-label>
             </ion-item>
           </ion-footer>
-
         </ion-menu-toggle>
       </ion-list>
     </ion-content>

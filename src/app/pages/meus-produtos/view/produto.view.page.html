@@ -17,8 +17,6 @@
           <div style="color: white">{{listaProdutosCarrinho.length}}</div>
         </ion-button>
       </ion-buttons>
-
-
     </ion-toolbar>
   </ion-header>
 
@@ -32,14 +30,14 @@
 
       <div class="card-content">
         <h3 class="title">{{produto?.nome}}</h3>
-        <h2 class="subtitle">R${{produto?.preco|number:'1.2'}}</h2>
-
+        <h2 class="subtitle">{{produto?.preco|currency:'BRL'}}</h2>
 
         <ion-buttons slot="start">
           <ion-button (click)="addProdut(produto)">
             <ion-icon slot="icon-only" name="add"></ion-icon>
           </ion-button>
         </ion-buttons>
+
       </div>
     </div>
   </div>
