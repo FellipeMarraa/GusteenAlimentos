@@ -1,6 +1,6 @@
 import {Injectable} from '@angular/core';
 import {Cliente} from '../class/cliente';
-import {HttpClient, HttpErrorResponse, HttpHeaders} from '@angular/common/http';
+import {HttpClient, HttpErrorResponse, HttpHeaders, HttpParams} from '@angular/common/http';
 import {API_CONFIG} from '../config/api.config';
 import {StorageService} from './storage.service';
 import {CredenciaisDTO} from '../class/dto/credenciais.dto';
@@ -17,14 +17,27 @@ export class AuthService {
               public storage: StorageService) {
   }
 
+  clientId: string = API_CONFIG.clientId;
+  clientSecret: string = API_CONFIG.clientSecret;
+
   httpOptions = {
     headers: new HttpHeaders({'Content-Type': 'application/json',
       observe:'response'
     })
   };
 
+  tentarLogar(username: string, senha: string) : Observable<any>{
+    const params = new HttpParams().set('username', username).set('password', senha).set('grant_type', 'password');
+    const headers = {
+      'Acces-headers-allow-origin': '*',
+      'Content-Type': 'application/x-www-form-urlencoded',
+      'Authorization': 'Basic ' + btoa(`${this.clientId}:${this.clientSecret}`)
+    }
+    return this.http.post<any>(`${API_CONFIG.baseUrl}/oauth/token`, params.toString(), {headers});
+  }
+
   authenticate(usuario: CredenciaisDTO) {
-    return this.http.post(`${API_CONFIG.baseUrl}/login`, usuario,
+    return this.http.post(`${API_CONFIG.baseUrl}/oauth/token`, usuario,
       {
         observe: 'response',
         responseType: 'text'

@@ -52,28 +52,39 @@ export class LoginPage extends BaseComponent {
   }
 
   acessar() {
+
+    this.auth.tentarLogar(this.usuario.username, this.usuario.senha).subscribe(response => {
+      console.log(response);
+      this.navCtrl.navigateRoot('/home');
+    }, error => {
+      console.log("nao logou")
+    })
+
+
+
+
 // let token;
-    this.auth.authenticate(this.usuario)
-      .subscribe((response) => {
-          // token = response.headers.get('Authorization');
-          // console.log(token);
-
-          this.clienteService.list().subscribe((clientes) => {
-            if (clientes) {
-              clientes.forEach(cliente => {
-                if (cliente.cpfOuCnpj == this.usuario.username && '123' == this.usuario.senha) {
-                  console.log(cliente);
-                  this.appService.setCurrentUser(cliente);
-                }
-              });
-            }
-
-          });
-
-          this.navCtrl.navigateRoot('/home');
-        },
-        error => {
-        });
+//     this.auth.authenticate(this.usuario)
+//       .subscribe((response) => {
+//           // token = response.headers.get('Authorization');
+//           // console.log(token);
+//
+//           this.clienteService.list().subscribe((clientes) => {
+//             if (clientes) {
+//               clientes.forEach(cliente => {
+//                 if (cliente.cpfOuCnpj == this.usuario.username && '123' == this.usuario.senha) {
+//                   console.log(cliente);
+//                   this.appService.setCurrentUser(cliente);
+//                 }
+//               });
+//             }
+//
+//           });
+//
+//           this.navCtrl.navigateRoot('/home');
+//         },
+//         error => {
+//         });
   }
 
   recoveryPassword() {
